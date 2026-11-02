@@ -118,6 +118,27 @@ class UnitTest(unittest.TestCase):
         self.assertEqual(bench.parse_claude(tools, cond)["problem"][0], "protocol_error")
 
 
+class SchedulingTest(unittest.TestCase):
+    def test_each_service_runs_on_its_own_workers(self):
+        import threading
+
+        seen = []
+
+        def fake_attempt(self, job, number):
+            seen.append((self.conditions[job["condition"]]["pool"], threading.current_thread().name))
+            return dict(job=job["job"], attempt=number, outcome="valid", condition=job["condition"])
+
+        with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            raw = Path(tmp) / "raw"
+            with unittest.mock.patch.object(bench, "_version", return_value="test"):
+                bench.main(["plan", str(raw), "--seed", "s1", "--conditions", "opus-5.5-max", "gpt-4o", "gpt-6.1-sol-max",
+                            "--cases", "ecommerce-checkout--none", "--repeats", "none=6"])
+            with unittest.mock.patch.object(bench.Round, "attempt", fake_attempt):
+                bench.Round(raw).run()
+        self.assertEqual(len(seen), 18)
+        self.assertTrue(all(thread.startswith(pool + "_") for pool, thread in seen), seen)
+
+
 class PipelineTest(unittest.TestCase):
     def test_full_cycle(self):
         with tempfile.TemporaryDirectory() as tmp:

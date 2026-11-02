@@ -17,6 +17,7 @@ and never replaced.
 """
 
 import argparse
+import contextlib
 import hashlib
 import json
 import os
@@ -298,7 +299,6 @@ class Round:
         self.conditions = {c["id"]: c for c in self.plan["conditions"]}
         self.lock = threading.Lock()
         self.stop = threading.Event()
-        self.pools = {k: threading.Semaphore(v) for k, v in self.plan["pools"].items()}
         self.attempts_path = self.out / "attempts.jsonl"
 
     def history(self):
@@ -364,17 +364,13 @@ class Round:
         )
 
     def work(self, job, prior):
-        condition = self.conditions[job["condition"]]
         number = len(prior)
         while not self.stop.is_set() and number < self.plan["max_attempts"]:
             if time.time() > self.deadline:
                 self.stop.set()
                 return
             number += 1
-            with self.pools[condition["pool"]]:
-                if self.stop.is_set():
-                    return
-                row = self.attempt(job, number)
+            row = self.attempt(job, number)
             self.record(row)
             print(f"{job['job']} {job['condition']:16} {job['case']:40} #{number} {row['outcome']}", flush=True)
             if row["outcome"] == "fatal_error":
@@ -394,9 +390,18 @@ class Round:
         history = self.history()
         pending = [j for j in self.plan["schedule"] if not self.done(history.get(j["job"], []))]
         print(f"{len(pending)} of {len(self.plan['schedule'])} jobs pending", flush=True)
-        workers = sum(self.plan["pools"].values())
-        with ThreadPoolExecutor(workers) as pool:
-            futures = [pool.submit(self.work, j, history.get(j["job"], [])) for j in pending]
+        # One executor per service, sized to its concurrency limit, so a slow
+        # service never holds workers that a fast one could use. Each service
+        # still takes its jobs in frozen schedule order.
+        with contextlib.ExitStack() as stack:
+            executors = {
+                name: stack.enter_context(ThreadPoolExecutor(size, thread_name_prefix=name))
+                for name, size in self.plan["pools"].items()
+            }
+            futures = [
+                executors[self.conditions[j["condition"]]["pool"]].submit(self.work, j, history.get(j["job"], []))
+                for j in pending
+            ]
             try:
                 for f in futures:
                     f.result()
