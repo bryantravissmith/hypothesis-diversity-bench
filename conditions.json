@@ -1,0 +1,12 @@
+{
+  "schema": "hypothesis-diversity-conditions-v1",
+  "system_prompt": "You are a helpful assistant.",
+  "conditions": [
+    {"id": "opus-5.5-medium", "label": "Claude Opus 5.5 (medium effort)", "runner": "claude", "model": "claude-opus-5-5", "thinking": "medium", "pool": "claude"},
+    {"id": "opus-5.5-max", "label": "Claude Opus 5.5 (max effort)", "runner": "claude", "model": "claude-opus-5-5", "thinking": "max", "pool": "claude"},
+    {"id": "gpt-4o", "label": "GPT-4o", "runner": "pi", "model": "openai/gpt-4o", "thinking": "off", "pool": "gpt-4o"},
+    {"id": "deepseek-v3.2", "label": "DeepSeek V3.2 (thinking off)", "runner": "pi", "model": "deepseek/deepseek-v3.2", "thinking": "off", "pool": "deepseek-v3.2"},
+    {"id": "deepseek-r1", "label": "DeepSeek R1-0528", "runner": "pi", "model": "deepseek/deepseek-r1-0528", "thinking": "high", "pool": "deepseek-r1"}
+  ],
+  "pools": {"claude": 4, "gpt-4o": 6, "deepseek-v3.2": 6, "deepseek-r1": 12}
+}
