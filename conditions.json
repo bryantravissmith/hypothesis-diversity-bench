@@ -12,7 +12,9 @@
     {"id": "gpt-6-sol-medium", "label": "GPT-6 Sol (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-sol", "thinking": "medium", "pool": "openai"},
     {"id": "gpt-6-sol-max", "label": "GPT-6 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-sol", "thinking": "max", "pool": "openai"},
     {"id": "gpt-6.1-sol-medium", "label": "GPT-6.1 Sol (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "medium", "pool": "openai"},
-    {"id": "gpt-6.1-sol-max", "label": "GPT-6.1 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "max", "pool": "openai"}
+    {"id": "gpt-6.1-sol-max", "label": "GPT-6.1 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6.1-terra-medium", "label": "GPT-6.1 Terra (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-6.1-terra-max", "label": "GPT-6.1 Terra (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "max", "pool": "openai"}
   ],
   "pools": {"claude": 4, "gpt-4o": 6, "deepseek-v3.2": 6, "deepseek-r1": 12, "openai": 4}
 }

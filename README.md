@@ -9,10 +9,13 @@ whether they do, on root-cause questions where an analyst would normally
 consider several causes.
 
 It is a companion to [Random Number Bench](https://github.com/bryantravissmith/random-number-bench),
-which found that current models answer "pick a random number from 1 to 10"
-with the same number almost every time, while older models such as GPT-4o and
-DeepSeek V3.2 spread their answers. This benchmark asks whether that collapse
-carries over to analysis, and what it costs.
+which found that many current models answer "pick a random number from 1 to
+10" with the same number almost every time, while older models such as GPT-4o
+and DeepSeek V3.2 spread their answers. The spread is not simply old versus
+new: GPT-6 Sol and GPT-6.1 Terra answer close to uniformly, while GPT-5.6 Sol
+and GPT-6.1 Sol say 7 nearly every time. This benchmark asks whether that
+collapse carries over to analysis, what it costs, and whether random-number
+spread predicts hypothesis spread.
 
 **[Results](RESULTS.md)** · [Design](#design) · [Run it](#run-a-round)
 
@@ -76,9 +79,10 @@ stays in the denominator: an invalid or missing answer is a miss.
 | GPT-5.6 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | OpenAI Responses through the `openai` provider |
 | GPT-6 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | Same |
 | GPT-6.1 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | Same |
+| GPT-6.1 Terra, medium and max effort | Pi, ChatGPT subscription | `round-003` | Same |
 
-Both rounds use the same frozen seed, so their 54 case prompts are identical,
-and they ran over the same period. They are still separate runs and are
+All rounds use the same frozen seed, so their 54 case prompts are identical,
+and they ran over overlapping periods. They are still separate runs and are
 reported side by side, never pooled. The same system prompt (`You are a
 helpful assistant.`) and working directory (`/`) are used for every
 condition. Native CLIs add their own context, and OpenRouter routes to a
