@@ -192,6 +192,28 @@ class PipelineTest(unittest.TestCase):
             self.assertIn("public/passk-none.svg", report)
             self.assertTrue((public / "passk-none.svg").read_text().startswith("<svg"))
 
+            # A second round with the same seed is reported beside the first;
+            # a round with different cases is refused.
+            def round_with(name, seed):
+                raw_n, public_n = tmp / f"raw-{name}", tmp / name
+                with unittest.mock.patch.dict(os.environ, env), quiet:
+                    bench.main(["plan", str(raw_n), "--seed", seed, "--conditions", "gpt-6.1-sol-max",
+                                "--cases", *cases, "--repeats", "none=3", "partial=2", "full=1"])
+                    bench.main(["run", str(raw_n)])
+                    bench.main(["export", str(raw_n), str(public_n)])
+                return public_n
+
+            second = round_with("second", "s1")
+            with quiet:
+                analyze.main([str(public), str(second), "--figures", str(tmp / "figures"), "--report", str(tmp / "BOTH.md")])
+            both = json.loads((tmp / "figures" / "summary.json").read_text())
+            self.assertEqual([r["name"] for r in both["rounds"]], ["public", "second"])
+            self.assertEqual({c["round"] for c in both["conditions"]}, {"public", "second"})
+            self.assertIn("figures/passk-none.svg", (tmp / "BOTH.md").read_text())
+            other = round_with("other", "s2")
+            with self.assertRaises(SystemExit), quiet:
+                analyze.main([str(public), str(other), "--figures", str(tmp / "figures2")])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
