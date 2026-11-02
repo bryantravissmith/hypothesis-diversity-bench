@@ -1,0 +1,682 @@
+{
+ "00006:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C116"
+ },
+ "00023:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C025"
+ },
+ "00029:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C128"
+ },
+ "00033:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C103"
+ },
+ "00055:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C085"
+ },
+ "00074:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C015"
+ },
+ "00081:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C111"
+ },
+ "00093:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C062"
+ },
+ "00099:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C098"
+ },
+ "00106:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C030"
+ },
+ "00123:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C036"
+ },
+ "00152:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C055"
+ },
+ "00155:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C131"
+ },
+ "00159:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C096"
+ },
+ "00190:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C002"
+ },
+ "00194:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C005"
+ },
+ "00213:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C043"
+ },
+ "00231:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C004"
+ },
+ "00238:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C033"
+ },
+ "00242:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C129"
+ },
+ "00250:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C092"
+ },
+ "00253:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C066"
+ },
+ "00256:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C081"
+ },
+ "00268:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C022"
+ },
+ "00287:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C063"
+ },
+ "00314:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C076"
+ },
+ "00317:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C104"
+ },
+ "00324:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C027"
+ },
+ "00327:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C050"
+ },
+ "00336:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C023"
+ },
+ "00377:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C054"
+ },
+ "00381:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C042"
+ },
+ "00395:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C124"
+ },
+ "00396:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C093"
+ },
+ "00402:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C087"
+ },
+ "00427:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C077"
+ },
+ "00434:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C072"
+ },
+ "00452:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C118"
+ },
+ "00480:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C094"
+ },
+ "00495:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C106"
+ },
+ "00512:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C003"
+ },
+ "00516:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C105"
+ },
+ "00531:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C126"
+ },
+ "00534:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C051"
+ },
+ "00546:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C122"
+ },
+ "00560:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C057"
+ },
+ "00571:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C130"
+ },
+ "00585:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C100"
+ },
+ "00634:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C115"
+ },
+ "00645:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C006"
+ },
+ "00649:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C121"
+ },
+ "00732:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C060"
+ },
+ "00752:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C028"
+ },
+ "00757:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C132"
+ },
+ "00791:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C021"
+ },
+ "00820:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C046"
+ },
+ "00835:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C064"
+ },
+ "00877:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C041"
+ },
+ "00910:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C135"
+ },
+ "00914:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C001"
+ },
+ "00927:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C108"
+ },
+ "00951:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C044"
+ },
+ "00980:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C007"
+ },
+ "01002:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C090"
+ },
+ "01013:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C079"
+ },
+ "01015:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C073"
+ },
+ "01017:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C083"
+ },
+ "01030:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C110"
+ },
+ "01031:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C078"
+ },
+ "01032:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C117"
+ },
+ "01035:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C119"
+ },
+ "01080:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C101"
+ },
+ "01084:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C034"
+ },
+ "01112:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C091"
+ },
+ "01127:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C013"
+ },
+ "01143:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C052"
+ },
+ "01218:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C037"
+ },
+ "01237:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C120"
+ },
+ "01239:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C009"
+ },
+ "01294:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C011"
+ },
+ "01308:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C045"
+ },
+ "01319:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C016"
+ },
+ "01330:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C035"
+ },
+ "01344:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C059"
+ },
+ "01350:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C031"
+ },
+ "01395:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C084"
+ },
+ "01408:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C134"
+ },
+ "01427:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C061"
+ },
+ "01463:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C125"
+ },
+ "01500:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C099"
+ },
+ "01504:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C026"
+ },
+ "01530:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C069"
+ },
+ "01534:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C127"
+ },
+ "01536:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C010"
+ },
+ "01545:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C008"
+ },
+ "01592:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C058"
+ },
+ "01597:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C107"
+ },
+ "01615:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C074"
+ },
+ "01638:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C071"
+ },
+ "01643:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C053"
+ },
+ "01649:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C048"
+ },
+ "01656:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C029"
+ },
+ "01666:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C123"
+ },
+ "01714:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C095"
+ },
+ "01728:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C024"
+ },
+ "01729:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C065"
+ },
+ "01749:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C047"
+ },
+ "01772:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C088"
+ },
+ "01808:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C086"
+ },
+ "01812:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C075"
+ },
+ "01889:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C039"
+ },
+ "01914:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C109"
+ },
+ "01919:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C020"
+ },
+ "01949:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C038"
+ },
+ "01958:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C014"
+ },
+ "01981:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C113"
+ },
+ "01989:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C097"
+ },
+ "02005:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C133"
+ },
+ "02047:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C049"
+ },
+ "02057:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C067"
+ },
+ "02058:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C070"
+ },
+ "02073:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C032"
+ },
+ "02134:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C080"
+ },
+ "02164:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C040"
+ },
+ "02175:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C017"
+ },
+ "02182:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C114"
+ },
+ "02187:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C082"
+ },
+ "02195:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C012"
+ },
+ "02205:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C136"
+ },
+ "02217:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C112"
+ },
+ "02219:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C102"
+ },
+ "02225:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C018"
+ },
+ "02231:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C056"
+ },
+ "02242:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C019"
+ },
+ "02252:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C068"
+ },
+ "02271:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts, hedged alternatives or the phrase 'both release groups'.",
+  "blind_id": "C089"
+ }
+}

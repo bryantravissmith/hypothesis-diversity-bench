@@ -1,0 +1,975 @@
+{
+ "plan_seed": "84381f5ac1434825",
+ "repeats": {
+  "none": 20,
+  "partial": 5,
+  "full": 2
+ },
+ "conditions": [
+  {
+   "id": "gpt-6-astra-medium",
+   "label": "GPT-6 Astra (medium effort)",
+   "model": "gpt-6-astra",
+   "thinking": "medium",
+   "variant": "plain",
+   "base": null,
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "3": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "5": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "10": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 80,
+      "tracking": 40
+     },
+     "modal_share": 1.0
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5166666666666667,
+       "low": 0.325,
+       "high": 0.6916666666666668
+      },
+      "2": {
+       "mean": 0.5541666666666667,
+       "low": 0.37083333333333335,
+       "high": 0.7374999999999999
+      },
+      "3": {
+       "mean": 0.5750000000000001,
+       "low": 0.375,
+       "high": 0.7458333333333332
+      },
+      "5": {
+       "mean": 0.5833333333333334,
+       "low": 0.375,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1962314510288155,
+     "labels": {
+      "release": 46,
+      "policy": 17,
+      "tracking": 44,
+      "mix": 13
+     },
+     "ruled_out_rate": 0.016666666666666666,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.2333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.6666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6-astra-max",
+   "label": "GPT-6 Astra (max effort)",
+   "model": "gpt-6-astra",
+   "thinking": "max",
+   "variant": "plain",
+   "base": null,
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.27171052631578946,
+       "low": 0.25,
+       "high": 0.31513157894736843
+      },
+      "3": {
+       "mean": 0.2825657894736842,
+       "low": 0.25,
+       "high": 0.34769736842105264
+      },
+      "5": {
+       "mean": 0.29008642930856554,
+       "low": 0.25,
+       "high": 0.37025928792569657
+      },
+      "10": {
+       "mean": 0.2916641859172819,
+       "low": 0.25,
+       "high": 0.37499255775184565
+      }
+     },
+     "effective_causes": 1.1650013847036578,
+     "labels": {
+      "release": 91,
+      "tracking": 29
+     },
+     "modal_share": 0.9249999999999999
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5499999999999999,
+       "low": 0.35833333333333334,
+       "high": 0.7333333333333334
+      },
+      "2": {
+       "mean": 0.5875,
+       "low": 0.39166666666666666,
+       "high": 0.7791666666666667
+      },
+      "3": {
+       "mean": 0.6041666666666666,
+       "low": 0.42083333333333334,
+       "high": 0.7833333333333333
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1591625230371225,
+     "labels": {
+      "release": 45,
+      "policy": 15,
+      "tracking": 50,
+      "mix": 10
+     },
+     "ruled_out_rate": 0.016666666666666666,
+     "accuracy_by_truth": {
+      "mix": 0.3,
+      "policy": 0.26666666666666666,
+      "release": 0.8333333333333334,
+      "tracking": 0.7999999999999999
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6-astra-medium-meta",
+   "label": "GPT-6 Astra (medium effort, meta prompt)",
+   "model": "gpt-6-astra",
+   "thinking": "medium",
+   "variant": "meta",
+   "base": "gpt-6-astra-medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "3": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "5": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "10": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 80,
+      "tracking": 40
+     },
+     "modal_share": 1.0
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5166666666666667,
+       "low": 0.325,
+       "high": 0.7083333333333334
+      },
+      "2": {
+       "mean": 0.5583333333333333,
+       "low": 0.35000000000000003,
+       "high": 0.7374999999999999
+      },
+      "3": {
+       "mean": 0.5750000000000001,
+       "low": 0.37083333333333335,
+       "high": 0.7791666666666667
+      },
+      "5": {
+       "mean": 0.5833333333333334,
+       "low": 0.375,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1341263827228256,
+     "labels": {
+      "release": 48,
+      "policy": 22,
+      "tracking": 38,
+      "mix": 12
+     },
+     "ruled_out_rate": 0.024999999999999998,
+     "accuracy_by_truth": {
+      "mix": 0.3,
+      "policy": 0.3666666666666667,
+      "release": 0.8333333333333334,
+      "tracking": 0.5666666666666667
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6-astra-max-meta",
+   "label": "GPT-6 Astra (max effort, meta prompt)",
+   "model": "gpt-6-astra",
+   "thinking": "max",
+   "variant": "meta",
+   "base": "gpt-6-astra-max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25416666666666665,
+       "low": 0.25,
+       "high": 0.2625
+      },
+      "3": {
+       "mean": 0.25625000000000003,
+       "low": 0.25,
+       "high": 0.26875
+      },
+      "5": {
+       "mean": 0.2604166666666667,
+       "low": 0.25,
+       "high": 0.28125
+      },
+      "10": {
+       "mean": 0.2708333333333333,
+       "low": 0.25,
+       "high": 0.3125
+      }
+     },
+     "effective_causes": 1.0365984363190286,
+     "labels": {
+      "release": 81,
+      "tracking": 39
+     },
+     "modal_share": 0.9916666666666667
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.525,
+       "low": 0.3333333333333333,
+       "high": 0.7083333333333334
+      },
+      "2": {
+       "mean": 0.5583333333333333,
+       "low": 0.375,
+       "high": 0.7416666666666667
+      },
+      "3": {
+       "mean": 0.5750000000000001,
+       "low": 0.375,
+       "high": 0.7708333333333334
+      },
+      "5": {
+       "mean": 0.5833333333333334,
+       "low": 0.375,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1070686790367372,
+     "labels": {
+      "release": 45,
+      "policy": 30,
+      "tracking": 41,
+      "mix": 4
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.13333333333333333,
+      "policy": 0.4666666666666666,
+      "release": 0.8333333333333334,
+      "tracking": 0.6666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6.1-sol-medium-meta",
+   "label": "GPT-6.1 Sol (medium effort, meta prompt)",
+   "model": "gpt-6.1-sol",
+   "thinking": "medium",
+   "variant": "meta",
+   "base": "gpt-6.1-sol-medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "3": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "5": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "10": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 80,
+      "tracking": 40
+     },
+     "modal_share": 1.0
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5416666666666666,
+       "low": 0.35000000000000003,
+       "high": 0.725
+      },
+      "2": {
+       "mean": 0.5833333333333334,
+       "low": 0.37916666666666665,
+       "high": 0.7666666666666666
+      },
+      "3": {
+       "mean": 0.6041666666666666,
+       "low": 0.41250000000000003,
+       "high": 0.7875
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1341263827228256,
+     "labels": {
+      "release": 46,
+      "policy": 15,
+      "tracking": 46,
+      "mix": 13
+     },
+     "ruled_out_rate": 0.008333333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.26666666666666666,
+      "release": 0.8333333333333334,
+      "tracking": 0.7333333333333334
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6.1-sol-max-meta",
+   "label": "GPT-6.1 Sol (max effort, meta prompt)",
+   "model": "gpt-6.1-sol",
+   "thinking": "max",
+   "variant": "meta",
+   "base": "gpt-6.1-sol-max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25789473684210523,
+       "low": 0.25,
+       "high": 0.2736842105263158
+      },
+      "3": {
+       "mean": 0.2618421052631579,
+       "low": 0.25,
+       "high": 0.2855263157894737
+      },
+      "5": {
+       "mean": 0.268640350877193,
+       "low": 0.25,
+       "high": 0.3059210526315789
+      },
+      "10": {
+       "mean": 0.2817982456140351,
+       "low": 0.25,
+       "high": 0.34539473684210525
+      }
+     },
+     "effective_causes": 1.0640242480769475,
+     "labels": {
+      "release": 82,
+      "tracking": 38
+     },
+     "modal_share": 0.9833333333333334
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5750000000000001,
+       "low": 0.39166666666666666,
+       "high": 0.75
+      },
+      "2": {
+       "mean": 0.6166666666666667,
+       "low": 0.41250000000000003,
+       "high": 0.8208333333333333
+      },
+      "3": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.8333333333333334
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4583333333333333,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1611840864089138,
+     "labels": {
+      "release": 45,
+      "policy": 19,
+      "tracking": 49,
+      "mix": 7
+     },
+     "ruled_out_rate": 0.016666666666666666,
+     "accuracy_by_truth": {
+      "mix": 0.2333333333333333,
+      "policy": 0.39999999999999997,
+      "release": 0.8333333333333334,
+      "tracking": 0.8333333333333334
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6.1-terra-medium-meta",
+   "label": "GPT-6.1 Terra (medium effort, meta prompt)",
+   "model": "gpt-6.1-terra",
+   "thinking": "medium",
+   "variant": "meta",
+   "base": "gpt-6.1-terra-medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.27587719298245617,
+       "low": 0.25,
+       "high": 0.31929824561403514
+      },
+      "3": {
+       "mean": 0.2888157894736842,
+       "low": 0.25,
+       "high": 0.3539473684210526
+      },
+      "5": {
+       "mean": 0.3005030959752322,
+       "low": 0.25,
+       "high": 0.38067595459236325
+      },
+      "10": {
+       "mean": 0.31249751925061525,
+       "low": 0.25,
+       "high": 0.395825891085179
+      }
+     },
+     "effective_causes": 1.2015998210226864,
+     "labels": {
+      "release": 88,
+      "tracking": 31,
+      "mix": 1
+     },
+     "modal_share": 0.9166666666666666
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5499999999999999,
+       "low": 0.3666666666666667,
+       "high": 0.7333333333333334
+      },
+      "2": {
+       "mean": 0.6,
+       "low": 0.42083333333333334,
+       "high": 0.775
+      },
+      "3": {
+       "mean": 0.6291666666666667,
+       "low": 0.44166666666666665,
+       "high": 0.8166666666666668
+      },
+      "5": {
+       "mean": 0.6666666666666666,
+       "low": 0.4583333333333333,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1611840864089138,
+     "labels": {
+      "release": 45,
+      "policy": 14,
+      "mix": 19,
+      "tracking": 42
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.39999999999999997,
+      "policy": 0.2333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.7333333333333334
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  },
+  {
+   "id": "gpt-6.1-terra-max-meta",
+   "label": "GPT-6.1 Terra (max effort, meta prompt)",
+   "model": "gpt-6.1-terra",
+   "thinking": "max",
+   "variant": "meta",
+   "base": "gpt-6.1-terra-max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.26842105263157895,
+       "low": 0.25,
+       "high": 0.30526315789473685
+      },
+      "3": {
+       "mean": 0.2776315789473684,
+       "low": 0.25,
+       "high": 0.33289473684210524
+      },
+      "5": {
+       "mean": 0.2862702098383213,
+       "low": 0.25,
+       "high": 0.35881062951496395
+      },
+      "10": {
+       "mean": 0.29144091847265224,
+       "low": 0.25,
+       "high": 0.3743227554179567
+      }
+     },
+     "effective_causes": 1.1403371291728857,
+     "labels": {
+      "release": 94,
+      "tracking": 26
+     },
+     "modal_share": 0.9500000000000001
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5166666666666667,
+       "low": 0.3416666666666666,
+       "high": 0.6916666666666668
+      },
+      "2": {
+       "mean": 0.5875,
+       "low": 0.41250000000000003,
+       "high": 0.7541666666666668
+      },
+      "3": {
+       "mean": 0.625,
+       "low": 0.4375,
+       "high": 0.8041666666666667
+      },
+      "5": {
+       "mean": 0.6666666666666666,
+       "low": 0.5,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.2282472777703266,
+     "labels": {
+      "release": 45,
+      "policy": 27,
+      "tracking": 42,
+      "mix": 6
+     },
+     "ruled_out_rate": 0.008333333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.09999999999999999,
+      "policy": 0.39999999999999997,
+      "release": 0.8333333333333334,
+      "tracking": 0.7333333333333334
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   }
+  }
+ ],
+ "label_sources": {
+  "pattern": 2168,
+  "review": 136
+ }
+}

@@ -11,6 +11,8 @@
    "label": "GPT-6.1 Terra (medium effort)",
    "model": "gpt-6.1-terra",
    "thinking": "medium",
+   "variant": "plain",
+   "base": null,
    "tiers": {
     "none": {
      "cases": 6,
@@ -130,6 +132,8 @@
    "label": "GPT-6.1 Terra (max effort)",
    "model": "gpt-6.1-terra",
    "thinking": "max",
+   "variant": "plain",
+   "base": null,
    "tiers": {
     "none": {
      "cases": 6,

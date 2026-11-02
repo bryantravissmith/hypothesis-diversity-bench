@@ -1,126 +1,147 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 394" font-family="Helvetica, Arial, sans-serif" font-size="12">
-<rect width="780" height="394" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 454" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="780" height="454" fill="#ffffff"/>
 <text x="56" y="22" font-size="14" font-weight="bold" fill="#1d1d1f">No evidence: pass@k over four equally likely causes</text>
-<line x1="56" y1="350.0" x2="530" y2="350.0" stroke="#e3e3e8"/>
-<text x="48" y="354.0" text-anchor="end" fill="#6e6e73">0.00</text>
-<line x1="56" y1="246.7" x2="530" y2="246.7" stroke="#e3e3e8"/>
-<text x="48" y="250.7" text-anchor="end" fill="#6e6e73">0.25</text>
-<line x1="56" y1="143.3" x2="530" y2="143.3" stroke="#e3e3e8"/>
-<text x="48" y="147.3" text-anchor="end" fill="#6e6e73">0.50</text>
+<line x1="56" y1="410.0" x2="530" y2="410.0" stroke="#e3e3e8"/>
+<text x="48" y="414.0" text-anchor="end" fill="#6e6e73">0.00</text>
+<line x1="56" y1="317.5" x2="530" y2="317.5" stroke="#e3e3e8"/>
+<text x="48" y="321.5" text-anchor="end" fill="#6e6e73">0.25</text>
+<line x1="56" y1="225.0" x2="530" y2="225.0" stroke="#e3e3e8"/>
+<text x="48" y="229.0" text-anchor="end" fill="#6e6e73">0.50</text>
+<line x1="56" y1="132.5" x2="530" y2="132.5" stroke="#e3e3e8"/>
+<text x="48" y="136.5" text-anchor="end" fill="#6e6e73">0.75</text>
 <line x1="56" y1="40.0" x2="530" y2="40.0" stroke="#e3e3e8"/>
-<text x="48" y="44.0" text-anchor="end" fill="#6e6e73">0.75</text>
-<text x="56.0" y="368" text-anchor="middle" fill="#6e6e73">1</text>
-<text x="108.7" y="368" text-anchor="middle" fill="#6e6e73">2</text>
-<text x="161.3" y="368" text-anchor="middle" fill="#6e6e73">3</text>
-<text x="266.7" y="368" text-anchor="middle" fill="#6e6e73">5</text>
-<text x="530.0" y="368" text-anchor="middle" fill="#6e6e73">10</text>
-<text x="293.0" y="386" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>
-<text transform="translate(14 195.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>
-<line x1="56" y1="246.7" x2="530" y2="246.7" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
-<line x1="546" y1="310" x2="570" y2="310" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
-<text x="576" y="314" fill="#6e6e73">Always the same answer</text>
-<polyline points="56.0,246.7 108.7,211.3 161.3,192.0 266.7,170.7 530.0,144.4" fill="none" stroke="#2f8f5b" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#2f8f5b"/>
-<circle cx="108.7" cy="211.3" r="3.5" fill="#2f8f5b"/>
-<circle cx="161.3" cy="192.0" r="3.5" fill="#2f8f5b"/>
-<circle cx="266.7" cy="170.7" r="3.5" fill="#2f8f5b"/>
-<circle cx="530.0" cy="144.4" r="3.5" fill="#2f8f5b"/>
+<text x="48" y="44.0" text-anchor="end" fill="#6e6e73">1.00</text>
+<text x="56.0" y="428" text-anchor="middle" fill="#6e6e73">1</text>
+<text x="108.7" y="428" text-anchor="middle" fill="#6e6e73">2</text>
+<text x="161.3" y="428" text-anchor="middle" fill="#6e6e73">3</text>
+<text x="266.7" y="428" text-anchor="middle" fill="#6e6e73">5</text>
+<text x="530.0" y="428" text-anchor="middle" fill="#6e6e73">10</text>
+<text x="293.0" y="446" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>
+<text transform="translate(14 225.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>
+<polyline points="56.0,317.5 108.7,317.5 161.3,317.5 214.0,317.5 266.7,317.5 319.3,317.5 372.0,317.5 424.7,317.5 477.3,317.5 530.0,317.5" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
+<line x1="546" y1="350" x2="570" y2="350" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
+<text x="576" y="354" fill="#6e6e73">Always the same answer</text>
+<polyline points="56.0,317.5 108.7,248.1 161.3,196.1 214.0,157.1 266.7,127.8 319.3,105.9 372.0,89.4 424.7,77.0 477.3,67.8 530.0,60.8" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="8 3 2 3"/>
+<line x1="546" y1="370" x2="570" y2="370" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="8 3 2 3"/>
+<text x="576" y="374" fill="#6e6e73">Random pick of 4 on every run</text>
+<polyline points="56.0,317.5 108.7,285.9 161.3,268.6 266.7,249.5 530.0,225.9" fill="none" stroke="#2f8f5b" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#2f8f5b"/>
+<circle cx="108.7" cy="285.9" r="3.5" fill="#2f8f5b"/>
+<circle cx="161.3" cy="268.6" r="3.5" fill="#2f8f5b"/>
+<circle cx="266.7" cy="249.5" r="3.5" fill="#2f8f5b"/>
+<circle cx="530.0" cy="225.9" r="3.5" fill="#2f8f5b"/>
 <line x1="546" y1="50" x2="570" y2="50" stroke="#2f8f5b" stroke-width="2.5"/>
 <text x="576" y="54" fill="#1d1d1f">DeepSeek R1-0528</text>
-<polyline points="56.0,246.7 108.7,201.3 161.3,178.7 266.7,158.8 530.0,145.9" fill="none" stroke="#5d6b7a" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#5d6b7a"/>
-<circle cx="108.7" cy="201.3" r="3.5" fill="#5d6b7a"/>
-<circle cx="161.3" cy="178.7" r="3.5" fill="#5d6b7a"/>
-<circle cx="266.7" cy="158.8" r="3.5" fill="#5d6b7a"/>
-<circle cx="530.0" cy="145.9" r="3.5" fill="#5d6b7a"/>
+<polyline points="56.0,317.5 108.7,276.9 161.3,256.6 266.7,238.8 530.0,227.3" fill="none" stroke="#5d6b7a" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#5d6b7a"/>
+<circle cx="108.7" cy="276.9" r="3.5" fill="#5d6b7a"/>
+<circle cx="161.3" cy="256.6" r="3.5" fill="#5d6b7a"/>
+<circle cx="266.7" cy="238.8" r="3.5" fill="#5d6b7a"/>
+<circle cx="530.0" cy="227.3" r="3.5" fill="#5d6b7a"/>
 <line x1="546" y1="70" x2="570" y2="70" stroke="#5d6b7a" stroke-width="2.5"/>
 <text x="576" y="74" fill="#1d1d1f">GPT-4o</text>
-<polyline points="56.0,246.7 108.7,213.4 161.3,194.5 266.7,173.7 530.0,152.4" fill="none" stroke="#8bc4a0" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#8bc4a0"/>
-<circle cx="108.7" cy="213.4" r="3.5" fill="#8bc4a0"/>
-<circle cx="161.3" cy="194.5" r="3.5" fill="#8bc4a0"/>
-<circle cx="266.7" cy="173.7" r="3.5" fill="#8bc4a0"/>
-<circle cx="530.0" cy="152.4" r="3.5" fill="#8bc4a0"/>
+<polyline points="56.0,317.5 108.7,287.7 161.3,270.8 266.7,252.2 530.0,233.1" fill="none" stroke="#8bc4a0" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#8bc4a0"/>
+<circle cx="108.7" cy="287.7" r="3.5" fill="#8bc4a0"/>
+<circle cx="161.3" cy="270.8" r="3.5" fill="#8bc4a0"/>
+<circle cx="266.7" cy="252.2" r="3.5" fill="#8bc4a0"/>
+<circle cx="530.0" cy="233.1" r="3.5" fill="#8bc4a0"/>
 <line x1="546" y1="90" x2="570" y2="90" stroke="#8bc4a0" stroke-width="2.5"/>
 <text x="576" y="94" fill="#1d1d1f">DeepSeek V3.2 (thinking off)</text>
-<polyline points="56.0,246.7 108.7,221.4 161.3,208.7 266.7,198.8 530.0,195.1" fill="none" stroke="#c2602c" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#c2602c"/>
-<circle cx="108.7" cy="221.4" r="3.5" fill="#c2602c"/>
-<circle cx="161.3" cy="208.7" r="3.5" fill="#c2602c"/>
-<circle cx="266.7" cy="198.8" r="3.5" fill="#c2602c"/>
-<circle cx="530.0" cy="195.1" r="3.5" fill="#c2602c"/>
+<polyline points="56.0,317.5 108.7,294.9 161.3,283.5 266.7,274.7 530.0,271.3" fill="none" stroke="#c2602c" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#c2602c"/>
+<circle cx="108.7" cy="294.9" r="3.5" fill="#c2602c"/>
+<circle cx="161.3" cy="283.5" r="3.5" fill="#c2602c"/>
+<circle cx="266.7" cy="274.7" r="3.5" fill="#c2602c"/>
+<circle cx="530.0" cy="271.3" r="3.5" fill="#c2602c"/>
 <line x1="546" y1="110" x2="570" y2="110" stroke="#c2602c" stroke-width="2.5"/>
 <text x="576" y="114" fill="#1d1d1f">Claude Opus 5.5 (medium effort)</text>
-<polyline points="56.0,246.7 108.7,229.6 161.3,220.6 266.7,211.9 530.0,203.9" fill="none" stroke="#7b4fc9" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#7b4fc9"/>
-<circle cx="108.7" cy="229.6" r="3.5" fill="#7b4fc9"/>
-<circle cx="161.3" cy="220.6" r="3.5" fill="#7b4fc9"/>
-<circle cx="266.7" cy="211.9" r="3.5" fill="#7b4fc9"/>
-<circle cx="530.0" cy="203.9" r="3.5" fill="#7b4fc9"/>
+<polyline points="56.0,317.5 108.7,302.2 161.3,294.1 266.7,286.4 530.0,279.2" fill="none" stroke="#7b4fc9" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#7b4fc9"/>
+<circle cx="108.7" cy="302.2" r="3.5" fill="#7b4fc9"/>
+<circle cx="161.3" cy="294.1" r="3.5" fill="#7b4fc9"/>
+<circle cx="266.7" cy="286.4" r="3.5" fill="#7b4fc9"/>
+<circle cx="530.0" cy="279.2" r="3.5" fill="#7b4fc9"/>
 <line x1="546" y1="130" x2="570" y2="130" stroke="#7b4fc9" stroke-width="2.5"/>
 <text x="576" y="134" fill="#1d1d1f">GPT-6.1 Terra (medium effort)</text>
-<polyline points="56.0,246.7 108.7,241.5 161.3,238.9 266.7,233.8 530.0,220.8" fill="none" stroke="#1f4e9c" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#1f4e9c"/>
-<circle cx="108.7" cy="241.5" r="3.5" fill="#1f4e9c"/>
-<circle cx="161.3" cy="238.9" r="3.5" fill="#1f4e9c"/>
-<circle cx="266.7" cy="233.8" r="3.5" fill="#1f4e9c"/>
-<circle cx="530.0" cy="220.8" r="3.5" fill="#1f4e9c"/>
+<polyline points="56.0,317.5 108.7,312.9 161.3,310.6 266.7,305.9 530.0,294.4" fill="none" stroke="#1f4e9c" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#1f4e9c"/>
+<circle cx="108.7" cy="312.9" r="3.5" fill="#1f4e9c"/>
+<circle cx="161.3" cy="310.6" r="3.5" fill="#1f4e9c"/>
+<circle cx="266.7" cy="305.9" r="3.5" fill="#1f4e9c"/>
+<circle cx="530.0" cy="294.4" r="3.5" fill="#1f4e9c"/>
 <line x1="546" y1="150" x2="570" y2="150" stroke="#1f4e9c" stroke-width="2.5"/>
 <text x="576" y="154" fill="#1d1d1f">GPT-6.1 Sol (medium effort)</text>
-<polyline points="56.0,246.7 108.7,243.2 161.3,241.5 266.7,238.1 530.0,229.4" fill="none" stroke="#8fb0e8" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#8fb0e8"/>
-<circle cx="108.7" cy="243.2" r="3.5" fill="#8fb0e8"/>
-<circle cx="161.3" cy="241.5" r="3.5" fill="#8fb0e8"/>
-<circle cx="266.7" cy="238.1" r="3.5" fill="#8fb0e8"/>
-<circle cx="530.0" cy="229.4" r="3.5" fill="#8fb0e8"/>
+<polyline points="56.0,317.5 108.7,314.4 161.3,312.9 266.7,309.8 530.0,302.1" fill="none" stroke="#8fb0e8" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#8fb0e8"/>
+<circle cx="108.7" cy="314.4" r="3.5" fill="#8fb0e8"/>
+<circle cx="161.3" cy="312.9" r="3.5" fill="#8fb0e8"/>
+<circle cx="266.7" cy="309.8" r="3.5" fill="#8fb0e8"/>
+<circle cx="530.0" cy="302.1" r="3.5" fill="#8fb0e8"/>
 <line x1="546" y1="170" x2="570" y2="170" stroke="#8fb0e8" stroke-width="2.5"/>
 <text x="576" y="174" fill="#1d1d1f">GPT-5.6 Sol (medium effort)</text>
-<polyline points="56.0,246.7 108.7,237.7 161.3,233.2 266.7,230.1 530.0,229.4" fill="none" stroke="#1f4e9c" stroke-width="2.5" stroke-dasharray="6 4"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#1f4e9c"/>
-<circle cx="108.7" cy="237.7" r="3.5" fill="#1f4e9c"/>
-<circle cx="161.3" cy="233.2" r="3.5" fill="#1f4e9c"/>
-<circle cx="266.7" cy="230.1" r="3.5" fill="#1f4e9c"/>
-<circle cx="530.0" cy="229.4" r="3.5" fill="#1f4e9c"/>
+<polyline points="56.0,317.5 108.7,309.5 161.3,305.5 266.7,302.7 530.0,302.1" fill="none" stroke="#1f4e9c" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#1f4e9c"/>
+<circle cx="108.7" cy="309.5" r="3.5" fill="#1f4e9c"/>
+<circle cx="161.3" cy="305.5" r="3.5" fill="#1f4e9c"/>
+<circle cx="266.7" cy="302.7" r="3.5" fill="#1f4e9c"/>
+<circle cx="530.0" cy="302.1" r="3.5" fill="#1f4e9c"/>
 <line x1="546" y1="190" x2="570" y2="190" stroke="#1f4e9c" stroke-width="2.5" stroke-dasharray="6 4"/>
 <text x="576" y="194" fill="#1d1d1f">GPT-6.1 Sol (max effort)</text>
-<polyline points="56.0,246.7 108.7,238.0 161.3,233.6 266.7,230.4 530.0,229.5" fill="none" stroke="#c2602c" stroke-width="2.5" stroke-dasharray="6 4"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#c2602c"/>
-<circle cx="108.7" cy="238.0" r="3.5" fill="#c2602c"/>
-<circle cx="161.3" cy="233.6" r="3.5" fill="#c2602c"/>
-<circle cx="266.7" cy="230.4" r="3.5" fill="#c2602c"/>
-<circle cx="530.0" cy="229.5" r="3.5" fill="#c2602c"/>
-<line x1="546" y1="210" x2="570" y2="210" stroke="#c2602c" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="576" y="214" fill="#1d1d1f">Claude Opus 5.5 (max effort)</text>
-<polyline points="56.0,246.7 108.7,239.9 161.3,236.5 266.7,232.8 530.0,229.7" fill="none" stroke="#7b4fc9" stroke-width="2.5" stroke-dasharray="6 4"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#7b4fc9"/>
-<circle cx="108.7" cy="239.9" r="3.5" fill="#7b4fc9"/>
-<circle cx="161.3" cy="236.5" r="3.5" fill="#7b4fc9"/>
-<circle cx="266.7" cy="232.8" r="3.5" fill="#7b4fc9"/>
-<circle cx="530.0" cy="229.7" r="3.5" fill="#7b4fc9"/>
-<line x1="546" y1="230" x2="570" y2="230" stroke="#7b4fc9" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="576" y="234" fill="#1d1d1f">GPT-6.1 Terra (max effort)</text>
-<polyline points="56.0,246.7 108.7,242.0 161.3,239.7 266.7,236.3 530.0,231.3" fill="none" stroke="#4f7fd1" stroke-width="2.5"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="108.7" cy="242.0" r="3.5" fill="#4f7fd1"/>
-<circle cx="161.3" cy="239.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="266.7" cy="236.3" r="3.5" fill="#4f7fd1"/>
-<circle cx="530.0" cy="231.3" r="3.5" fill="#4f7fd1"/>
-<line x1="546" y1="250" x2="570" y2="250" stroke="#4f7fd1" stroke-width="2.5"/>
-<text x="576" y="254" fill="#1d1d1f">GPT-6 Sol (medium effort)</text>
-<polyline points="56.0,246.7 108.7,244.9 161.3,244.1 266.7,242.4 530.0,238.1" fill="none" stroke="#8fb0e8" stroke-width="2.5" stroke-dasharray="6 4"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#8fb0e8"/>
-<circle cx="108.7" cy="244.9" r="3.5" fill="#8fb0e8"/>
-<circle cx="161.3" cy="244.1" r="3.5" fill="#8fb0e8"/>
-<circle cx="266.7" cy="242.4" r="3.5" fill="#8fb0e8"/>
-<circle cx="530.0" cy="238.1" r="3.5" fill="#8fb0e8"/>
-<line x1="546" y1="270" x2="570" y2="270" stroke="#8fb0e8" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="576" y="274" fill="#1d1d1f">GPT-5.6 Sol (max effort)</text>
-<polyline points="56.0,246.7 108.7,246.7 161.3,246.7 266.7,246.7 530.0,246.7" fill="none" stroke="#4f7fd1" stroke-width="2.5" stroke-dasharray="6 4"/>
-<circle cx="56.0" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="108.7" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="161.3" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="266.7" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<circle cx="530.0" cy="246.7" r="3.5" fill="#4f7fd1"/>
-<line x1="546" y1="290" x2="570" y2="290" stroke="#4f7fd1" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="576" y="294" fill="#1d1d1f">GPT-6 Sol (max effort)</text>
+<polyline points="56.0,317.5 108.7,309.5 161.3,305.5 266.7,302.7 530.0,302.1" fill="none" stroke="#1e9aa8" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="108.7" cy="309.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="161.3" cy="305.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="266.7" cy="302.7" r="3.5" fill="#1e9aa8"/>
+<circle cx="530.0" cy="302.1" r="3.5" fill="#1e9aa8"/>
+<line x1="546" y1="210" x2="570" y2="210" stroke="#1e9aa8" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="576" y="214" fill="#1d1d1f">GPT-6 Astra (max effort)</text>
+<polyline points="56.0,317.5 108.7,309.7 161.3,305.8 266.7,302.9 530.0,302.1" fill="none" stroke="#c2602c" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#c2602c"/>
+<circle cx="108.7" cy="309.7" r="3.5" fill="#c2602c"/>
+<circle cx="161.3" cy="305.8" r="3.5" fill="#c2602c"/>
+<circle cx="266.7" cy="302.9" r="3.5" fill="#c2602c"/>
+<circle cx="530.0" cy="302.1" r="3.5" fill="#c2602c"/>
+<line x1="546" y1="230" x2="570" y2="230" stroke="#c2602c" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="576" y="234" fill="#1d1d1f">Claude Opus 5.5 (max effort)</text>
+<polyline points="56.0,317.5 108.7,311.4 161.3,308.4 266.7,305.1 530.0,302.3" fill="none" stroke="#7b4fc9" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#7b4fc9"/>
+<circle cx="108.7" cy="311.4" r="3.5" fill="#7b4fc9"/>
+<circle cx="161.3" cy="308.4" r="3.5" fill="#7b4fc9"/>
+<circle cx="266.7" cy="305.1" r="3.5" fill="#7b4fc9"/>
+<circle cx="530.0" cy="302.3" r="3.5" fill="#7b4fc9"/>
+<line x1="546" y1="250" x2="570" y2="250" stroke="#7b4fc9" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="576" y="254" fill="#1d1d1f">GPT-6.1 Terra (max effort)</text>
+<polyline points="56.0,317.5 108.7,313.4 161.3,311.3 266.7,308.2 530.0,303.7" fill="none" stroke="#4f7fd1" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<circle cx="108.7" cy="313.4" r="3.5" fill="#4f7fd1"/>
+<circle cx="161.3" cy="311.3" r="3.5" fill="#4f7fd1"/>
+<circle cx="266.7" cy="308.2" r="3.5" fill="#4f7fd1"/>
+<circle cx="530.0" cy="303.7" r="3.5" fill="#4f7fd1"/>
+<line x1="546" y1="270" x2="570" y2="270" stroke="#4f7fd1" stroke-width="2.5"/>
+<text x="576" y="274" fill="#1d1d1f">GPT-6 Sol (medium effort)</text>
+<polyline points="56.0,317.5 108.7,316.0 161.3,315.2 266.7,313.6 530.0,309.8" fill="none" stroke="#8fb0e8" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#8fb0e8"/>
+<circle cx="108.7" cy="316.0" r="3.5" fill="#8fb0e8"/>
+<circle cx="161.3" cy="315.2" r="3.5" fill="#8fb0e8"/>
+<circle cx="266.7" cy="313.6" r="3.5" fill="#8fb0e8"/>
+<circle cx="530.0" cy="309.8" r="3.5" fill="#8fb0e8"/>
+<line x1="546" y1="290" x2="570" y2="290" stroke="#8fb0e8" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="576" y="294" fill="#1d1d1f">GPT-5.6 Sol (max effort)</text>
+<polyline points="56.0,317.5 108.7,317.5 161.3,317.5 266.7,317.5 530.0,317.5" fill="none" stroke="#4f7fd1" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<circle cx="108.7" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<circle cx="161.3" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<circle cx="266.7" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<circle cx="530.0" cy="317.5" r="3.5" fill="#4f7fd1"/>
+<line x1="546" y1="310" x2="570" y2="310" stroke="#4f7fd1" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="576" y="314" fill="#1d1d1f">GPT-6 Sol (max effort)</text>
+<polyline points="56.0,317.5 108.7,317.5 161.3,317.5 266.7,317.5 530.0,317.5" fill="none" stroke="#1e9aa8" stroke-width="2.5"/>
+<circle cx="56.0" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="108.7" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="161.3" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="266.7" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<circle cx="530.0" cy="317.5" r="3.5" fill="#1e9aa8"/>
+<line x1="546" y1="330" x2="570" y2="330" stroke="#1e9aa8" stroke-width="2.5"/>
+<text x="576" y="334" fill="#1d1d1f">GPT-6 Astra (medium effort)</text>
 </svg>

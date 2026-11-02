@@ -122,6 +122,7 @@ FAMILY_COLORS = (
     ("claude-", "#c2602c"),
     ("gpt-6.1-terra", "#7b4fc9"),
     ("gpt-6.1", "#1f4e9c"),
+    ("gpt-6-astra", "#1e9aa8"),
     ("gpt-6-", "#4f7fd1"),
     ("gpt-5.6", "#8fb0e8"),
     ("openai/gpt-4o", "#5d6b7a"),
@@ -136,20 +137,24 @@ def style(condition):
     return color, dash
 
 
-def svg_chart(summary, tier, title, reference=None):
+def svg_chart(summary, tier, title, references=()):
     """Line chart of pass@k. The legend is ordered by the last point so it
-    reads top to bottom like the lines; `reference` draws a labeled dashed
-    line, such as the score of a model that always gives one answer."""
+    reads top to bottom like the lines. `references` are (function of k,
+    label, dash) curves drawn in gray, such as always giving the same answer
+    or picking uniformly at random on every run."""
     conds = [c for c in summary["conditions"] if tier in c["tiers"] and c.get("variant", "plain") == "plain"]
     ks = sorted({int(k) for c in conds for k in c["tiers"][tier]["passk"]})
     if not ks:
         return ""
     last = str(ks[-1])
     conds.sort(key=lambda c: -c["tiers"][tier]["passk"].get(last, {"mean": 0})["mean"])
-    top_value = max(v["mean"] for c in conds for v in c["tiers"][tier]["passk"].values())
+    top_value = max(
+        [v["mean"] for c in conds for v in c["tiers"][tier]["passk"].values()]
+        + [curve(k) for curve, _, _ in references for k in ks]
+    )
     y_max = min(1.0, math.ceil((top_value + 0.05) * 4) / 4)
     width, left, right, top, bottom = 780, 56, 250, 40, 44
-    height = max(360, top + 30 + 20 * (len(conds) + (reference is not None)) + bottom)
+    height = max(360, top + 30 + 20 * (len(conds) + len(references)) + bottom)
     x0, x1 = left, width - right
     y0, y1 = height - bottom, top
 
@@ -171,11 +176,11 @@ def svg_chart(summary, tier, title, reference=None):
         parts.append(f'<text x="{x(k):.1f}" y="{y0 + 18}" text-anchor="middle" fill="#6e6e73">{k}</text>')
     parts.append(f'<text x="{(x0 + x1) / 2:.1f}" y="{height - 8}" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>')
     parts.append(f'<text transform="translate(14 {(y0 + y1) / 2:.1f}) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>')
-    if reference is not None:
-        value, label = reference
-        parts.append(f'<line x1="{x0}" y1="{y(value):.1f}" x2="{x1}" y2="{y(value):.1f}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>')
-        ly = top + 14 + len(conds) * 20
-        parts.append(f'<line x1="{x1 + 16}" y1="{ly - 4}" x2="{x1 + 40}" y2="{ly - 4}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>')
+    for j, (curve, label, pattern) in enumerate(references):
+        points = " ".join(f"{x(k):.1f},{y(curve(k)):.1f}" for k in range(ks[0], ks[-1] + 1))
+        parts.append(f'<polyline points="{points}" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="{pattern}"/>')
+        ly = top + 14 + (len(conds) + j) * 20
+        parts.append(f'<line x1="{x1 + 16}" y1="{ly - 4}" x2="{x1 + 40}" y2="{ly - 4}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="{pattern}"/>')
         parts.append(f'<text x="{x1 + 46}" y="{ly}" fill="#6e6e73">{label}</text>')
     for i, c in enumerate(conds):
         color, dash = style(c)
@@ -217,7 +222,7 @@ def report(combined, figures):
         "",
         "## No evidence: does running again explore other causes?",
         "",
-        "The true cause cannot be identified from the prompt. pass@k averages over the four equally likely true causes, so any single fixed answer scores 0.25 at every k.",
+        "The true cause cannot be identified from the prompt. pass@k averages over the four equally likely true causes, so any single fixed answer scores 0.25 at every k, while picking one of the four uniformly at random on every run would score 1 - (3/4)^k (0.94 at k=10).",
         "",
         f"![pass@k with no evidence]({figures}/passk-none.svg)",
         "",
@@ -232,7 +237,7 @@ def report(combined, figures):
         labels = ", ".join(f"{k} {v}" for k, v in sorted(t["labels"].items(), key=lambda kv: -kv[1]))
         lines.append(f"| {c['label']} | `{c['round']}` | {t['effective_causes']:.2f} | {t['modal_share']:.2f} | " + " | ".join(cells) + f" | {labels} |")
     for tier, heading, blurb in (
-        ("partial", "Partial evidence: two causes ruled out", "Diagnostics rule out two causes and leave the true cause and one alternative. A model that picks at random between the two scores 0.50 at k=1. Ruled-out rate is the share of answers naming a cause the evidence excluded."),
+        ("partial", "Partial evidence: two causes ruled out", "Diagnostics rule out two causes and leave the true cause and one alternative. Always giving the same one of the two scores 0.50 at every k; picking between them uniformly at random on every run scores 1 - (1/2)^k. Ruled-out rate is the share of answers naming a cause the evidence excluded."),
         ("full", "Full evidence: the cause is identifiable", "Diagnostics for all four causes are shown and only the true cause shows its signature. This is the control: it checks that models read the evidence."),
     ):
         lines += ["", f"## {heading}", "", blurb, ""]
@@ -322,8 +327,14 @@ def main(argv=None):
     figures.mkdir(parents=True, exist_ok=True)
     if len(dirs) > 1:
         (figures / "summary.json").write_text(json.dumps(combined, indent=1) + "\n")
-    (figures / "passk-none.svg").write_text(svg_chart(combined, "none", "No evidence: pass@k over four equally likely causes", (0.25, "Always the same answer")))
-    (figures / "passk-partial.svg").write_text(svg_chart(combined, "partial", "Partial evidence: pass@k against the true cause", (0.5, "Random pick of the two remaining")))
+    (figures / "passk-none.svg").write_text(svg_chart(combined, "none", "No evidence: pass@k over four equally likely causes", (
+        (lambda k: 0.25, "Always the same answer", "2 3"),
+        (lambda k: 1 - 0.75 ** k, "Random pick of 4 on every run", "8 3 2 3"),
+    )))
+    (figures / "passk-partial.svg").write_text(svg_chart(combined, "partial", "Partial evidence: pass@k against the true cause", (
+        (lambda k: 0.5, "Always the same of the 2 left", "2 3"),
+        (lambda k: 1 - 0.5 ** k, "Random pick of 2 on every run", "8 3 2 3"),
+    )))
     if args.report:
         rel = Path(os.path.relpath(figures, Path(args.report).resolve().parent)).as_posix()
         Path(args.report).write_text(report(combined, rel))
