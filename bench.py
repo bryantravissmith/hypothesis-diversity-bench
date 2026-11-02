@@ -120,7 +120,7 @@ def argv_for(condition, system_prompt, prompt):
         ]
     if condition["runner"] == "pi":
         return [
-            "pi", "--offline", "--print", "--mode", "json", "--provider", "openrouter",
+            "pi", "--offline", "--print", "--mode", "json", "--provider", condition["provider"],
             "--model", condition["model"], "--thinking", condition["thinking"], "--no-tools",
             "--no-mcp", "--no-extensions", "--no-skills", "--no-prompt-templates",
             "--no-themes", "--no-context-files", "--no-approve", "--no-session",

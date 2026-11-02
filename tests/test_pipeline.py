@@ -64,6 +64,19 @@ class UnitTest(unittest.TestCase):
         self.assertEqual(bench.extract_answer('{"hypothesis": ""}'), (None, False))
         self.assertEqual(bench.extract_answer(None), (None, False))
 
+    def test_pi_uses_each_condition_provider(self):
+        spec = json.loads((ROOT / "conditions.json").read_text())
+        for cond in spec["conditions"]:
+            argv = bench.argv_for(cond, "sys", "prompt")
+            if cond["runner"] == "pi":
+                self.assertEqual(argv[argv.index("--provider") + 1], cond["provider"])
+                self.assertIn("--no-tools", argv)
+            self.assertEqual(argv[argv.index("--model") + 1], cond["model"])
+            self.assertEqual(argv[-1], "prompt")
+            self.assertIn(cond["pool"], spec["pools"])
+        gpt = [c for c in spec["conditions"] if c["model"].startswith("gpt-")]
+        self.assertTrue(gpt and all(c["provider"] == "openai" for c in gpt))
+
     def test_pass_at_k(self):
         self.assertEqual(analyze.pass_at_k(20, 0, 10), 0.0)
         self.assertEqual(analyze.pass_at_k(20, 20, 1), 1.0)
