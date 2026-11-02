@@ -16,6 +16,11 @@ pattern or more than one go to a blinded review list that shows only the
 scenario and the hypothesis text, never the model or condition. Reviewer
 decisions live in reviews.json next to the results, keyed "job:attempt", each
 with a label and a short reason.
+
+Review rule: the label is the one listed change the answer presents as the
+cause. Changes mentioned only to rule them out or as a contrast do not count.
+An answer that names two or more changes as joint causes with no primary one
+is "multiple"; one that names no listed change is "other". Both are misses.
 """
 
 import argparse
@@ -26,6 +31,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 LABELS = ("release", "mix", "tracking", "policy", "other", "multiple", "invalid")
+REVIEW_LABELS = LABELS[:6]
 
 
 def scenario_patterns(scenarios_path):
@@ -59,8 +65,8 @@ def load_reviews(results):
         return {}
     reviews = json.loads(path.read_text())
     for key, entry in reviews.items():
-        if entry.get("label") not in LABELS[:5] or not entry.get("reason"):
-            raise SystemExit(f"Review {key} needs a label among {LABELS[:5]} and a reason")
+        if entry.get("label") not in REVIEW_LABELS or not entry.get("reason"):
+            raise SystemExit(f"Review {key} needs a label among {REVIEW_LABELS} and a reason")
     return reviews
 
 

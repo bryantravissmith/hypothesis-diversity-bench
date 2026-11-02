@@ -1,0 +1,307 @@
+{
+ "00067:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B286"
+ },
+ "00107:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B057"
+ },
+ "00200:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B061"
+ },
+ "00232:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B058"
+ },
+ "00257:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B205"
+ },
+ "00275:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B100"
+ },
+ "00328:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B346"
+ },
+ "00351:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B039"
+ },
+ "00393:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B348"
+ },
+ "00399:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B151"
+ },
+ "00484:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B272"
+ },
+ "00507:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B002"
+ },
+ "00535:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B015"
+ },
+ "00551:1": {
+  "label": "multiple",
+  "reason": "Declines to pick one cause and names two listed changes as equally likely.",
+  "blind_id": "B256"
+ },
+ "00559:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B245"
+ },
+ "00573:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B340"
+ },
+ "00601:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B021"
+ },
+ "00754:2": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B035"
+ },
+ "00792:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B187"
+ },
+ "00806:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B267"
+ },
+ "00808:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B298"
+ },
+ "00842:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B217"
+ },
+ "00856:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B154"
+ },
+ "00876:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B141"
+ },
+ "00882:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B129"
+ },
+ "00898:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B181"
+ },
+ "00899:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B071"
+ },
+ "00921:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B257"
+ },
+ "00953:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B184"
+ },
+ "00968:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B159"
+ },
+ "01029:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B077"
+ },
+ "01033:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B334"
+ },
+ "01052:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B111"
+ },
+ "01076:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B253"
+ },
+ "01131:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B087"
+ },
+ "01141:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B216"
+ },
+ "01153:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B204"
+ },
+ "01174:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B014"
+ },
+ "01202:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B308"
+ },
+ "01223:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B271"
+ },
+ "01246:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B324"
+ },
+ "01284:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B171"
+ },
+ "01369:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B085"
+ },
+ "01405:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B264"
+ },
+ "01411:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B098"
+ },
+ "01422:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B161"
+ },
+ "01451:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B170"
+ },
+ "01452:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B246"
+ },
+ "01474:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B097"
+ },
+ "01481:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B135"
+ },
+ "01540:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B093"
+ },
+ "01553:1": {
+  "label": "policy",
+  "reason": "Names the pricing or policy change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B196"
+ },
+ "01566:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B032"
+ },
+ "01570:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B038"
+ },
+ "01572:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B043"
+ },
+ "01622:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B310"
+ },
+ "01674:1": {
+  "label": "release",
+  "reason": "Names the release as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B343"
+ },
+ "01686:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B145"
+ },
+ "01689:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B105"
+ },
+ "01692:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B165"
+ },
+ "01716:1": {
+  "label": "mix",
+  "reason": "Names the new traffic or user source as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "B263"
+ }
+}

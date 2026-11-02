@@ -117,6 +117,7 @@ def summarize(results):
 
 FAMILY_COLORS = (
     ("claude-", "#c2602c"),
+    ("gpt-6.1-terra", "#7b4fc9"),
     ("gpt-6.1", "#1f4e9c"),
     ("gpt-6-", "#4f7fd1"),
     ("gpt-5.6", "#8fb0e8"),
@@ -132,13 +133,20 @@ def style(condition):
     return color, dash
 
 
-def svg_chart(summary, tier, title):
+def svg_chart(summary, tier, title, reference=None):
+    """Line chart of pass@k. The legend is ordered by the last point so it
+    reads top to bottom like the lines; `reference` draws a labeled dashed
+    line, such as the score of a model that always gives one answer."""
     conds = [c for c in summary["conditions"] if tier in c["tiers"]]
     ks = sorted({int(k) for c in conds for k in c["tiers"][tier]["passk"]})
     if not ks:
         return ""
+    last = str(ks[-1])
+    conds.sort(key=lambda c: -c["tiers"][tier]["passk"].get(last, {"mean": 0})["mean"])
+    top_value = max(v["mean"] for c in conds for v in c["tiers"][tier]["passk"].values())
+    y_max = min(1.0, math.ceil((top_value + 0.05) * 4) / 4)
     width, left, right, top, bottom = 780, 56, 250, 40, 44
-    height = max(360, top + 30 + 20 * len(conds) + bottom)
+    height = max(360, top + 30 + 20 * (len(conds) + (reference is not None)) + bottom)
     x0, x1 = left, width - right
     y0, y1 = height - bottom, top
 
@@ -146,20 +154,26 @@ def svg_chart(summary, tier, title):
         return x0 + (x1 - x0) * (k - ks[0]) / max(1, ks[-1] - ks[0])
 
     def y(v):
-        return y0 - (y0 - y1) * v
+        return y0 - (y0 - y1) * v / y_max
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" font-family="Helvetica, Arial, sans-serif" font-size="12">',
         f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
         f'<text x="{left}" y="22" font-size="14" font-weight="bold" fill="#1d1d1f">{title}</text>',
     ]
-    for v in (0, 0.25, 0.5, 0.75, 1.0):
+    for v in [i / 4 for i in range(int(y_max * 4) + 1)]:
         parts.append(f'<line x1="{x0}" y1="{y(v):.1f}" x2="{x1}" y2="{y(v):.1f}" stroke="#e3e3e8"/>')
         parts.append(f'<text x="{x0 - 8}" y="{y(v) + 4:.1f}" text-anchor="end" fill="#6e6e73">{v:.2f}</text>')
     for k in ks:
         parts.append(f'<text x="{x(k):.1f}" y="{y0 + 18}" text-anchor="middle" fill="#6e6e73">{k}</text>')
     parts.append(f'<text x="{(x0 + x1) / 2:.1f}" y="{height - 8}" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>')
     parts.append(f'<text transform="translate(14 {(y0 + y1) / 2:.1f}) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>')
+    if reference is not None:
+        value, label = reference
+        parts.append(f'<line x1="{x0}" y1="{y(value):.1f}" x2="{x1}" y2="{y(value):.1f}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>')
+        ly = top + 14 + len(conds) * 20
+        parts.append(f'<line x1="{x1 + 16}" y1="{ly - 4}" x2="{x1 + 40}" y2="{ly - 4}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>')
+        parts.append(f'<text x="{x1 + 46}" y="{ly}" fill="#6e6e73">{label}</text>')
     for i, c in enumerate(conds):
         color, dash = style(c)
         pk = c["tiers"][tier]["passk"]
@@ -268,8 +282,8 @@ def main(argv=None):
     figures.mkdir(parents=True, exist_ok=True)
     if len(dirs) > 1:
         (figures / "summary.json").write_text(json.dumps(combined, indent=1) + "\n")
-    (figures / "passk-none.svg").write_text(svg_chart(combined, "none", "No evidence: pass@k over four equally likely causes"))
-    (figures / "passk-partial.svg").write_text(svg_chart(combined, "partial", "Partial evidence: pass@k against the true cause"))
+    (figures / "passk-none.svg").write_text(svg_chart(combined, "none", "No evidence: pass@k over four equally likely causes", (0.25, "Always the same answer")))
+    (figures / "passk-partial.svg").write_text(svg_chart(combined, "partial", "Partial evidence: pass@k against the true cause", (0.5, "Random pick of the two remaining")))
     if args.report:
         rel = Path(os.path.relpath(figures, Path(args.report).resolve().parent)).as_posix()
         Path(args.report).write_text(report(combined, rel))

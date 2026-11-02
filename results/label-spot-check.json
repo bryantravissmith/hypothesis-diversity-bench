@@ -1,0 +1,368 @@
+{
+ "description": "Blinded random sample of 60 pattern-labeled answers across all three rounds (seed spot-check-2026-11-01), reviewed from scenario and hypothesis text only. Each entry records whether the reviewer agreed with the pattern label.",
+ "sampled_from": 3391,
+ "agreed": 60,
+ "disagreed": 0,
+ "entries": [
+  {
+   "round": "round-001",
+   "key": "00276:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00206:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "01112:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00425:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00077:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00475:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00416:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01706:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00335:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00241:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00529:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00961:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00029:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00158:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00646:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01711:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00902:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00576:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00033:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01567:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00566:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00542:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00162:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01025:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00797:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00515:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01498:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00514:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00548:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01594:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00345:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00954:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00598:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00208:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00146:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "01287:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00687:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01432:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00303:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00318:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01129:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00386:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00292:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00545:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00503:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00413:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00702:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00422:1",
+   "pattern_label": "policy",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00703:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01556:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00729:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00193:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00824:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00550:1",
+   "pattern_label": "tracking",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00068:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "01690:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00391:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-003",
+   "key": "00306:1",
+   "pattern_label": "release",
+   "agreed": true
+  },
+  {
+   "round": "round-002",
+   "key": "00033:1",
+   "pattern_label": "mix",
+   "agreed": true
+  },
+  {
+   "round": "round-001",
+   "key": "00988:1",
+   "pattern_label": "policy",
+   "agreed": true
+  }
+ ]
+}

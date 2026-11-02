@@ -1,0 +1,4660 @@
+{
+ "schema": "hypothesis-diversity-plan-v1",
+ "created_at": "2026-11-02T01:39:59.092934+00:00",
+ "seed": "84381f5ac1434825",
+ "repeats": {
+  "none": 20,
+  "partial": 5,
+  "full": 2
+ },
+ "system_prompt": "You are a helpful assistant.",
+ "conditions": [
+  {
+   "id": "gpt-6.1-terra-medium",
+   "label": "GPT-6.1 Terra (medium effort)",
+   "runner": "pi",
+   "provider": "openai",
+   "model": "gpt-6.1-terra",
+   "thinking": "medium",
+   "pool": "openai"
+  },
+  {
+   "id": "gpt-6.1-terra-max",
+   "label": "GPT-6.1 Terra (max effort)",
+   "runner": "pi",
+   "provider": "openai",
+   "model": "gpt-6.1-terra",
+   "thinking": "max",
+   "pool": "openai"
+  }
+ ],
+ "pools": {
+  "openai": 4
+ },
+ "max_attempts": 3,
+ "timeout_seconds": 900,
+ "max_hours": 12.0,
+ "cli_versions": {
+  "pi": "1.3.0"
+ },
+ "source_sha256": {
+  "bench.py": "8343b84c830af56d2ee0a95a9e052c8f434614f5ad40824898191b45fc22af53",
+  "cases.py": "2937e5beb3a34befda242cc06ab1cdd7699d10d22b88cb9b4bc63e1ec69cb4f4",
+  "scenarios.json": "d670b1fd6213f6eec279d239d4e9ec997a772c84c2099cdd99cfe1c822e7d0d5",
+  "conditions.json": "ce654fadabf2c3f0a1ded2f194ccb1cdba5af1b8589ed5ddb313491348589ab6"
+ },
+ "cases": [
+  {
+   "id": "ecommerce-checkout--none",
+   "scenario": "ecommerce-checkout",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The marketing team launched a new paid social campaign on October 12.\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - The analytics team migrated to a new tag manager configuration on October 13.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--partial--release",
+   "scenario": "ecommerce-checkout",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "mix"
+   ],
+   "diagnostics": [
+    "tracking",
+    "policy"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - The marketing team launched a new paid social campaign on October 12.\n  - The analytics team migrated to a new tag manager configuration on October 13.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n\nThe team has already pulled these breakdowns:\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.1% | 2.5% |\n| Using orders in the order database | 3.1% | 2.5% |\n\nConversion rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Carts under $50 | 3.1% | 2.5% |\n| Carts of $50 or more | 3.1% | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--partial--mix",
+   "scenario": "ecommerce-checkout",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "mix",
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "release"
+   ],
+   "change_order": [
+    "release",
+    "policy",
+    "tracking",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - The analytics team migrated to a new tag manager configuration on October 13.\n  - The marketing team launched a new paid social campaign on October 12.\n\nThe team has already pulled these breakdowns:\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.1% | 2.6% |\n| Using orders in the order database | 3.1% | 2.5% |\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.5% |\n| Holdout on the previous release (10%) | 3.1% | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--partial--tracking",
+   "scenario": "ecommerce-checkout",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "mix"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - The marketing team launched a new paid social campaign on October 12.\n  - The analytics team migrated to a new tag manager configuration on October 13.\n\nThe team has already pulled these breakdowns:\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.4% |\n| Holdout on the previous release (10%) | 3.2% | 2.5% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 101,989 | 100,252 | 3.2% | 2.4% |\n| New paid social campaign | 0 | 5,102 | n/a | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--partial--policy",
+   "scenario": "ecommerce-checkout",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "mix"
+   ],
+   "change_order": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - The analytics team migrated to a new tag manager configuration on October 13.\n  - The marketing team launched a new paid social campaign on October 12.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n\nThe team has already pulled these breakdowns:\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.4% |\n| Holdout on the previous release (10%) | 3.0% | 2.5% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 99,853 | 101,413 | 3.1% | 2.4% |\n| New paid social campaign | 0 | 5,035 | n/a | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--full--release",
+   "scenario": "ecommerce-checkout",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "policy",
+    "release",
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "release",
+    "policy",
+    "tracking",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - The analytics team migrated to a new tag manager configuration on October 13.\n  - The marketing team launched a new paid social campaign on October 12.\n\nThe team has already pulled these breakdowns:\n\nConversion rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Carts under $50 | 3.1% | 2.5% |\n| Carts of $50 or more | 3.1% | 2.5% |\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.4% |\n| Holdout on the previous release (10%) | 3.1% | 3.1% |\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.1% | 2.5% |\n| Using orders in the order database | 3.1% | 2.5% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,149 | 100,862 | 3.1% | 2.5% |\n| New paid social campaign | 0 | 5,083 | n/a | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--full--mix",
+   "scenario": "ecommerce-checkout",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - The marketing team launched a new paid social campaign on October 12.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - The analytics team migrated to a new tag manager configuration on October 13.\n\nThe team has already pulled these breakdowns:\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.5% |\n| Holdout on the previous release (10%) | 3.1% | 2.5% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 101,217 | 99,100 | 3.1% | 3.1% |\n| New paid social campaign | 0 | 38,539 | n/a | 0.9% |\n\nConversion rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Carts under $50 | 3.1% | 2.5% |\n| Carts of $50 or more | 3.1% | 2.5% |\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.1% | 2.5% |\n| Using orders in the order database | 3.2% | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--full--tracking",
+   "scenario": "ecommerce-checkout",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "change_order": [
+    "policy",
+    "mix",
+    "release",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n  - The marketing team launched a new paid social campaign on October 12.\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - The analytics team migrated to a new tag manager configuration on October 13.\n\nThe team has already pulled these breakdowns:\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.1% | 2.5% |\n| Holdout on the previous release (10%) | 3.1% | 2.5% |\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.2% | 2.5% |\n| Using orders in the order database | 3.1% | 3.1% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,856 | 99,441 | 3.1% | 2.5% |\n| New paid social campaign | 0 | 5,119 | n/a | 2.5% |\n\nConversion rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Carts under $50 | 3.1% | 2.5% |\n| Carts of $50 or more | 3.1% | 2.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "ecommerce-checkout--full--policy",
+   "scenario": "ecommerce-checkout",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking",
+    "policy",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "tracking",
+    "release",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at an online store. Here is what we know:\n\n- Checkout conversion rate (orders divided by sessions) was steady at about 3.1% for six weeks, then fell to 2.5% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The marketing team launched a new paid social campaign on October 12.\n  - The analytics team migrated to a new tag manager configuration on October 13.\n  - A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.\n  - On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).\n\nThe team has already pulled these breakdowns:\n\nConversion rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the new release (90%) | 3.2% | 2.6% |\n| Holdout on the previous release (10%) | 3.0% | 2.5% |\n\nConversion rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using orders counted by analytics tags | 3.0% | 2.5% |\n| Using orders in the order database | 3.1% | 2.5% |\n\nConversion rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Carts under $50 | 3.1% | 2.1% |\n| Carts of $50 or more | 3.1% | 3.0% |\n\nWeekly sessions and conversion rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Conversion rate, six weeks before | Conversion rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 102,397 | 101,721 | 3.2% | 2.4% |\n| New paid social campaign | 0 | 5,039 | n/a | 2.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--none",
+   "scenario": "saas-paid-start",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "tracking",
+    "mix",
+    "release",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The product analytics SDK was upgraded on October 13.\n  - A new partner referral program started sending visitors on October 12.\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--partial--release",
+   "scenario": "saas-paid-start",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "mix"
+   ],
+   "diagnostics": [
+    "policy",
+    "tracking"
+   ],
+   "change_order": [
+    "tracking",
+    "release",
+    "mix",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The product analytics SDK was upgraded on October 13.\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - A new partner referral program started sending visitors on October 12.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.6% | 3.7% |\n| Visitors who only viewed other plans | 4.6% | 3.7% |\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.6% | 3.7% |\n| Using paid starts in the billing system | 4.6% | 3.7% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--partial--mix",
+   "scenario": "saas-paid-start",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "mix",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - A new partner referral program started sending visitors on October 12.\n  - The product analytics SDK was upgraded on October 13.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.7% | 3.7% |\n| Holdout on the previous billing checkout (10%) | 4.6% | 3.6% |\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.6% | 3.7% |\n| Using paid starts in the billing system | 4.5% | 3.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--partial--tracking",
+   "scenario": "saas-paid-start",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "release",
+    "tracking"
+   ],
+   "diagnostics": [
+    "mix",
+    "policy"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - A new partner referral program started sending visitors on October 12.\n  - The product analytics SDK was upgraded on October 13.\n\nThe team has already pulled these breakdowns:\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,232 | 100,424 | 4.6% | 3.8% |\n| Partner referral program | 0 | 4,989 | n/a | 3.8% |\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.7% | 3.7% |\n| Visitors who only viewed other plans | 4.7% | 3.7% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--partial--policy",
+   "scenario": "saas-paid-start",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "policy",
+    "tracking",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new partner referral program started sending visitors on October 12.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n  - The product analytics SDK was upgraded on October 13.\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.5% | 3.8% |\n| Holdout on the previous billing checkout (10%) | 4.7% | 3.6% |\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 100,153 | 101,146 | 4.5% | 3.8% |\n| Partner referral program | 0 | 5,100 | n/a | 3.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--full--release",
+   "scenario": "saas-paid-start",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "change_order": [
+    "release",
+    "tracking",
+    "policy",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - The product analytics SDK was upgraded on October 13.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n  - A new partner referral program started sending visitors on October 12.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.6% | 3.6% |\n| Holdout on the previous billing checkout (10%) | 4.7% | 4.6% |\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.5% | 3.6% |\n| Using paid starts in the billing system | 4.6% | 3.7% |\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,026 | 102,383 | 4.5% | 3.7% |\n| Partner referral program | 0 | 5,124 | n/a | 3.7% |\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.5% | 3.8% |\n| Visitors who only viewed other plans | 4.6% | 3.7% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--full--mix",
+   "scenario": "saas-paid-start",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "policy",
+    "tracking",
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - A new partner referral program started sending visitors on October 12.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n  - The product analytics SDK was upgraded on October 13.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.5% | 3.7% |\n| Visitors who only viewed other plans | 4.6% | 3.8% |\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.7% | 3.8% |\n| Using paid starts in the billing system | 4.5% | 3.7% |\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 99,621 | 98,165 | 4.5% | 4.6% |\n| Partner referral program | 0 | 39,268 | n/a | 1.4% |\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.6% | 3.7% |\n| Holdout on the previous billing checkout (10%) | 4.7% | 3.8% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--full--tracking",
+   "scenario": "saas-paid-start",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "policy",
+    "release",
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - A new partner referral program started sending visitors on October 12.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n  - The product analytics SDK was upgraded on October 13.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.5% | 3.7% |\n| Visitors who only viewed other plans | 4.7% | 3.7% |\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.6% | 3.6% |\n| Holdout on the previous billing checkout (10%) | 4.6% | 3.8% |\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.5% | 3.6% |\n| Using paid starts in the billing system | 4.7% | 4.7% |\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 97,960 | 102,193 | 4.5% | 3.7% |\n| Partner referral program | 0 | 4,940 | n/a | 3.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "saas-paid-start--full--policy",
+   "scenario": "saas-paid-start",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "policy",
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a software-as-a-service company. Here is what we know:\n\n- Paid start rate (pricing page visitors who start a paid plan) was steady at about 4.6% for six weeks, then fell to 3.7% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.\n  - The product analytics SDK was upgraded on October 13.\n  - A new partner referral program started sending visitors on October 12.\n  - The Starter plan price rose from $12 to $16 per month on October 14.\n\nThe team has already pulled these breakdowns:\n\nPaid start rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using paid starts counted by the analytics SDK | 4.7% | 3.6% |\n| Using paid starts in the billing system | 4.5% | 3.6% |\n\nPaid start rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors who viewed the Starter plan | 4.5% | 3.1% |\n| Visitors who only viewed other plans | 4.7% | 4.6% |\n\nWeekly pricing page visitors and paid start rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Paid start rate, six weeks before | Paid start rate, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,176 | 102,126 | 4.6% | 3.8% |\n| Partner referral program | 0 | 4,903 | n/a | 3.6% |\n\nPaid start rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors on the redesigned billing checkout (90%) | 4.5% | 3.8% |\n| Holdout on the previous billing checkout (10%) | 4.6% | 3.7% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--none",
+   "scenario": "mobile-retention",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "tracking",
+    "mix",
+    "release",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The analytics team changed the definition of the session-start event on October 13.\n  - A new app-install ad campaign started on October 12.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--partial--release",
+   "scenario": "mobile-retention",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "tracking"
+   ],
+   "diagnostics": [
+    "mix",
+    "policy"
+   ],
+   "change_order": [
+    "tracking",
+    "policy",
+    "mix",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The analytics team changed the definition of the session-start event on October 13.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - A new app-install ad campaign started on October 12.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n\nThe team has already pulled these breakdowns:\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 98,091 | 101,990 | 38.5% | 31.4% |\n| Installs from the new ad campaign | 0 | 5,122 | n/a | 30.3% |\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 37.6% | 30.4% |\n| New Android users | 38.4% | 30.9% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--partial--mix",
+   "scenario": "mobile-retention",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "mix",
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "policy"
+   ],
+   "change_order": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - A new app-install ad campaign started on October 12.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - The analytics team changed the definition of the session-start event on October 13.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 37.9% | 31.1% |\n| Holdout on version 7.1 (10%) | 38.3% | 31.6% |\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 38.7% | 31.1% |\n| New Android users | 37.2% | 30.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--partial--tracking",
+   "scenario": "mobile-retention",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "policy",
+    "release",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new app-install ad campaign started on October 12.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - The analytics team changed the definition of the session-start event on October 13.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 38.7% | 31.4% |\n| Holdout on version 7.1 (10%) | 38.8% | 30.8% |\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 100,934 | 100,295 | 37.2% | 31.5% |\n| Installs from the new ad campaign | 0 | 4,912 | n/a | 31.3% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--partial--policy",
+   "scenario": "mobile-retention",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "release",
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new app-install ad campaign started on October 12.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - The analytics team changed the definition of the session-start event on October 13.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Retention from analytics session events | 37.8% | 31.1% |\n| Retention from server login records | 38.5% | 30.4% |\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 100,753 | 101,328 | 38.4% | 30.5% |\n| Installs from the new ad campaign | 0 | 4,885 | n/a | 30.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--full--release",
+   "scenario": "mobile-retention",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "mix",
+    "tracking",
+    "release",
+    "policy"
+   ],
+   "change_order": [
+    "mix",
+    "tracking",
+    "policy",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new app-install ad campaign started on October 12.\n  - The analytics team changed the definition of the session-start event on October 13.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n\nThe team has already pulled these breakdowns:\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 101,863 | 97,904 | 37.7% | 31.0% |\n| Installs from the new ad campaign | 0 | 4,932 | n/a | 30.5% |\n\nDay-1 retention computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Retention from analytics session events | 38.1% | 31.1% |\n| Retention from server login records | 38.8% | 31.6% |\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 38.8% | 30.4% |\n| Holdout on version 7.1 (10%) | 38.4% | 37.1% |\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 38.3% | 31.7% |\n| New Android users | 37.5% | 31.4% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--full--mix",
+   "scenario": "mobile-retention",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "tracking",
+    "release",
+    "policy",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new app-install ad campaign started on October 12.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - The analytics team changed the definition of the session-start event on October 13.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Retention from analytics session events | 37.8% | 31.7% |\n| Retention from server login records | 37.4% | 31.4% |\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 38.9% | 31.3% |\n| Holdout on version 7.1 (10%) | 37.1% | 30.6% |\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 37.8% | 30.7% |\n| New Android users | 38.9% | 30.5% |\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 98,698 | 97,818 | 38.9% | 38.1% |\n| Installs from the new ad campaign | 0 | 35,645 | n/a | 11.3% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--full--tracking",
+   "scenario": "mobile-retention",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "tracking",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - The analytics team changed the definition of the session-start event on October 13.\n  - A new app-install ad campaign started on October 12.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 37.7% | 31.7% |\n| New Android users | 38.9% | 31.7% |\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 38.7% | 31.6% |\n| Holdout on version 7.1 (10%) | 38.8% | 30.4% |\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 101,257 | 98,575 | 37.8% | 31.4% |\n| Installs from the new ad campaign | 0 | 4,954 | n/a | 30.2% |\n\nDay-1 retention computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Retention from analytics session events | 38.5% | 31.2% |\n| Retention from server login records | 38.3% | 38.7% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "mobile-retention--full--policy",
+   "scenario": "mobile-retention",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "policy",
+    "mix",
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a mobile fitness app. Here is what we know:\n\n- Day-1 retention (share of new users who open the app again the next day) was steady at about 38.0% for six weeks, then fell to 31.0% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new app-install ad campaign started on October 12.\n  - App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.\n  - On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.\n  - The analytics team changed the definition of the session-start event on October 13.\n\nThe team has already pulled these breakdowns:\n\nDay-1 retention by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| New iOS users | 38.0% | 26.8% |\n| New Android users | 38.8% | 38.0% |\n\nWeekly new users and day-1 retention by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Day-1 retention, six weeks before | Day-1 retention, since October 13 |\n|---|---|---|---|---|\n| Installs from existing sources | 98,722 | 101,633 | 37.2% | 30.7% |\n| Installs from the new ad campaign | 0 | 4,967 | n/a | 30.6% |\n\nDay-1 retention by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| New users who got version 7.2 (90%) | 37.1% | 30.9% |\n| Holdout on version 7.1 (10%) | 38.3% | 31.1% |\n\nDay-1 retention computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Retention from analytics session events | 38.1% | 30.9% |\n| Retention from server login records | 37.2% | 31.0% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--none",
+   "scenario": "delivery-order-rate",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - A new student partnership started bringing in new users on October 12.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--partial--release",
+   "scenario": "delivery-order-rate",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "policy"
+   ],
+   "diagnostics": [
+    "mix",
+    "tracking"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new student partnership started bringing in new users on October 12.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n\nThe team has already pulled these breakdowns:\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 99,381 | 97,927 | 21.0% | 16.9% |\n| Student partnership users | 0 | 5,021 | n/a | 16.9% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 21.3% | 17.5% |\n| Order rate from the orders database | 21.4% | 17.1% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--partial--mix",
+   "scenario": "delivery-order-rate",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "release",
+    "mix"
+   ],
+   "diagnostics": [
+    "policy",
+    "tracking"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "tracking",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new student partnership started bringing in new users on October 12.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Baskets under $20 | 21.2% | 17.3% |\n| Baskets of $20 or more | 21.3% | 17.6% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 20.7% | 17.5% |\n| Order rate from the orders database | 20.7% | 17.0% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--partial--tracking",
+   "scenario": "delivery-order-rate",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "mix",
+    "policy",
+    "tracking",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new student partnership started bringing in new users on October 12.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n\nThe team has already pulled these breakdowns:\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 99,734 | 99,444 | 21.0% | 17.1% |\n| Student partnership users | 0 | 5,008 | n/a | 17.6% |\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 21.2% | 17.4% |\n| Holdout on the previous menu and cart (10%) | 20.8% | 16.9% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--partial--policy",
+   "scenario": "delivery-order-rate",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "mix",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "tracking",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new student partnership started bringing in new users on October 12.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 21.0% | 17.1% |\n| Holdout on the previous menu and cart (10%) | 21.2% | 17.0% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 21.5% | 17.4% |\n| Order rate from the orders database | 21.2% | 17.3% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--full--release",
+   "scenario": "delivery-order-rate",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "release",
+    "policy",
+    "mix",
+    "tracking"
+   ],
+   "change_order": [
+    "policy",
+    "tracking",
+    "release",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - A new student partnership started bringing in new users on October 12.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 20.8% | 16.4% |\n| Holdout on the previous menu and cart (10%) | 20.5% | 20.6% |\n\nOrder rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Baskets under $20 | 20.8% | 17.1% |\n| Baskets of $20 or more | 21.3% | 17.1% |\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 101,823 | 98,468 | 20.5% | 17.2% |\n| Student partnership users | 0 | 5,046 | n/a | 17.5% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 20.5% | 17.3% |\n| Order rate from the orders database | 20.7% | 17.2% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--full--mix",
+   "scenario": "delivery-order-rate",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "policy",
+    "tracking",
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "tracking",
+    "mix",
+    "policy",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - A new student partnership started bringing in new users on October 12.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Baskets under $20 | 20.8% | 17.3% |\n| Baskets of $20 or more | 20.7% | 17.3% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 21.5% | 16.9% |\n| Order rate from the orders database | 21.4% | 17.1% |\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 100,917 | 98,796 | 20.6% | 20.9% |\n| Student partnership users | 0 | 35,642 | n/a | 6.3% |\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 21.2% | 17.3% |\n| Holdout on the previous menu and cart (10%) | 21.3% | 17.5% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--full--tracking",
+   "scenario": "delivery-order-rate",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - A new student partnership started bringing in new users on October 12.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - The event pipeline was moved to a new streaming vendor on October 13.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 20.8% | 17.1% |\n| Holdout on the previous menu and cart (10%) | 21.4% | 17.4% |\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 99,240 | 101,791 | 21.5% | 17.6% |\n| Student partnership users | 0 | 5,115 | n/a | 17.0% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 21.2% | 17.4% |\n| Order rate from the orders database | 21.1% | 21.2% |\n\nOrder rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Baskets under $20 | 20.7% | 17.5% |\n| Baskets of $20 or more | 20.6% | 16.9% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "delivery-order-rate--full--policy",
+   "scenario": "delivery-order-rate",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "policy",
+    "release",
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "tracking",
+    "mix",
+    "policy",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a food delivery app. Here is what we know:\n\n- Order rate (orders per app open) was steady at about 21.0% for six weeks, then fell to 17.2% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The event pipeline was moved to a new streaming vendor on October 13.\n  - A new student partnership started bringing in new users on October 12.\n  - The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.\n  - A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.\n\nThe team has already pulled these breakdowns:\n\nOrder rate by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Baskets under $20 | 21.3% | 14.4% |\n| Baskets of $20 or more | 20.6% | 21.5% |\n\nOrder rate by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Users with the new menu and cart (90%) | 21.2% | 17.3% |\n| Holdout on the previous menu and cart (10%) | 21.2% | 17.2% |\n\nOrder rate computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Order rate from the event pipeline | 20.8% | 16.9% |\n| Order rate from the orders database | 20.9% | 16.8% |\n\nWeekly app opens and order rate by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Order rate, six weeks before | Order rate, since October 13 |\n|---|---|---|---|---|\n| Existing user sources | 98,596 | 100,737 | 21.0% | 17.0% |\n| Student partnership users | 0 | 4,884 | n/a | 17.6% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--none",
+   "scenario": "rental-booking",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - The web analytics script was moved to a new server-side container on October 13.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--partial--release",
+   "scenario": "rental-booking",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - The web analytics script was moved to a new server-side container on October 13.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.38% | 1.95% |\n| Using bookings in the reservations system | 2.44% | 1.95% |\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 97,918 | 100,417 | 2.44% | 1.93% |\n| Travel-deals affiliate | 0 | 4,982 | n/a | 1.95% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--partial--mix",
+   "scenario": "rental-booking",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "mix",
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "policy"
+   ],
+   "change_order": [
+    "tracking",
+    "mix",
+    "release",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The web analytics script was moved to a new server-side container on October 13.\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.41% | 1.97% |\n| Holdout on the previous ranking model (10%) | 2.39% | 1.91% |\n\nBooking conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Listings with the stricter cancellation policy | 2.38% | 1.92% |\n| Listings with the previous cancellation policy | 2.36% | 1.94% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--partial--tracking",
+   "scenario": "rental-booking",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - The web analytics script was moved to a new server-side container on October 13.\n\nThe team has already pulled these breakdowns:\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 99,479 | 101,501 | 2.43% | 1.95% |\n| Travel-deals affiliate | 0 | 5,050 | n/a | 1.96% |\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.40% | 1.98% |\n| Holdout on the previous ranking model (10%) | 2.37% | 1.94% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--partial--policy",
+   "scenario": "rental-booking",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "mix",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "policy",
+    "tracking",
+    "release",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - The web analytics script was moved to a new server-side container on October 13.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.39% | 1.99% |\n| Holdout on the previous ranking model (10%) | 2.34% | 1.99% |\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.36% | 1.92% |\n| Using bookings in the reservations system | 2.45% | 1.95% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--full--release",
+   "scenario": "rental-booking",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "mix",
+    "policy",
+    "tracking",
+    "release"
+   ],
+   "change_order": [
+    "mix",
+    "policy",
+    "tracking",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - The web analytics script was moved to a new server-side container on October 13.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n\nThe team has already pulled these breakdowns:\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 98,866 | 99,832 | 2.45% | 1.92% |\n| Travel-deals affiliate | 0 | 4,993 | n/a | 1.96% |\n\nBooking conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Listings with the stricter cancellation policy | 2.35% | 1.92% |\n| Listings with the previous cancellation policy | 2.39% | 1.92% |\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.36% | 1.96% |\n| Using bookings in the reservations system | 2.40% | 1.97% |\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.38% | 1.93% |\n| Holdout on the previous ranking model (10%) | 2.43% | 2.40% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--full--mix",
+   "scenario": "rental-booking",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "tracking",
+    "release",
+    "policy",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "tracking",
+    "release",
+    "policy"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - The web analytics script was moved to a new server-side container on October 13.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.45% | 1.97% |\n| Using bookings in the reservations system | 2.38% | 1.93% |\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.38% | 1.99% |\n| Holdout on the previous ranking model (10%) | 2.42% | 1.93% |\n\nBooking conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Listings with the stricter cancellation policy | 2.42% | 1.95% |\n| Listings with the previous cancellation policy | 2.43% | 1.96% |\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 100,501 | 101,571 | 2.34% | 2.38% |\n| Travel-deals affiliate | 0 | 37,194 | n/a | 0.71% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--full--tracking",
+   "scenario": "rental-booking",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking",
+    "mix",
+    "policy"
+   ],
+   "change_order": [
+    "tracking",
+    "mix",
+    "policy",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The web analytics script was moved to a new server-side container on October 13.\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.35% | 2.00% |\n| Holdout on the previous ranking model (10%) | 2.44% | 1.97% |\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.40% | 1.94% |\n| Using bookings in the reservations system | 2.41% | 2.40% |\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 101,301 | 98,496 | 2.46% | 1.99% |\n| Travel-deals affiliate | 0 | 5,112 | n/a | 1.93% |\n\nBooking conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Listings with the stricter cancellation policy | 2.41% | 1.96% |\n| Listings with the previous cancellation policy | 2.34% | 1.96% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "rental-booking--full--policy",
+   "scenario": "rental-booking",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "policy",
+    "mix",
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "mix",
+    "policy",
+    "release",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a vacation rental marketplace. Here is what we know:\n\n- Booking conversion (bookings per listing-page visit) was steady at about 2.40% for six weeks, then fell to 1.95% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - An affiliate deal with a travel-deals website started sending visitors on October 12.\n  - On October 14 most listings switched to a stricter default cancellation policy.\n  - A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.\n  - The web analytics script was moved to a new server-side container on October 13.\n\nThe team has already pulled these breakdowns:\n\nBooking conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Listings with the stricter cancellation policy | 2.36% | 1.74% |\n| Listings with the previous cancellation policy | 2.43% | 2.41% |\n\nWeekly listing-page visits and booking conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Booking conversion, six weeks before | Booking conversion, since October 13 |\n|---|---|---|---|---|\n| All existing traffic sources | 102,038 | 99,095 | 2.45% | 2.00% |\n| Travel-deals affiliate | 0 | 4,901 | n/a | 1.90% |\n\nBooking conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Visitors with the new ranking model (90%) | 2.37% | 1.97% |\n| Holdout on the previous ranking model (10%) | 2.36% | 1.90% |\n\nBooking conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using bookings recorded by web analytics | 2.43% | 1.97% |\n| Using bookings in the reservations system | 2.46% | 1.98% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--none",
+   "scenario": "news-subscription",
+   "tier": "none",
+   "truth": null,
+   "candidates": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [],
+   "change_order": [
+    "policy",
+    "tracking",
+    "release",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--partial--release",
+   "scenario": "news-subscription",
+   "tier": "partial",
+   "truth": "release",
+   "candidates": [
+    "release",
+    "policy"
+   ],
+   "diagnostics": [
+    "mix",
+    "tracking"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n\nThe team has already pulled these breakdowns:\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 98,081 | 98,740 | 0.88% | 0.73% |\n| Short-video news channel | 0 | 4,915 | n/a | 0.75% |\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.92% | 0.74% |\n| Using subscriptions in the billing system | 0.88% | 0.73% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--partial--mix",
+   "scenario": "news-subscription",
+   "tier": "partial",
+   "truth": "mix",
+   "candidates": [
+    "mix",
+    "policy"
+   ],
+   "diagnostics": [
+    "release",
+    "tracking"
+   ],
+   "change_order": [
+    "tracking",
+    "policy",
+    "mix",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n\nThe team has already pulled these breakdowns:\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.90% | 0.74% |\n| Holdout on the previous subscription page (10%) | 0.88% | 0.74% |\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.90% | 0.72% |\n| Using subscriptions in the billing system | 0.89% | 0.72% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--partial--tracking",
+   "scenario": "news-subscription",
+   "tier": "partial",
+   "truth": "tracking",
+   "candidates": [
+    "tracking",
+    "policy"
+   ],
+   "diagnostics": [
+    "mix",
+    "release"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "mix",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n\nThe team has already pulled these breakdowns:\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 101,264 | 101,937 | 0.89% | 0.74% |\n| Short-video news channel | 0 | 5,091 | n/a | 0.75% |\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.90% | 0.74% |\n| Holdout on the previous subscription page (10%) | 0.91% | 0.76% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--partial--policy",
+   "scenario": "news-subscription",
+   "tier": "partial",
+   "truth": "policy",
+   "candidates": [
+    "release",
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "mix"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n\nThe team has already pulled these breakdowns:\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.91% | 0.75% |\n| Using subscriptions in the billing system | 0.90% | 0.75% |\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 100,777 | 100,893 | 0.90% | 0.73% |\n| Short-video news channel | 0 | 5,114 | n/a | 0.74% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--full--release",
+   "scenario": "news-subscription",
+   "tier": "full",
+   "truth": "release",
+   "candidates": [
+    "release"
+   ],
+   "diagnostics": [
+    "mix",
+    "release",
+    "tracking",
+    "policy"
+   ],
+   "change_order": [
+    "policy",
+    "release",
+    "tracking",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n\nThe team has already pulled these breakdowns:\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 101,658 | 98,947 | 0.90% | 0.72% |\n| Short-video news channel | 0 | 4,934 | n/a | 0.75% |\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.91% | 0.72% |\n| Holdout on the previous subscription page (10%) | 0.88% | 0.89% |\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.91% | 0.76% |\n| Using subscriptions in the billing system | 0.89% | 0.74% |\n\nSubscription conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers in Europe | 0.91% | 0.72% |\n| Readers elsewhere | 0.90% | 0.73% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--full--mix",
+   "scenario": "news-subscription",
+   "tier": "full",
+   "truth": "mix",
+   "candidates": [
+    "mix"
+   ],
+   "diagnostics": [
+    "policy",
+    "mix",
+    "tracking",
+    "release"
+   ],
+   "change_order": [
+    "mix",
+    "release",
+    "policy",
+    "tracking"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n\nThe team has already pulled these breakdowns:\n\nSubscription conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers in Europe | 0.92% | 0.73% |\n| Readers elsewhere | 0.91% | 0.75% |\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 98,738 | 97,732 | 0.90% | 0.89% |\n| Short-video news channel | 0 | 33,279 | n/a | 0.27% |\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.88% | 0.75% |\n| Using subscriptions in the billing system | 0.91% | 0.75% |\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.91% | 0.75% |\n| Holdout on the previous subscription page (10%) | 0.90% | 0.72% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--full--tracking",
+   "scenario": "news-subscription",
+   "tier": "full",
+   "truth": "tracking",
+   "candidates": [
+    "tracking"
+   ],
+   "diagnostics": [
+    "release",
+    "mix",
+    "policy",
+    "tracking"
+   ],
+   "change_order": [
+    "tracking",
+    "release",
+    "policy",
+    "mix"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n\nThe team has already pulled these breakdowns:\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.91% | 0.75% |\n| Holdout on the previous subscription page (10%) | 0.90% | 0.73% |\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 102,134 | 99,458 | 0.89% | 0.74% |\n| Short-video news channel | 0 | 5,095 | n/a | 0.75% |\n\nSubscription conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers in Europe | 0.88% | 0.76% |\n| Readers elsewhere | 0.88% | 0.74% |\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.91% | 0.74% |\n| Using subscriptions in the billing system | 0.91% | 0.91% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  },
+  {
+   "id": "news-subscription--full--policy",
+   "scenario": "news-subscription",
+   "tier": "full",
+   "truth": "policy",
+   "candidates": [
+    "policy"
+   ],
+   "diagnostics": [
+    "tracking",
+    "release",
+    "policy",
+    "mix"
+   ],
+   "change_order": [
+    "tracking",
+    "mix",
+    "policy",
+    "release"
+   ],
+   "prompt": "You are helping the analytics team at a news publisher. Here is what we know:\n\n- Subscription conversion (new subscriptions per article reader) was steady at about 0.90% for six weeks, then fell to 0.74% in the week of October 13 and has stayed there since.\n- No outages were reported.\n- Changes around that time:\n  - Subscription event tracking was migrated to a new analytics tool on October 13.\n  - The social team launched a short-video news channel that started driving readers on October 12.\n  - On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.\n  - A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.\n\nThe team has already pulled these breakdowns:\n\nSubscription conversion computed from two data sources\n\n| Source | Six weeks before | Since October 13 |\n|---|---|---|\n| Using subscriptions counted by the analytics tool | 0.92% | 0.74% |\n| Using subscriptions in the billing system | 0.88% | 0.74% |\n\nSubscription conversion by release group (random 10% holdout since October 13)\n\n| Group | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers who see the redesigned subscription page (90%) | 0.89% | 0.72% |\n| Holdout on the previous subscription page (10%) | 0.88% | 0.75% |\n\nSubscription conversion by segment\n\n| Segment | Six weeks before | Since October 13 |\n|---|---|---|\n| Readers in Europe | 0.91% | 0.63% |\n| Readers elsewhere | 0.90% | 0.90% |\n\nWeekly article readers and subscription conversion by source\n\n| Source | Volume, six weeks before | Volume, since October 13 | Subscription conversion, six weeks before | Subscription conversion, since October 13 |\n|---|---|---|---|---|\n| All existing reader sources | 99,462 | 101,871 | 0.91% | 0.74% |\n| Short-video news channel | 0 | 4,895 | n/a | 0.72% |\n\nWhat is the single most likely cause of the drop? Reply with only a JSON object with two keys: \"hypothesis\" (one cause, in one sentence) and \"check\" (one query or analysis that would confirm or rule it out)."
+  }
+ ],
+ "schedule": [
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00001"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00002"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00003"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00004"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00005"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00006"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00007"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00008"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00009"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00010"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00011"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00012"
+  },
+  {
+   "case": "saas-paid-start--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00013"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00014"
+  },
+  {
+   "case": "rental-booking--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00015"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00016"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00017"
+  },
+  {
+   "case": "saas-paid-start--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00018"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00019"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00020"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00021"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00022"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00023"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00024"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00025"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00026"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00027"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00028"
+  },
+  {
+   "case": "saas-paid-start--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00029"
+  },
+  {
+   "case": "ecommerce-checkout--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00030"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00031"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00032"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00033"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00034"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00035"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00036"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00037"
+  },
+  {
+   "case": "ecommerce-checkout--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00038"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00039"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00040"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00041"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00042"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00043"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00044"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00045"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00046"
+  },
+  {
+   "case": "ecommerce-checkout--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00047"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00048"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00049"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00050"
+  },
+  {
+   "case": "saas-paid-start--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00051"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00052"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00053"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00054"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00055"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00056"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00057"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00058"
+  },
+  {
+   "case": "mobile-retention--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00059"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00060"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00061"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00062"
+  },
+  {
+   "case": "news-subscription--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00063"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00064"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00065"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00066"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00067"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00068"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00069"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00070"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00071"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00072"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00073"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00074"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00075"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00076"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00077"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00078"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00079"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00080"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00081"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00082"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00083"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00084"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00085"
+  },
+  {
+   "case": "news-subscription--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00086"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00087"
+  },
+  {
+   "case": "delivery-order-rate--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00088"
+  },
+  {
+   "case": "mobile-retention--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00089"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00090"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00091"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00092"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00093"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00094"
+  },
+  {
+   "case": "rental-booking--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00095"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00096"
+  },
+  {
+   "case": "delivery-order-rate--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00097"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00098"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00099"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00100"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00101"
+  },
+  {
+   "case": "news-subscription--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00102"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00103"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00104"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00105"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00106"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00107"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00108"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00109"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00110"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00111"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00112"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00113"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00114"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00115"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00116"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00117"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00118"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00119"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00120"
+  },
+  {
+   "case": "saas-paid-start--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00121"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00122"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00123"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00124"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00125"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00126"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00127"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00128"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00129"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00130"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00131"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00132"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00133"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00134"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00135"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00136"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00137"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00138"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00139"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00140"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00141"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00142"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00143"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00144"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00145"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00146"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00147"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00148"
+  },
+  {
+   "case": "rental-booking--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00149"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00150"
+  },
+  {
+   "case": "delivery-order-rate--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00151"
+  },
+  {
+   "case": "saas-paid-start--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00152"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00153"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00154"
+  },
+  {
+   "case": "mobile-retention--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00155"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00156"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00157"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00158"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00159"
+  },
+  {
+   "case": "mobile-retention--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00160"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00161"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00162"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00163"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00164"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00165"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00166"
+  },
+  {
+   "case": "mobile-retention--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00167"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00168"
+  },
+  {
+   "case": "ecommerce-checkout--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00169"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00170"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00171"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00172"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00173"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00174"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00175"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00176"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00177"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00178"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00179"
+  },
+  {
+   "case": "rental-booking--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00180"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00181"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00182"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00183"
+  },
+  {
+   "case": "mobile-retention--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00184"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00185"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00186"
+  },
+  {
+   "case": "ecommerce-checkout--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00187"
+  },
+  {
+   "case": "saas-paid-start--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00188"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00189"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00190"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00191"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00192"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00193"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00194"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00195"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00196"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00197"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00198"
+  },
+  {
+   "case": "delivery-order-rate--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00199"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00200"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00201"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00202"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00203"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00204"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00205"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00206"
+  },
+  {
+   "case": "ecommerce-checkout--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00207"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00208"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00209"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00210"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00211"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00212"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00213"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00214"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00215"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00216"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00217"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00218"
+  },
+  {
+   "case": "mobile-retention--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00219"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00220"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00221"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00222"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00223"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00224"
+  },
+  {
+   "case": "news-subscription--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00225"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00226"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00227"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00228"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00229"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00230"
+  },
+  {
+   "case": "mobile-retention--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00231"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00232"
+  },
+  {
+   "case": "saas-paid-start--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00233"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00234"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00235"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00236"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00237"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00238"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00239"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00240"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00241"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00242"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00243"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00244"
+  },
+  {
+   "case": "news-subscription--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00245"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00246"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00247"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00248"
+  },
+  {
+   "case": "ecommerce-checkout--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00249"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00250"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00251"
+  },
+  {
+   "case": "ecommerce-checkout--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00252"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00253"
+  },
+  {
+   "case": "mobile-retention--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00254"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00255"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00256"
+  },
+  {
+   "case": "delivery-order-rate--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00257"
+  },
+  {
+   "case": "news-subscription--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00258"
+  },
+  {
+   "case": "rental-booking--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00259"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00260"
+  },
+  {
+   "case": "saas-paid-start--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00261"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00262"
+  },
+  {
+   "case": "rental-booking--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00263"
+  },
+  {
+   "case": "ecommerce-checkout--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00264"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00265"
+  },
+  {
+   "case": "mobile-retention--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00266"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00267"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00268"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00269"
+  },
+  {
+   "case": "delivery-order-rate--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00270"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00271"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00272"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00273"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00274"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00275"
+  },
+  {
+   "case": "saas-paid-start--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00276"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00277"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00278"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00279"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00280"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00281"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00282"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00283"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00284"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00285"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00286"
+  },
+  {
+   "case": "news-subscription--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00287"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00288"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00289"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00290"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00291"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00292"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00293"
+  },
+  {
+   "case": "delivery-order-rate--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00294"
+  },
+  {
+   "case": "news-subscription--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00295"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00296"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00297"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00298"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00299"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00300"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00301"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00302"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00303"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00304"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00305"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00306"
+  },
+  {
+   "case": "mobile-retention--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00307"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00308"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00309"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00310"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00311"
+  },
+  {
+   "case": "rental-booking--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00312"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00313"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00314"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00315"
+  },
+  {
+   "case": "ecommerce-checkout--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00316"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00317"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00318"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00319"
+  },
+  {
+   "case": "delivery-order-rate--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00320"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00321"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00322"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00323"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00324"
+  },
+  {
+   "case": "mobile-retention--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00325"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00326"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00327"
+  },
+  {
+   "case": "news-subscription--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00328"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00329"
+  },
+  {
+   "case": "saas-paid-start--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00330"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00331"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00332"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00333"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00334"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00335"
+  },
+  {
+   "case": "delivery-order-rate--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00336"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00337"
+  },
+  {
+   "case": "delivery-order-rate--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00338"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00339"
+  },
+  {
+   "case": "news-subscription--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00340"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00341"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00342"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00343"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00344"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00345"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00346"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00347"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00348"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00349"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00350"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00351"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00352"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00353"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00354"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00355"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00356"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00357"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00358"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00359"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00360"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00361"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00362"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00363"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00364"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00365"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00366"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00367"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00368"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00369"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00370"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00371"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00372"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00373"
+  },
+  {
+   "case": "rental-booking--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00374"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00375"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00376"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00377"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00378"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00379"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00380"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00381"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00382"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00383"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00384"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00385"
+  },
+  {
+   "case": "ecommerce-checkout--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00386"
+  },
+  {
+   "case": "news-subscription--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00387"
+  },
+  {
+   "case": "delivery-order-rate--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00388"
+  },
+  {
+   "case": "delivery-order-rate--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00389"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00390"
+  },
+  {
+   "case": "rental-booking--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00391"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00392"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00393"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 6,
+   "job": "00394"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00395"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00396"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00397"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00398"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00399"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00400"
+  },
+  {
+   "case": "mobile-retention--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00401"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00402"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00403"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00404"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00405"
+  },
+  {
+   "case": "saas-paid-start--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00406"
+  },
+  {
+   "case": "ecommerce-checkout--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00407"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 14,
+   "job": "00408"
+  },
+  {
+   "case": "rental-booking--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00409"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00410"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00411"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00412"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00413"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00414"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00415"
+  },
+  {
+   "case": "mobile-retention--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00416"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00417"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00418"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00419"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00420"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00421"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00422"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00423"
+  },
+  {
+   "case": "news-subscription--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00424"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00425"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00426"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00427"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00428"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 9,
+   "job": "00429"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00430"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00431"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00432"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00433"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00434"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00435"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 18,
+   "job": "00436"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00437"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00438"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00439"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00440"
+  },
+  {
+   "case": "rental-booking--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00441"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00442"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 7,
+   "job": "00443"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00444"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00445"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00446"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00447"
+  },
+  {
+   "case": "ecommerce-checkout--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00448"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00449"
+  },
+  {
+   "case": "mobile-retention--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00450"
+  },
+  {
+   "case": "ecommerce-checkout--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00451"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 11,
+   "job": "00452"
+  },
+  {
+   "case": "saas-paid-start--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00453"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00454"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 7,
+   "job": "00455"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00456"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00457"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00458"
+  },
+  {
+   "case": "mobile-retention--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00459"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00460"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00461"
+  },
+  {
+   "case": "delivery-order-rate--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00462"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00463"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00464"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00465"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00466"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00467"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00468"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00469"
+  },
+  {
+   "case": "saas-paid-start--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00470"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00471"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 18,
+   "job": "00472"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00473"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00474"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00475"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00476"
+  },
+  {
+   "case": "news-subscription--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00477"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00478"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00479"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 19,
+   "job": "00480"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 13,
+   "job": "00481"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00482"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00483"
+  },
+  {
+   "case": "rental-booking--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00484"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00485"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 15,
+   "job": "00486"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00487"
+  },
+  {
+   "case": "ecommerce-checkout--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00488"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00489"
+  },
+  {
+   "case": "mobile-retention--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00490"
+  },
+  {
+   "case": "saas-paid-start--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00491"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00492"
+  },
+  {
+   "case": "delivery-order-rate--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00493"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 20,
+   "job": "00494"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00495"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00496"
+  },
+  {
+   "case": "delivery-order-rate--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00497"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00498"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 19,
+   "job": "00499"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00500"
+  },
+  {
+   "case": "news-subscription--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00501"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00502"
+  },
+  {
+   "case": "ecommerce-checkout--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00503"
+  },
+  {
+   "case": "saas-paid-start--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00504"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00505"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00506"
+  },
+  {
+   "case": "rental-booking--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00507"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00508"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 13,
+   "job": "00509"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00510"
+  },
+  {
+   "case": "ecommerce-checkout--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00511"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00512"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00513"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00514"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 10,
+   "job": "00515"
+  },
+  {
+   "case": "news-subscription--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00516"
+  },
+  {
+   "case": "delivery-order-rate--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00517"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00518"
+  },
+  {
+   "case": "rental-booking--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00519"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 16,
+   "job": "00520"
+  },
+  {
+   "case": "news-subscription--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00521"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00522"
+  },
+  {
+   "case": "delivery-order-rate--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00523"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 8,
+   "job": "00524"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00525"
+  },
+  {
+   "case": "rental-booking--full--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00526"
+  },
+  {
+   "case": "ecommerce-checkout--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00527"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00528"
+  },
+  {
+   "case": "saas-paid-start--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00529"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 9,
+   "job": "00530"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00531"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00532"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 16,
+   "job": "00533"
+  },
+  {
+   "case": "rental-booking--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00534"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00535"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 11,
+   "job": "00536"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00537"
+  },
+  {
+   "case": "ecommerce-checkout--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00538"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00539"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00540"
+  },
+  {
+   "case": "rental-booking--full--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00541"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 17,
+   "job": "00542"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 12,
+   "job": "00543"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00544"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00545"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 15,
+   "job": "00546"
+  },
+  {
+   "case": "saas-paid-start--full--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00547"
+  },
+  {
+   "case": "saas-paid-start--partial--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00548"
+  },
+  {
+   "case": "delivery-order-rate--partial--release",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00549"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 6,
+   "job": "00550"
+  },
+  {
+   "case": "mobile-retention--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 5,
+   "job": "00551"
+  },
+  {
+   "case": "delivery-order-rate--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 20,
+   "job": "00552"
+  },
+  {
+   "case": "delivery-order-rate--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00553"
+  },
+  {
+   "case": "news-subscription--partial--mix",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 3,
+   "job": "00554"
+  },
+  {
+   "case": "ecommerce-checkout--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00555"
+  },
+  {
+   "case": "rental-booking--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00556"
+  },
+  {
+   "case": "news-subscription--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00557"
+  },
+  {
+   "case": "saas-paid-start--partial--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 4,
+   "job": "00558"
+  },
+  {
+   "case": "mobile-retention--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00559"
+  },
+  {
+   "case": "rental-booking--full--tracking",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 2,
+   "job": "00560"
+  },
+  {
+   "case": "mobile-retention--partial--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00561"
+  },
+  {
+   "case": "rental-booking--full--policy",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00562"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00563"
+  },
+  {
+   "case": "saas-paid-start--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 14,
+   "job": "00564"
+  },
+  {
+   "case": "mobile-retention--full--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00565"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 1,
+   "job": "00566"
+  },
+  {
+   "case": "news-subscription--full--policy",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 1,
+   "job": "00567"
+  },
+  {
+   "case": "news-subscription--partial--tracking",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00568"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 3,
+   "job": "00569"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 8,
+   "job": "00570"
+  },
+  {
+   "case": "delivery-order-rate--partial--mix",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 4,
+   "job": "00571"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 12,
+   "job": "00572"
+  },
+  {
+   "case": "rental-booking--full--release",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 2,
+   "job": "00573"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-medium",
+   "trial": 5,
+   "job": "00574"
+  },
+  {
+   "case": "ecommerce-checkout--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 17,
+   "job": "00575"
+  },
+  {
+   "case": "news-subscription--none",
+   "condition": "gpt-6.1-terra-max",
+   "trial": 10,
+   "job": "00576"
+  }
+ ],
+ "state": "complete",
+ "unfinished_jobs": 0
+}

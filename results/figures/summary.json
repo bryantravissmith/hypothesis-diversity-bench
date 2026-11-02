@@ -1,0 +1,1607 @@
+{
+ "rounds": [
+  {
+   "name": "round-001",
+   "seed": "84381f5ac1434825",
+   "state": "complete",
+   "unfinished_jobs": 0,
+   "repeats": {
+    "none": 20,
+    "partial": 5,
+    "full": 2
+   },
+   "label_sources": {
+    "pattern": 1169,
+    "review": 271
+   }
+  },
+  {
+   "name": "round-002",
+   "seed": "84381f5ac1434825",
+   "state": "complete",
+   "unfinished_jobs": 0,
+   "repeats": {
+    "none": 20,
+    "partial": 5,
+    "full": 2
+   },
+   "label_sources": {
+    "pattern": 1667,
+    "review": 61
+   }
+  },
+  {
+   "name": "round-003",
+   "seed": "84381f5ac1434825",
+   "state": "complete",
+   "unfinished_jobs": 0,
+   "repeats": {
+    "none": 20,
+    "partial": 5,
+    "full": 2
+   },
+   "label_sources": {
+    "pattern": 555,
+    "review": 21
+   }
+  }
+ ],
+ "conditions": [
+  {
+   "id": "opus-5.5-medium",
+   "label": "Claude Opus 5.5 (medium effort)",
+   "model": "claude-opus-5-5",
+   "thinking": "medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.3111842105263158,
+       "low": 0.26842105263157895,
+       "high": 0.35657894736842105
+      },
+      "3": {
+       "mean": 0.3417763157894737,
+       "low": 0.2776315789473684,
+       "high": 0.4098684210526316
+      },
+      "5": {
+       "mean": 0.36574432404540763,
+       "low": 0.2862702098383213,
+       "high": 0.44833591331269346
+      },
+      "10": {
+       "mean": 0.37475688656029216,
+       "low": 0.29144091847265224,
+       "high": 0.458072854647932
+      }
+     },
+     "effective_causes": 1.4653604645778415,
+     "labels": {
+      "tracking": 89,
+      "mix": 17,
+      "release": 14
+     },
+     "modal_share": 0.8083333333333332
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5166666666666667,
+       "low": 0.3416666666666666,
+       "high": 0.6833333333333332
+      },
+      "2": {
+       "mean": 0.5583333333333333,
+       "low": 0.37916666666666665,
+       "high": 0.7416666666666667
+      },
+      "3": {
+       "mean": 0.5875,
+       "low": 0.39999999999999997,
+       "high": 0.7708333333333334
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1341263827228256,
+     "labels": {
+      "release": 41,
+      "mix": 24,
+      "policy": 18,
+      "tracking": 37
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.4666666666666666,
+      "policy": 0.2333333333333333,
+      "release": 0.7000000000000001,
+      "tracking": 0.6666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-001"
+  },
+  {
+   "id": "opus-5.5-max",
+   "label": "Claude Opus 5.5 (max effort)",
+   "model": "claude-opus-5-5",
+   "thinking": "max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.2710526315789474,
+       "low": 0.25,
+       "high": 0.31315789473684214
+      },
+      "3": {
+       "mean": 0.2815789473684211,
+       "low": 0.25,
+       "high": 0.3447368421052632
+      },
+      "5": {
+       "mean": 0.2893876848985208,
+       "low": 0.25,
+       "high": 0.3681630546955625
+      },
+      "10": {
+       "mean": 0.29165178217035803,
+       "low": 0.25,
+       "high": 0.37495534651107404
+      }
+     },
+     "effective_causes": 1.1600219507012983,
+     "labels": {
+      "tracking": 112,
+      "release": 8
+     },
+     "modal_share": 0.9333333333333332
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.4583333333333333,
+       "low": 0.26666666666666666,
+       "high": 0.6416666666666667
+      },
+      "2": {
+       "mean": 0.5,
+       "low": 0.2916666666666667,
+       "high": 0.7083333333333334
+      },
+      "3": {
+       "mean": 0.5,
+       "low": 0.2916666666666667,
+       "high": 0.7083333333333334
+      },
+      "5": {
+       "mean": 0.5,
+       "low": 0.2916666666666667,
+       "high": 0.7083333333333334
+      }
+     },
+     "effective_causes": 1.2564671171640305,
+     "labels": {
+      "release": 38,
+      "tracking": 41,
+      "policy": 33,
+      "mix": 8
+     },
+     "ruled_out_rate": 0.05833333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.16666666666666666,
+      "policy": 0.43333333333333335,
+      "release": 0.6333333333333333,
+      "tracking": 0.6
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-001"
+  },
+  {
+   "id": "gpt-4o",
+   "label": "GPT-4o",
+   "model": "openai/gpt-4o",
+   "thinking": "off",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.35964912280701755,
+       "low": 0.33925438596491225,
+       "high": 0.3778508771929825
+      },
+      "3": {
+       "mean": 0.4144736842105263,
+       "low": 0.38125000000000003,
+       "high": 0.44078947368421056
+      },
+      "5": {
+       "mean": 0.4626762985896113,
+       "low": 0.43381277949776403,
+       "high": 0.48788484692122464
+      },
+      "10": {
+       "mean": 0.4937237040565214,
+       "low": 0.4849691394776534,
+       "high": 0.49991069302214813
+      }
+     },
+     "effective_causes": 1.8377132471806996,
+     "labels": {
+      "policy": 51,
+      "release": 60,
+      "tracking": 9
+     },
+     "modal_share": 0.6666666666666666
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.30833333333333335,
+       "low": 0.16666666666666666,
+       "high": 0.4666666666666666
+      },
+      "2": {
+       "mean": 0.39166666666666666,
+       "low": 0.22916666666666666,
+       "high": 0.5583333333333333
+      },
+      "3": {
+       "mean": 0.44166666666666665,
+       "low": 0.25,
+       "high": 0.6291666666666667
+      },
+      "5": {
+       "mean": 0.5,
+       "low": 0.2916666666666667,
+       "high": 0.7083333333333334
+      }
+     },
+     "effective_causes": 1.4294368518545648,
+     "labels": {
+      "release": 33,
+      "policy": 67,
+      "mix": 3,
+      "tracking": 17
+     },
+     "ruled_out_rate": 0.19166666666666665,
+     "accuracy_by_truth": {
+      "mix": 0.033333333333333326,
+      "policy": 0.5333333333333333,
+      "release": 0.5,
+      "tracking": 0.16666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.9166666666666666,
+       "low": 0.8125,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 0.9583333333333334,
+       "low": 0.875,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0833333333333333,
+     "labels": {
+      "release": 11,
+      "mix": 11,
+      "tracking": 11,
+      "policy": 15
+     },
+     "ruled_out_rate": 0.08333333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.9166666666666666,
+      "policy": 1.0,
+      "release": 0.8333333333333334,
+      "tracking": 0.9166666666666666
+     }
+    }
+   },
+   "round": "round-001"
+  },
+  {
+   "id": "deepseek-v3.2",
+   "label": "DeepSeek V3.2 (thinking off)",
+   "model": "deepseek/deepseek-v3.2",
+   "thinking": "off",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.3304824561403509,
+       "low": 0.2848684210526316,
+       "high": 0.3760964912280702
+      },
+      "3": {
+       "mean": 0.3761695906432749,
+       "low": 0.30032894736842103,
+       "high": 0.4497076023391813
+      },
+      "5": {
+       "mean": 0.4265834623323013,
+       "low": 0.327936876504988,
+       "high": 0.5419837891296869
+      },
+      "10": {
+       "mean": 0.4781694054139875,
+       "low": 0.354151782170358,
+       "high": 0.601671032785584
+      }
+     },
+     "effective_causes": 1.741911525379299,
+     "labels": {
+      "release": 90,
+      "policy": 18,
+      "mix": 1,
+      "tracking": 11
+     },
+     "modal_share": 0.7583333333333333
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.31666666666666665,
+       "low": 0.16666666666666666,
+       "high": 0.47500000000000003
+      },
+      "2": {
+       "mean": 0.39999999999999997,
+       "low": 0.22916666666666666,
+       "high": 0.5875
+      },
+      "3": {
+       "mean": 0.43333333333333335,
+       "low": 0.25,
+       "high": 0.6208333333333333
+      },
+      "5": {
+       "mean": 0.4583333333333333,
+       "low": 0.25,
+       "high": 0.6666666666666666
+      }
+     },
+     "effective_causes": 1.4944784798441866,
+     "labels": {
+      "release": 37,
+      "tracking": 48,
+      "policy": 25,
+      "mix": 10
+     },
+     "ruled_out_rate": 0.3833333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.16666666666666666,
+      "policy": 0.2333333333333333,
+      "release": 0.6333333333333333,
+      "tracking": 0.2333333333333333
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.875,
+       "low": 0.75,
+       "high": 0.9791666666666666
+      },
+      "2": {
+       "mean": 0.9166666666666666,
+       "low": 0.7916666666666666,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0833333333333333,
+     "labels": {
+      "release": 12,
+      "tracking": 17,
+      "policy": 10,
+      "mix": 9
+     },
+     "ruled_out_rate": 0.125,
+     "accuracy_by_truth": {
+      "mix": 0.75,
+      "policy": 0.8333333333333334,
+      "release": 0.9166666666666666,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-001"
+  },
+  {
+   "id": "deepseek-r1",
+   "label": "DeepSeek R1-0528",
+   "model": "deepseek/deepseek-r1-0528",
+   "thinking": "high",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.3355263157894737,
+       "low": 0.2905701754385965,
+       "high": 0.3765350877192983
+      },
+      "3": {
+       "mean": 0.3822733918128655,
+       "low": 0.3055555555555555,
+       "high": 0.44338450292397663
+      },
+      "5": {
+       "mean": 0.43375902992776055,
+       "low": 0.3390039129686963,
+       "high": 0.5169553018575851
+      },
+      "10": {
+       "mean": 0.4974870008732238,
+       "low": 0.3731940144478844,
+       "high": 0.6009615384615384
+      }
+     },
+     "effective_causes": 1.7675318859347662,
+     "labels": {
+      "release": 87,
+      "tracking": 29,
+      "policy": 1,
+      "mix": 3
+     },
+     "modal_share": 0.7583333333333333
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5833333333333334,
+       "low": 0.4166666666666667,
+       "high": 0.7416666666666667
+      },
+      "2": {
+       "mean": 0.6791666666666667,
+       "low": 0.5166666666666667,
+       "high": 0.8416666666666667
+      },
+      "3": {
+       "mean": 0.7208333333333333,
+       "low": 0.5416666666666666,
+       "high": 0.8791666666666668
+      },
+      "5": {
+       "mean": 0.75,
+       "low": 0.5833333333333334,
+       "high": 0.9166666666666666
+      }
+     },
+     "effective_causes": 1.426253152775158,
+     "labels": {
+      "release": 46,
+      "tracking": 36,
+      "mix": 21,
+      "policy": 17
+     },
+     "ruled_out_rate": 0.041666666666666664,
+     "accuracy_by_truth": {
+      "mix": 0.43333333333333335,
+      "policy": 0.3,
+      "release": 0.9333333333333332,
+      "tracking": 0.6666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-001"
+  },
+  {
+   "id": "gpt-5.6-sol-medium",
+   "label": "GPT-5.6 Sol (medium effort)",
+   "model": "gpt-5.6-sol",
+   "thinking": "medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25833333333333336,
+       "low": 0.25,
+       "high": 0.26666666666666666
+      },
+      "3": {
+       "mean": 0.2625,
+       "low": 0.25,
+       "high": 0.27499999999999997
+      },
+      "5": {
+       "mean": 0.2708333333333333,
+       "low": 0.25,
+       "high": 0.2916666666666667
+      },
+      "10": {
+       "mean": 0.2916666666666667,
+       "low": 0.25,
+       "high": 0.3333333333333333
+      }
+     },
+     "effective_causes": 1.0731968726380572,
+     "labels": {
+      "release": 98,
+      "tracking": 22
+     },
+     "modal_share": 0.9833333333333334
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.48333333333333334,
+       "low": 0.3,
+       "high": 0.65
+      },
+      "2": {
+       "mean": 0.5499999999999999,
+       "low": 0.37916666666666665,
+       "high": 0.7291666666666666
+      },
+      "3": {
+       "mean": 0.5833333333333334,
+       "low": 0.3958333333333333,
+       "high": 0.7625000000000001
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.2152994937810904,
+     "labels": {
+      "release": 45,
+      "policy": 28,
+      "mix": 15,
+      "tracking": 32
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.2333333333333333,
+      "policy": 0.3333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.5333333333333333
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-5.6-sol-max",
+   "label": "GPT-5.6 Sol (max effort)",
+   "model": "gpt-5.6-sol",
+   "thinking": "max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25416666666666665,
+       "low": 0.25,
+       "high": 0.2625
+      },
+      "3": {
+       "mean": 0.25625000000000003,
+       "low": 0.25,
+       "high": 0.26875
+      },
+      "5": {
+       "mean": 0.2604166666666667,
+       "low": 0.25,
+       "high": 0.28125
+      },
+      "10": {
+       "mean": 0.2708333333333333,
+       "low": 0.25,
+       "high": 0.3125
+      }
+     },
+     "effective_causes": 1.0365984363190286,
+     "labels": {
+      "release": 99,
+      "tracking": 21
+     },
+     "modal_share": 0.9916666666666667
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.4916666666666667,
+       "low": 0.3166666666666667,
+       "high": 0.6666666666666666
+      },
+      "2": {
+       "mean": 0.5666666666666667,
+       "low": 0.3875,
+       "high": 0.7333333333333334
+      },
+      "3": {
+       "mean": 0.6083333333333333,
+       "low": 0.425,
+       "high": 0.7833333333333333
+      },
+      "5": {
+       "mean": 0.6666666666666666,
+       "low": 0.4583333333333333,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.2423571974671785,
+     "labels": {
+      "release": 45,
+      "policy": 21,
+      "mix": 18,
+      "tracking": 36
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.3,
+      "policy": 0.2333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.6
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-6-sol-medium",
+   "label": "GPT-6 Sol (medium effort)",
+   "model": "gpt-6-sol",
+   "thinking": "medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.2611842105263158,
+       "low": 0.25,
+       "high": 0.28355263157894733
+      },
+      "3": {
+       "mean": 0.2667763157894737,
+       "low": 0.25,
+       "high": 0.30032894736842103
+      },
+      "5": {
+       "mean": 0.27503654970760233,
+       "low": 0.25,
+       "high": 0.325109649122807
+      },
+      "10": {
+       "mean": 0.28728070175438597,
+       "low": 0.25,
+       "high": 0.3618421052631579
+      }
+     },
+     "effective_causes": 1.0876817121856917,
+     "labels": {
+      "release": 97,
+      "policy": 3,
+      "tracking": 20
+     },
+     "modal_share": 0.975
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5416666666666666,
+       "low": 0.35000000000000003,
+       "high": 0.7166666666666667
+      },
+      "2": {
+       "mean": 0.5916666666666667,
+       "low": 0.3875,
+       "high": 0.7666666666666666
+      },
+      "3": {
+       "mean": 0.6166666666666667,
+       "low": 0.4166666666666667,
+       "high": 0.7875
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1861168501034292,
+     "labels": {
+      "release": 46,
+      "policy": 25,
+      "mix": 20,
+      "tracking": 29
+     },
+     "ruled_out_rate": 0.008333333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.39999999999999997,
+      "policy": 0.39999999999999997,
+      "release": 0.8333333333333334,
+      "tracking": 0.5333333333333333
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-6-sol-max",
+   "label": "GPT-6 Sol (max effort)",
+   "model": "gpt-6-sol",
+   "thinking": "max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "3": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "5": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "10": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 100,
+      "tracking": 20
+     },
+     "modal_share": 1.0
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5499999999999999,
+       "low": 0.375,
+       "high": 0.7333333333333334
+      },
+      "2": {
+       "mean": 0.6,
+       "low": 0.42083333333333334,
+       "high": 0.7791666666666667
+      },
+      "3": {
+       "mean": 0.6291666666666667,
+       "low": 0.44166666666666665,
+       "high": 0.8125
+      },
+      "5": {
+       "mean": 0.6666666666666666,
+       "low": 0.4583333333333333,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.225262910114578,
+     "labels": {
+      "release": 46,
+      "policy": 27,
+      "mix": 15,
+      "tracking": 32
+     },
+     "ruled_out_rate": 0.016666666666666666,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.4666666666666666,
+      "release": 0.8333333333333334,
+      "tracking": 0.5666666666666667
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-6.1-sol-medium",
+   "label": "GPT-6.1 Sol (medium effort)",
+   "model": "gpt-6.1-sol",
+   "thinking": "medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.2625,
+       "low": 0.25416666666666665,
+       "high": 0.2708333333333333
+      },
+      "3": {
+       "mean": 0.26875,
+       "low": 0.25625000000000003,
+       "high": 0.28125
+      },
+      "5": {
+       "mean": 0.28125,
+       "low": 0.2604166666666667,
+       "high": 0.3020833333333333
+      },
+      "10": {
+       "mean": 0.3125,
+       "low": 0.2708333333333333,
+       "high": 0.3541666666666667
+      }
+     },
+     "effective_causes": 1.109795308957086,
+     "labels": {
+      "release": 79,
+      "tracking": 41
+     },
+     "modal_share": 0.975
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5416666666666666,
+       "low": 0.35000000000000003,
+       "high": 0.725
+      },
+      "2": {
+       "mean": 0.5833333333333334,
+       "low": 0.39166666666666666,
+       "high": 0.7666666666666666
+      },
+      "3": {
+       "mean": 0.6041666666666666,
+       "low": 0.41250000000000003,
+       "high": 0.7875
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1341263827228256,
+     "labels": {
+      "release": 45,
+      "policy": 14,
+      "tracking": 47,
+      "mix": 14
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.2333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.7666666666666666
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-6.1-sol-max",
+   "label": "GPT-6.1 Sol (max effort)",
+   "model": "gpt-6.1-sol",
+   "thinking": "max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.27171052631578946,
+       "low": 0.25,
+       "high": 0.31513157894736843
+      },
+      "3": {
+       "mean": 0.2825657894736842,
+       "low": 0.25,
+       "high": 0.34769736842105264
+      },
+      "5": {
+       "mean": 0.29008642930856554,
+       "low": 0.25,
+       "high": 0.37025928792569657
+      },
+      "10": {
+       "mean": 0.2916641859172819,
+       "low": 0.25,
+       "high": 0.37499255775184565
+      }
+     },
+     "effective_causes": 1.1650013847036578,
+     "labels": {
+      "release": 89,
+      "tracking": 31
+     },
+     "modal_share": 0.9249999999999999
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5750000000000001,
+       "low": 0.3833333333333333,
+       "high": 0.7583333333333333
+      },
+      "2": {
+       "mean": 0.625,
+       "low": 0.44166666666666665,
+       "high": 0.8083333333333332
+      },
+      "3": {
+       "mean": 0.6458333333333334,
+       "low": 0.4583333333333333,
+       "high": 0.8333333333333334
+      },
+      "5": {
+       "mean": 0.6666666666666666,
+       "low": 0.5,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1872789858110449,
+     "labels": {
+      "release": 45,
+      "policy": 13,
+      "mix": 12,
+      "tracking": 49,
+      "multiple": 1
+     },
+     "ruled_out_rate": 0.008333333333333333,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.3,
+      "release": 0.8333333333333334,
+      "tracking": 0.8333333333333334
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-002"
+  },
+  {
+   "id": "gpt-6.1-terra-medium",
+   "label": "GPT-6.1 Terra (medium effort)",
+   "model": "gpt-6.1-terra",
+   "thinking": "medium",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.2912280701754386,
+       "low": 0.25,
+       "high": 0.3346491228070176
+      },
+      "3": {
+       "mean": 0.3131213450292398,
+       "low": 0.25,
+       "high": 0.3782529239766082
+      },
+      "5": {
+       "mean": 0.3340831398348813,
+       "low": 0.25,
+       "high": 0.4259868421052631
+      },
+      "10": {
+       "mean": 0.35348694133523856,
+       "low": 0.25,
+       "high": 0.4771324521711519
+      }
+     },
+     "effective_causes": 1.3497710190806413,
+     "labels": {
+      "release": 83,
+      "tracking": 36,
+      "policy": 1
+     },
+     "modal_share": 0.875
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.4916666666666667,
+       "low": 0.3,
+       "high": 0.6749999999999999
+      },
+      "2": {
+       "mean": 0.5291666666666667,
+       "low": 0.3458333333333334,
+       "high": 0.7083333333333334
+      },
+      "3": {
+       "mean": 0.5499999999999999,
+       "low": 0.35000000000000003,
+       "high": 0.7416666666666667
+      },
+      "5": {
+       "mean": 0.5833333333333334,
+       "low": 0.375,
+       "high": 0.7916666666666666
+      }
+     },
+     "effective_causes": 1.1211785987335892,
+     "labels": {
+      "release": 45,
+      "policy": 16,
+      "tracking": 40,
+      "mix": 19
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.3333333333333333,
+      "policy": 0.16666666666666666,
+      "release": 0.8333333333333334,
+      "tracking": 0.6333333333333333
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-003"
+  },
+  {
+   "id": "gpt-6.1-terra-max",
+   "label": "GPT-6.1 Terra (max effort)",
+   "model": "gpt-6.1-terra",
+   "thinking": "max",
+   "tiers": {
+    "none": {
+     "cases": 6,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.25,
+       "low": 0.25,
+       "high": 0.25
+      },
+      "2": {
+       "mean": 0.26644736842105265,
+       "low": 0.25,
+       "high": 0.2993421052631579
+      },
+      "3": {
+       "mean": 0.2746710526315789,
+       "low": 0.25,
+       "high": 0.32401315789473684
+      },
+      "5": {
+       "mean": 0.28359348125214995,
+       "low": 0.25,
+       "high": 0.35078044375644996
+      },
+      "10": {
+       "mean": 0.29098942208462336,
+       "low": 0.25,
+       "high": 0.37296826625387
+      }
+     },
+     "effective_causes": 1.125794225100554,
+     "labels": {
+      "release": 95,
+      "tracking": 25
+     },
+     "modal_share": 0.9583333333333334
+    },
+    "partial": {
+     "cases": 24,
+     "trials": 120,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 0.5,
+       "low": 0.31666666666666665,
+       "high": 0.6749999999999999
+      },
+      "2": {
+       "mean": 0.5583333333333333,
+       "low": 0.375,
+       "high": 0.7374999999999999
+      },
+      "3": {
+       "mean": 0.5875,
+       "low": 0.4041666666666666,
+       "high": 0.7625000000000001
+      },
+      "5": {
+       "mean": 0.625,
+       "low": 0.4166666666666667,
+       "high": 0.8333333333333334
+      }
+     },
+     "effective_causes": 1.1882417900950022,
+     "labels": {
+      "release": 45,
+      "policy": 25,
+      "tracking": 40,
+      "mix": 10
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 0.20000000000000004,
+      "policy": 0.3333333333333333,
+      "release": 0.8333333333333334,
+      "tracking": 0.6333333333333333
+     }
+    },
+    "full": {
+     "cases": 24,
+     "trials": 48,
+     "invalid": 0,
+     "passk": {
+      "1": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      },
+      "2": {
+       "mean": 1.0,
+       "low": 1.0,
+       "high": 1.0
+      }
+     },
+     "effective_causes": 1.0,
+     "labels": {
+      "release": 12,
+      "mix": 12,
+      "tracking": 12,
+      "policy": 12
+     },
+     "ruled_out_rate": 0.0,
+     "accuracy_by_truth": {
+      "mix": 1.0,
+      "policy": 1.0,
+      "release": 1.0,
+      "tracking": 1.0
+     }
+    }
+   },
+   "round": "round-003"
+  }
+ ]
+}
