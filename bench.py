@@ -109,6 +109,12 @@ def extract_answer(text):
 # ---------------------------------------------------------------------------
 
 
+def prompt_for(condition, case):
+    """The case prompt, after the condition's frozen prefix when it has one."""
+    prefix = condition.get("prompt_prefix")
+    return f"{prefix}\n\n{case['prompt']}" if prefix else case["prompt"]
+
+
 def argv_for(condition, system_prompt, prompt):
     if condition["runner"] == "claude":
         return [
@@ -325,7 +331,8 @@ class Round:
         condition = self.conditions[job["condition"]]
         folder = self.out / "raw" / job["job"] / f"{number:02d}"
         folder.mkdir(parents=True, exist_ok=True)
-        argv = argv_for(condition, self.plan["system_prompt"], case["prompt"])
+        prompt = prompt_for(condition, case)
+        argv = argv_for(condition, self.plan["system_prompt"], prompt)
         env = {k: v for k, v in os.environ.items() if k not in STRIP_ENV}
         env.update(DISABLE_TELEMETRY="1", NO_COLOR="1")
         started = now()
@@ -365,7 +372,7 @@ class Round:
             reasoning_tokens=parsed["reasoning_tokens"], output_tokens=parsed["output_tokens"],
             reported_cost_usd=parsed["cost_usd"], started_at=started, finished_at=now(),
             elapsed_seconds=elapsed, returncode=code,
-            raw_events_sha256=sha256_text(stdout), prompt_sha256=sha256_text(case["prompt"]),
+            raw_events_sha256=sha256_text(stdout), prompt_sha256=sha256_text(prompt),
         )
 
     def work(self, job, prior):

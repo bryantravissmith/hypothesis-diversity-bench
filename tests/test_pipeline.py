@@ -77,6 +77,20 @@ class UnitTest(unittest.TestCase):
         gpt = [c for c in spec["conditions"] if c["model"].startswith("gpt-")]
         self.assertTrue(gpt and all(c["provider"] == "openai" for c in gpt))
 
+    def test_meta_prefix_precedes_the_unchanged_case_prompt(self):
+        spec = json.loads((ROOT / "conditions.json").read_text())
+        by_id = {c["id"]: c for c in spec["conditions"]}
+        case = {"prompt": "CASE"}
+        metas = [c for c in spec["conditions"] if c.get("prompt_prefix")]
+        self.assertTrue(metas)
+        for meta in metas:
+            self.assertIn(meta["base"], by_id)
+            base = by_id[meta["base"]]
+            self.assertEqual((meta["model"], meta["thinking"]), (base["model"], base["thinking"]))
+            self.assertEqual(bench.prompt_for(meta, case), meta["prompt_prefix"] + "\n\nCASE")
+            self.assertEqual(bench.prompt_for(base, case), "CASE")
+        self.assertEqual(len({c["prompt_prefix"] for c in metas}), 1)
+
     def test_pass_at_k(self):
         self.assertEqual(analyze.pass_at_k(20, 0, 10), 0.0)
         self.assertEqual(analyze.pass_at_k(20, 20, 1), 1.0)
@@ -235,7 +249,7 @@ class PipelineTest(unittest.TestCase):
             def round_with(name, seed):
                 raw_n, public_n = tmp / f"raw-{name}", tmp / name
                 with unittest.mock.patch.dict(os.environ, env), quiet:
-                    bench.main(["plan", str(raw_n), "--seed", seed, "--conditions", "gpt-6.1-sol-max",
+                    bench.main(["plan", str(raw_n), "--seed", seed, "--conditions", "gpt-6.1-sol-max", "gpt-6.1-sol-max-meta",
                                 "--cases", *cases, "--repeats", "none=3", "partial=2", "full=1"])
                     bench.main(["run", str(raw_n)])
                     bench.main(["export", str(raw_n), str(public_n)])
@@ -247,7 +261,16 @@ class PipelineTest(unittest.TestCase):
             both = json.loads((tmp / "figures" / "summary.json").read_text())
             self.assertEqual([r["name"] for r in both["rounds"]], ["public", "second"])
             self.assertEqual({c["round"] for c in both["conditions"]}, {"public", "second"})
-            self.assertIn("figures/passk-none.svg", (tmp / "BOTH.md").read_text())
+            both_report = (tmp / "BOTH.md").read_text()
+            self.assertIn("figures/passk-none.svg", both_report)
+            self.assertIn("## Meta prompt", both_report)
+            self.assertNotIn("meta prompt)", (tmp / "figures" / "passk-none.svg").read_text())
+            rows2 = [json.loads(line) for line in (second / "attempts.jsonl").read_text().splitlines()]
+            hashes = {}
+            for r in rows2:
+                hashes.setdefault((r["case"], r["condition"]), set()).add(r["prompt_sha256"])
+            for case_id in cases:
+                self.assertNotEqual(hashes[(case_id, "gpt-6.1-sol-max")], hashes[(case_id, "gpt-6.1-sol-max-meta")])
             other = round_with("other", "s2")
             with self.assertRaises(SystemExit), quiet:
                 analyze.main([str(public), str(other), "--figures", str(tmp / "figures2")])
