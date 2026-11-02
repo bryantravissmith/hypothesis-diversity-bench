@@ -17,7 +17,72 @@ and GPT-6.1 Sol say 7 nearly every time. This benchmark asks whether that
 collapse carries over to analysis, what it costs, and whether random-number
 spread predicts hypothesis spread.
 
-**[Results](RESULTS.md)** · [Design](#design) · [Run it](#run-a-round)
+**[Results](RESULTS.md)** · [Findings](#findings) · [Design](#design) · [Run it](#run-a-round)
+
+## Findings
+
+First rounds, 2026-11-01: 13 conditions, 54 cases, 3,744 answers, all valid.
+Brackets in [RESULTS.md](RESULTS.md) give 95% intervals over cases.
+
+![pass@k with no evidence](results/figures/passk-none.svg)
+
+**1. Running a current model again mostly repeats its first answer.** With no
+evidence, a model that always gives one answer finds the true cause 25% of
+the time at any number of runs. After 10 runs:
+
+| Condition | Effective causes per case | pass@1 | pass@10 |
+| --- | ---: | ---: | ---: |
+| DeepSeek R1-0528 | 1.77 | 0.25 | 0.50 |
+| GPT-4o | 1.84 | 0.25 | 0.49 |
+| DeepSeek V3.2, thinking off | 1.74 | 0.25 | 0.48 |
+| Claude Opus 5.5, medium | 1.47 | 0.25 | 0.37 |
+| GPT-6.1 Terra, medium | 1.35 | 0.25 | 0.35 |
+| GPT-6.1 Sol, medium | 1.11 | 0.25 | 0.31 |
+| Claude Opus 5.5, max | 1.16 | 0.25 | 0.29 |
+| GPT-5.6 Sol, medium | 1.07 | 0.25 | 0.29 |
+| GPT-6 Sol, max | 1.00 | 0.25 | 0.25 |
+
+Every condition ties at one run. The older models double their chance by ten
+runs; GPT-6 Sol at max effort gave the same cause in all 20 answers for every
+case, so ten runs are worth exactly one.
+
+**2. More effort means less exploration.** For every model run at both
+settings, max effort lowered pass@10: Opus 0.37 to 0.29, GPT-6.1 Terra 0.35 to
+0.29, GPT-6.1 Sol 0.31 to 0.29, GPT-5.6 Sol 0.29 to 0.27, GPT-6 Sol 0.29 to 0.25.
+
+**3. Each vendor has a house story.** Across all six businesses, Opus blames
+the tracking change (89 of 120 answers at medium, 112 at max). Every current
+GPT model blames the release (79 to 100 of 120). GPT-4o and DeepSeek V3.2 are
+the only conditions that regularly name the pricing or policy change (51 and
+18 of 120), and the new traffic source is rare everywhere (at most 17 of 120,
+for Opus at medium).
+
+**4. Random-number spread does not predict hypothesis spread.** GPT-6 Sol and
+GPT-6.1 Terra answer "random number from 1 to 10" almost uniformly in Random
+Number Bench (about 9.4 to 9.8 effective answers at medium effort and above),
+yet here they are among the most repetitive conditions. The older models that
+spread here also spread numbers, so the number test can flag a collapsed
+model but cannot certify a diverse one.
+
+**5. When evidence narrows the field, current models still lean on their
+default.** With two causes ruled out, current models almost never name an
+excluded cause (0 to 6%), but at one run they land near a coin flip (0.46 to
+0.58), and the GPT models score 0.83 when the release is the true cause versus
+0.17 to 0.47 for policy. DeepSeek R1 does best (0.58 at one run, 0.75 at five).
+GPT-4o and DeepSeek V3.2 name an excluded cause 19% and 38% of the time, so
+their spread is partly noise.
+
+**6. Every current model reads decisive evidence correctly.** When the
+breakdowns identify the cause, all current conditions are right in every
+answer; GPT-4o and DeepSeek V3.2 score 0.92 and 0.88.
+
+**What it means for analysis agents.** Current models are better analysts per
+answer and worse explorers across answers. On an underdetermined question,
+parallel runs, second opinions and self-consistency votes from the same model
+are not independent: they mostly restate the model's default story, and
+higher effort makes that stronger. If coverage matters, ask for the
+alternatives explicitly in one run, vary the model, or supply the
+discriminating evidence, rather than relying on resampling.
 
 ## The question
 
@@ -97,12 +162,19 @@ Model identity is checked against what each runner reports.
   much spread each model has, not to claim spread is always good: when the
   evidence identifies the cause, consistency is correct, which is what the
   full tier checks.
-- Pattern labels can miss unusual phrasings; review covers answers that match
-  zero or several changes, and a spot check of the rest is recorded in the
-  round notes.
+- Pattern labels can miss unusual phrasings. Every answer matching zero or
+  several changes (353 of 3,744) was reviewed blind, and a blinded random
+  sample of 60 pattern labels agreed in all 60
+  ([spot check](results/label-spot-check.json)). The reviewer was Claude Code,
+  the agent that built the benchmark; review decisions and reasons are
+  published in each round's `reviews.json`.
 - Opus and the current GPT models run through subscription logins whose
-  decoding settings are not exposed. GPT-4o and DeepSeek use OpenRouter
-  defaults.
+  decoding settings are not exposed, and no API lets callers set temperature
+  for these reasoning models. GPT-4o and DeepSeek use OpenRouter defaults.
+  Random Number Bench measured the GPT models through Codex; this benchmark
+  calls them through Pi with the same subscription.
+- The rounds ran on overlapping periods with identical cases but separate
+  controllers, and are reported side by side, not pooled.
 
 ## Run a round
 
