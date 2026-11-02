@@ -289,12 +289,17 @@ def plan(args):
 
 
 class Round:
-    def __init__(self, out):
+    def __init__(self, out, inference=False):
         self.out = Path(out)
         self.plan = read_json(self.out / "plan.json")
-        for name, digest in self.plan["source_sha256"].items():
-            if sha256_file(ROOT / name) != digest:
-                raise SystemExit(f"{name} changed since planning; start a new round")
+        # Only inference must run the frozen source. Status and export read
+        # recorded evidence, which the frozen snapshot already describes.
+        if inference:
+            for name, digest in self.plan["source_sha256"].items():
+                if sha256_file(ROOT / name) != digest:
+                    raise SystemExit(
+                        f"{name} changed since planning; resume with {self.out / 'source' / 'bench.py'}"
+                    )
         self.cases = {c["id"]: c for c in self.plan["cases"]}
         self.conditions = {c["id"]: c for c in self.plan["conditions"]}
         self.lock = threading.Lock()
@@ -412,7 +417,7 @@ class Round:
 
 
 def run(args):
-    Round(args.out).run()
+    Round(args.out, inference=True).run()
     status(args)
 
 

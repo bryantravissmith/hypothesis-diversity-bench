@@ -138,6 +138,23 @@ class SchedulingTest(unittest.TestCase):
         self.assertEqual(len(seen), 18)
         self.assertTrue(all(thread.startswith(pool + "_") for pool, thread in seen), seen)
 
+    def test_changed_source_blocks_inference_only(self):
+        with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()):
+            raw = Path(tmp) / "raw"
+            with unittest.mock.patch.object(bench, "_version", return_value="test"):
+                bench.main(["plan", str(raw), "--seed", "s1", "--conditions", "gpt-4o",
+                            "--cases", "ecommerce-checkout--none", "--repeats", "none=1"])
+            plan = json.loads((raw / "plan.json").read_text())
+            plan["source_sha256"]["bench.py"] = "0" * 64
+            (raw / "plan.json").write_text(json.dumps(plan))
+            with self.assertRaises(SystemExit):
+                bench.main(["run", str(raw)])
+            bench.main(["status", str(raw)])
+            bench.main(["export", str(raw), str(Path(tmp) / "public")])
+            exported = json.loads((Path(tmp) / "public" / "plan.json").read_text())
+            self.assertEqual(exported["state"], "stopped")
+            self.assertEqual(exported["unfinished_jobs"], 1)
+
 
 class PipelineTest(unittest.TestCase):
     def test_full_cycle(self):
