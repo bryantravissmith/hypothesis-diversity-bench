@@ -76,6 +76,28 @@ class CaseTest(unittest.TestCase):
             [c["change_order"] for c in cases.build("other-seed")],
         )
 
+    def test_published_rounds_rebuild_unchanged(self):
+        import json
+
+        for name in ("round-001", "round-004"):
+            plan = json.loads((ROOT / "results" / name / "plan.json").read_text())
+            self.assertEqual(cases.build(plan["seed"]), plan["cases"])
+
+    def test_none_variants_balance_change_positions(self):
+        built = cases.build("test-seed", tiers=("none",), none_variants=len(CAUSES))
+        self.assertEqual(len(built), len(SCENARIOS) * len(CAUSES))
+        self.assertEqual({c["tier"] for c in built}, {"none"})
+        for s in SCENARIOS:
+            orders = [c["change_order"] for c in built if c["scenario"] == s["id"]]
+            self.assertEqual(len({tuple(o) for o in orders}), len(CAUSES))
+            for position in range(len(CAUSES)):
+                self.assertEqual(sorted(o[position] for o in orders), sorted(CAUSES))
+        self.assertEqual(built, cases.build("test-seed", tiers=("none",), none_variants=len(CAUSES)))
+        with self.assertRaises(ValueError):
+            cases.build("test-seed", none_variants=2)
+        with self.assertRaises(ValueError):
+            cases.build("test-seed", tiers=("sometimes",))
+
     def test_patterns_name_their_own_change(self):
         import grade
 

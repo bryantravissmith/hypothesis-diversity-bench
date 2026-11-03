@@ -40,7 +40,13 @@ across all four causes reach 0.9437 at k=10. The figure shows point estimates;
 **Effort effects vary.** Max effort has a lower no-evidence pass@10 estimate
 in five of six plain-prompt comparisons; Astra rises from 0.250 to 0.292.
 All six adjusted difference intervals include zero. The six sampling-prefix
-comparisons also have intervals spanning zero.
+comparisons also have intervals spanning zero. Those bounds treat each
+condition separately. A paired permutation test on the same fixed prompts
+finds a pooled effort effect (mean -0.030, two-sided p < 0.001): Opus and
+Terra drop, Astra rises, and the three Sol versions are inconclusive. These
+comparisons were chosen after seeing the data, so a
+[preregistered confirmation round](docs/CONFIRMATION.md) retests effort and the
+meta prompt on 24 new prompts.
 
 **Cause preferences differ.** Opus primarily selects tracking, while the GPT
 conditions with medium/max effort primarily select releases.

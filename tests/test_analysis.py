@@ -134,10 +134,32 @@ class AnalysisTest(unittest.TestCase):
         self.assertEqual(absent["status"], "unavailable")
         self.assertAlmostEqual(within["mean"], within["scenario_sensitivity"]["mean"])
         self.assertEqual(within["low"], within["endpoints"][0]["low"] - within["endpoints"][1]["high"])
+        self.assertNotIn("test", f)
         changed = copy.deepcopy(combined)
         changed["conditions"][0]["tiers"]["none"]["per_case"].clear()
         with self.assertRaisesRegex(ValueError, "identical cases"):
             analyze.contrasts(changed, spec)
+
+    def test_paired_permutation_only_within_round(self):
+        _, s = analyze.summarize(self.input)
+        combined = dict(conditions=[dict(c, round="round-a") for c in s["conditions"]])
+        combined["conditions"] += [dict(c, round="round-b") for c in s["conditions"]]
+        spec = dict(families=[dict(id="test", tier="none", k=10, alpha=.05,
+                                   test=dict(method="paired-permutation", alternative="less", permutations=99),
+                                   pairs=[dict(id="within", left=["round-a", "a"], right=["round-a", "b"]),
+                                          dict(id="across", left=["round-b", "a"], right=["round-a", "b"])])])
+        f = analyze.contrasts(combined, spec)[0]
+        within, across = f["pairs"]
+        self.assertEqual(within["permutation"]["status"], "available")
+        self.assertAlmostEqual(within["permutation"]["statistic"], within["mean"])
+        self.assertEqual(within["permutation"]["p"], 1 / 100)
+        self.assertIn("cross-round", across["permutation"]["reason"])
+        self.assertEqual(f["test"]["pooled"]["pairs"], ["within"])
+        text = "\n".join(analyze.permutation_lines(f))
+        self.assertIn("Pooled over 1 tested pairs", text)
+        spec["families"][0]["test"]["method"] = "t-test"
+        with self.assertRaisesRegex(ValueError, "Unknown contrast test"):
+            analyze.contrasts(combined, spec)
 
     def test_label_permutation_preserves_none_score(self):
         case = dict(truth=None, candidates=analyze.CAUSES)

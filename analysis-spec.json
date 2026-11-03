@@ -1,12 +1,17 @@
 {
-  "version": 1,
-  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered",
+  "version": 2,
+  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered. The two-sided paired permutation test was added in version 2, also after observing these data.",
   "families": [
     {
       "id": "plain-effort-max-minus-medium",
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
+      "test": {
+        "method": "paired-permutation",
+        "alternative": "two-sided",
+        "permutations": 20000
+      },
       "pairs": [
         {
           "id": "opus-5.5",
@@ -81,6 +86,11 @@
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
+      "test": {
+        "method": "paired-permutation",
+        "alternative": "two-sided",
+        "permutations": 20000
+      },
       "pairs": [
         {
           "id": "gpt-6.1-sol-medium",

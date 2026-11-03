@@ -147,6 +147,23 @@ Monte Carlo frequency intervals and widths are reported. The tests also
 enumerate exact coverage in small models, verify numerical limits, and
 exercise the CLI on incomplete, malformed and mismatched inputs.
 
+## Paired permutation tests
+
+A contrast family may also declare a `test` in its spec. The
+[paired permutation test](../permutation.py) asks whether two conditions draw
+labels from the same distribution on each fixed prompt. Each draw shuffles the
+pooled labels of every case between the two conditions, keeping group sizes,
+and recomputes the equal-case mean pass@k difference. Unlike the difference
+bounds above, it pairs conditions on the same cases and uses every answer, so
+it has far more power, but it only tests equality on these prompts.
+
+Only within-round pairs are tested, because exchangeability fails when
+collection time differs. The family's pooled statistic is the mean of its pair
+statistics, permuted jointly. Pair p-values are Holm-adjusted within the
+family. With 20,000 draws, the Monte Carlo p-value
+`(1 + extreme draws) / (1 + draws)` has standard error about 0.0015 near
+0.05. Seeds derive from family IDs, so outputs are reproducible.
+
 ```sh
 uv run --no-project python -m unittest discover -s tests -v
 uv run validate_intervals.py --output results/validation

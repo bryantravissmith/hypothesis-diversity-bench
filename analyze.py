@@ -38,10 +38,11 @@ from pathlib import Path
 
 import grade
 import intervals
+import permutation
 
 CAUSES = ("release", "mix", "tracking", "policy")
 KS = {"none": (1, 2, 3, 5, 10), "partial": (1, 2, 3, 5), "full": (1, 2)}
-ANALYSIS_VERSION = "fixed-prompt-ci-v2"
+ANALYSIS_VERSION = "fixed-prompt-ci-v3"
 ROOT = Path(__file__).resolve().parent
 
 
@@ -55,7 +56,7 @@ def provenance(results):
     return dict(
         version=ANALYSIS_VERSION,
         python_version=sys.version.split()[0],
-        source_sha256={name: file_hash(ROOT / name) for name in ("analyze.py", "grade.py", "intervals.py")},
+        source_sha256={name: file_hash(ROOT / name) for name in ("analyze.py", "grade.py", "intervals.py", "permutation.py")},
         input_sha256={name: file_hash(results / name) for name in inputs if (results / name).exists()},
         interval_method=intervals.METHOD,
         confidence=intervals.CONFIDENCE,
@@ -336,8 +337,41 @@ def contrasts(combined, spec):
             ) for t in (lt, rt)]
             item.update(status="available", low=bounds[0]["low"] - bounds[1]["high"],
                         high=bounds[0]["high"] - bounds[1]["low"], endpoints=bounds)
+        if "test" in family:
+            result["test"] = permutation_test(family, result["pairs"], by_key)
         output.append(result)
     return output
+
+
+def permutation_test(family, pairs, by_key):
+    """Run the family's configured paired permutation test on its within-round pairs."""
+    test = family["test"]
+    if test.get("method") != "paired-permutation":
+        raise ValueError("Unknown contrast test method")
+    tier, k = family["tier"], family["k"]
+    eligible = {}
+    for item in pairs:
+        if item["status"] != "available":
+            item["permutation"] = dict(status="unavailable", reason=item["reason"])
+        elif item["left"][0] != item["right"][0]:
+            item["permutation"] = dict(status="unavailable", reason="cross-round pair; collection time is confounded with condition")
+        else:
+            left, right = (by_key[tuple(item[side])]["tiers"][tier]["per_case"] for side in ("left", "right"))
+            eligible[item["id"]] = [
+                ([label for label, n in sorted(left[cid]["counts"].items()) for _ in range(n)],
+                 [label for label, n in sorted(right[cid]["counts"].items()) for _ in range(n)],
+                 left[cid]["truth"])
+                for cid in sorted(left)
+            ]
+    if not eligible:
+        return dict(test, status="unavailable", reason="no within-round pairs with inferential status")
+    out = permutation.family_test(eligible, CAUSES, k, test.get("alternative", "two-sided"),
+                                  test.get("permutations", 20000), f"{family['id']}:paired-permutation-v1")
+    for item in pairs:
+        if item["id"] in out["pairs"]:
+            item["permutation"] = dict(status="available", **out["pairs"][item["id"]])
+    return dict(test, status="available", method_detail=out["method"], alternative=out["alternative"],
+                permutations=out["permutations"], seed=out["seed"], pooled=out["pooled"])
 
 
 def uncertainty_report(combined):
@@ -382,11 +416,44 @@ def uncertainty_report(combined):
             lines.append(f"| {name} | {pair['mean']:+.3f} | [{pair['low']:.3f}, {pair['high']:.3f}] | "
                          f"[{b['low']:.3f}, {b['high']:.3f}] | {loo_text} |")
         lines.append("")
+        lines += permutation_lines(family)
     lines += ["The companion `summary.json` contains every k, individual scenario scores and paired effects "
               "and leave-one-out estimates, input/source hashes, assumptions and inference status. "
               "For six scenarios, the sensitivity calculation enumerates all 46,656 ordered cluster resamples exactly. "
               "It retains all case variants in a selected scenario and preserves their case weights.", ""]
     return "\n".join(lines)
+
+
+def permutation_lines(family):
+    test = family.get("test")
+    if not test:
+        return []
+    lines = [f"#### Paired permutation test ({test['alternative']})", ""]
+    if test["status"] != "available":
+        return lines + [f"Unavailable: {test['reason']}.", ""]
+    lines += [
+        f"{test['permutations']:,} within-case label permutations with seed `{test['seed']}`. "
+        "Unlike the bound above, this test pairs the two conditions on each case and uses every answer. "
+        "It conditions on these fixed prompts and needs both conditions from the same round. "
+        "Pair p-values are Holm-adjusted within the family.", "",
+        "| Left minus right | Estimate | p | Holm p |",
+        "|---|---:|---:|---:|",
+    ]
+    for pair in family["pairs"]:
+        name = " / ".join(pair["left"]) + " minus " + " / ".join(pair["right"])
+        p = pair["permutation"]
+        if p["status"] != "available":
+            lines.append(f"| {name} | n/a | {p['reason']} | n/a |")
+        else:
+            lines.append(f"| {name} | {p['statistic']:+.3f} | {fmt_p(p['p'])} | {fmt_p(p['p_holm'])} |")
+    pooled = test["pooled"]
+    lines += ["", f"Pooled over {len(pooled['pairs'])} tested pairs: mean difference {pooled['statistic']:+.3f}, "
+              f"p {fmt_p(pooled['p'], prefix='= ')}.", ""]
+    return lines
+
+
+def fmt_p(p, prefix=""):
+    return "< 0.0001" if p < 0.0001 else f"{prefix}{p:.4f}"
 
 
 def report(combined, figures):

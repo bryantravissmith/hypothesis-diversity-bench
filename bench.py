@@ -249,7 +249,7 @@ def plan(args):
     if args.conditions and len(conditions) != len(set(args.conditions)):
         raise SystemExit("Unknown condition in --conditions")
     seed = args.seed or secrets.token_hex(8)
-    built = case_builder.build(seed)
+    built = case_builder.build(seed, tiers=args.tiers, none_variants=args.none_variants)
     if args.cases:
         built = [c for c in built if c["id"] in args.cases]
     jobs = [
@@ -274,6 +274,7 @@ def plan(args):
             created_at=now(),
             seed=seed,
             repeats=repeats,
+            case_options=dict(tiers=list(args.tiers), none_variants=args.none_variants),
             system_prompt=spec["system_prompt"],
             conditions=conditions,
             pools={k: v for k, v in spec["pools"].items() if any(c["pool"] == k for c in conditions)},
@@ -499,6 +500,8 @@ def main(argv=None):
     p.add_argument("--repeats", nargs="*", help="tier=count, e.g. none=20 partial=5 full=2")
     p.add_argument("--conditions", nargs="*")
     p.add_argument("--cases", nargs="*", help="Restrict to these case IDs (smoke checks)")
+    p.add_argument("--tiers", nargs="+", default=list(case_builder.TIERS), choices=case_builder.TIERS)
+    p.add_argument("--none-variants", type=int, default=1, help="No-evidence cases per scenario: 1, or 4 Latin-square change orders")
     p.add_argument("--max-attempts", type=int, default=3)
     p.add_argument("--timeout", type=int, default=900)
     p.add_argument("--max-hours", type=float, default=8)

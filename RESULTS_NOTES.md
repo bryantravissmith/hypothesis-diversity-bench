@@ -33,6 +33,13 @@ Max effort has a lower no-evidence pass@10 estimate in five of six
 plain-prompt comparisons. Astra rises from 0.250 to 0.292. All six
 family-adjusted difference intervals include zero.
 
+The paired within-case permutation test, added after these rounds were
+observed, uses every answer on matched prompts. Two-sided Holm-adjusted p:
+Opus 0.0003 (-0.083), Terra 0.0032 (-0.062), Astra 0.0010 (+0.042), and
+0.70-1.00 for the three Sol versions. The pooled mean difference is -0.030
+(p < 0.001). The effect is real on these prompts on average but not uniform
+across models. [Round-005](docs/CONFIRMATION.md) is the preregistered test.
+
 GPT-6.1 Sol's effective-cause count rises from 1.11 at medium effort to 1.17
 at max. Its pass@2 increases and its pass@10 decreases. Effective causes is
 the exponential of observed label entropy, averaged over cases.
@@ -96,7 +103,9 @@ prompt's request for the single most likely cause.
 
 Differences use unrounded estimates. All six family-adjusted confidence
 intervals include zero. Astra pairs were collected within round 004;
-Sol/Terra pairs cross rounds. Full-evidence accuracy is 48/48 for every
+Sol/Terra pairs cross rounds. The paired permutation test only covers
+within-round pairs: Astra max with the meta prompt is lower (Holm p 0.0024),
+and Astra medium is unchanged because every answer was the same. Full-evidence accuracy is 48/48 for every
 sampling-prefix condition.
 
 ## Full evidence

@@ -15,12 +15,13 @@
     "review": 271
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v2",
+    "version": "fixed-prompt-ci-v3",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "9e46403babba3d3dbed1d97d93dc015f975017708cfa60ec77cb1531c783e095",
+     "analyze.py": "90722df698da22b690efe4d53b9c2ef045e2f78a86dba4d55a013d4963e2669e",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
-     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad"
+     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
+     "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396"
     },
     "input_sha256": {
      "plan.json": "44b0521886b90fb2af075d7cc5a98701f21b700292764058e38fab89b5480c4a",
@@ -66,12 +67,13 @@
     "review": 61
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v2",
+    "version": "fixed-prompt-ci-v3",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "9e46403babba3d3dbed1d97d93dc015f975017708cfa60ec77cb1531c783e095",
+     "analyze.py": "90722df698da22b690efe4d53b9c2ef045e2f78a86dba4d55a013d4963e2669e",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
-     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad"
+     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
+     "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396"
     },
     "input_sha256": {
      "plan.json": "508fefa3e64e33d90cc13811a6eed5a3f177180ef5a5d50d106fc6f30290406f",
@@ -117,12 +119,13 @@
     "review": 21
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v2",
+    "version": "fixed-prompt-ci-v3",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "9e46403babba3d3dbed1d97d93dc015f975017708cfa60ec77cb1531c783e095",
+     "analyze.py": "90722df698da22b690efe4d53b9c2ef045e2f78a86dba4d55a013d4963e2669e",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
-     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad"
+     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
+     "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396"
     },
     "input_sha256": {
      "plan.json": "c8bc8f8667164af2e704bc6c562ab94f9a90e45cc5a79cdd7f7727b43a5adda9",
@@ -168,12 +171,13 @@
     "review": 136
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v2",
+    "version": "fixed-prompt-ci-v3",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "9e46403babba3d3dbed1d97d93dc015f975017708cfa60ec77cb1531c783e095",
+     "analyze.py": "90722df698da22b690efe4d53b9c2ef045e2f78a86dba4d55a013d4963e2669e",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
-     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad"
+     "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
+     "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396"
     },
     "input_sha256": {
      "plan.json": "c9766a7c762fd168bf14019458569d44a153694417c6e9b1a9916fdb776a54b7",
@@ -35031,16 +35035,21 @@
    "round": "round-004"
   }
  ],
- "analysis_version": "fixed-prompt-ci-v2",
+ "analysis_version": "fixed-prompt-ci-v3",
  "comparison_spec": {
-  "version": 1,
-  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered",
+  "version": 2,
+  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered. The two-sided paired permutation test was added in version 2, also after observing these data.",
   "families": [
    {
     "id": "plain-effort-max-minus-medium",
     "tier": "none",
     "k": 10,
     "alpha": 0.05,
+    "test": {
+     "method": "paired-permutation",
+     "alternative": "two-sided",
+     "permutations": 20000
+    },
     "pairs": [
      {
       "id": "opus-5.5",
@@ -35115,6 +35124,11 @@
     "tier": "none",
     "k": 10,
     "alpha": 0.05,
+    "test": {
+     "method": "paired-permutation",
+     "alternative": "two-sided",
+     "permutations": 20000
+    },
     "pairs": [
      {
       "id": "gpt-6.1-sol-medium",
@@ -35185,7 +35199,7 @@
     ]
    }
   ],
-  "sha256": "663c08cdeac13491845c9ae7b184ff2bb438654cd805c1f24fc84dc71e41994c"
+  "sha256": "b4fdcda506464ac899dbb1c02d66490e29c992c76b2df8485378dba28345780a"
  },
  "contrasts": [
   {
@@ -35293,7 +35307,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.08310510438993411,
+      "p": 4.999750012499375e-05,
+      "p_holm": 0.0002999850007499625
+     }
     },
     {
      "id": "gpt-5.6-sol",
@@ -35391,7 +35411,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.020833333333333332,
+      "p": 0.7584620768961552,
+      "p_holm": 0.9976501174941252
+     }
     },
     {
      "id": "gpt-6-sol",
@@ -35489,7 +35515,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.03728070175438597,
+      "p": 0.23448827558622068,
+      "p_holm": 0.7034648267586621
+     }
     },
     {
      "id": "gpt-6.1-sol",
@@ -35587,7 +35619,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.020835814082718108,
+      "p": 0.4988250587470626,
+      "p_holm": 0.9976501174941252
+     }
     },
     {
      "id": "gpt-6.1-terra",
@@ -35685,7 +35723,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.062497519250615224,
+      "p": 0.0007999600019999,
+      "p_holm": 0.0031998400079996
+     }
     },
     {
      "id": "gpt-6-astra",
@@ -35783,9 +35827,35 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": 0.04166418591728189,
+      "p": 0.000199990000499975,
+      "p_holm": 0.000999950002499875
+     }
     }
-   ]
+   ],
+   "test": {
+    "method": "paired-permutation",
+    "alternative": "two-sided",
+    "permutations": 20000,
+    "status": "available",
+    "method_detail": "paired within-case label permutation, Monte Carlo, Holm within family",
+    "seed": "plain-effort-max-minus-medium:paired-permutation-v1",
+    "pooled": {
+     "pairs": [
+      "opus-5.5",
+      "gpt-5.6-sol",
+      "gpt-6-sol",
+      "gpt-6.1-sol",
+      "gpt-6.1-terra",
+      "gpt-6-astra"
+     ],
+     "statistic": -0.03048138114895081,
+     "p": 0.00014999250037498125
+    }
+   }
   },
   {
    "id": "meta-minus-plain",
@@ -35892,7 +35962,11 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "unavailable",
+      "reason": "cross-round pair; collection time is confounded with condition"
+     }
     },
     {
      "id": "gpt-6.1-sol-max",
@@ -35990,7 +36064,11 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "unavailable",
+      "reason": "cross-round pair; collection time is confounded with condition"
+     }
     },
     {
      "id": "gpt-6.1-terra-medium",
@@ -36088,7 +36166,11 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "unavailable",
+      "reason": "cross-round pair; collection time is confounded with condition"
+     }
     },
     {
      "id": "gpt-6.1-terra-max",
@@ -36186,7 +36268,11 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "unavailable",
+      "reason": "cross-round pair; collection time is confounded with condition"
+     }
     },
     {
      "id": "gpt-6-astra-medium",
@@ -36284,7 +36370,13 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": 0.0,
+      "p": 1.0,
+      "p_holm": 1.0
+     }
     },
     {
      "id": "gpt-6-astra-max",
@@ -36382,9 +36474,31 @@
        "repeats": 20,
        "k": 10
       }
-     ]
+     ],
+     "permutation": {
+      "status": "available",
+      "statistic": -0.020830852583948557,
+      "p": 0.00119994000299985,
+      "p_holm": 0.0023998800059997
+     }
     }
-   ]
+   ],
+   "test": {
+    "method": "paired-permutation",
+    "alternative": "two-sided",
+    "permutations": 20000,
+    "status": "available",
+    "method_detail": "paired within-case label permutation, Monte Carlo, Holm within family",
+    "seed": "meta-minus-plain:paired-permutation-v1",
+    "pooled": {
+     "pairs": [
+      "gpt-6-astra-medium",
+      "gpt-6-astra-max"
+     ],
+     "statistic": -0.010415426291974278,
+     "p": 0.00119994000299985
+    }
+   }
   }
  ]
 }

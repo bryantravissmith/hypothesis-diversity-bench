@@ -150,27 +150,47 @@ def prompt_for(scenario, changes, diagnostics):
     return "\n".join(lines)
 
 
-def build(seed, scenarios_path=SCENARIOS):
+def latin_orders(items, rng):
+    """len(items) orderings in which every item takes every position once."""
+    n = len(items)
+    rows, cols, symbols = rng.sample(range(n), n), rng.sample(range(n), n), rng.sample(list(items), n)
+    return [[symbols[(rows[r] + cols[c]) % n] for c in range(n)] for r in range(n)]
+
+
+def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1):
+    """Build the case set. With none_variants > 1, each scenario gets that many
+    no-evidence cases whose change orders come from a Latin square, so every
+    change appears in every list position equally often."""
     data = load_scenarios(scenarios_path)
     causes = data["causes"]
+    if none_variants not in (1, len(causes)):
+        raise ValueError(f"none_variants must be 1 or {len(causes)}")
+    if not tiers or set(tiers) - set(TIERS):
+        raise ValueError(f"tiers must be a non-empty subset of {TIERS}")
     cases = []
     for scenario in data["scenarios"]:
         sid = scenario["id"]
-        rng = _rng(seed, sid, "none")
-        changes = rng.sample(causes, len(causes))
-        cases.append(
-            dict(
-                id=f"{sid}--none",
-                scenario=sid,
-                tier="none",
-                truth=None,
-                candidates=list(causes),
-                diagnostics=[],
-                change_order=changes,
-                prompt=prompt_for(scenario, changes, []),
+        if "none" not in tiers:
+            orders = []
+        elif none_variants == 1:
+            orders = [(f"{sid}--none", _rng(seed, sid, "none").sample(causes, len(causes)))]
+        else:
+            square = latin_orders(causes, _rng(seed, sid, "none", "latin"))
+            orders = [(f"{sid}--none--v{i}", order) for i, order in enumerate(square, 1)]
+        for case_id, changes in orders:
+            cases.append(
+                dict(
+                    id=case_id,
+                    scenario=sid,
+                    tier="none",
+                    truth=None,
+                    candidates=list(causes),
+                    diagnostics=[],
+                    change_order=changes,
+                    prompt=prompt_for(scenario, changes, []),
+                )
             )
-        )
-        for tier in ("partial", "full"):
+        for tier in [t for t in ("partial", "full") if t in tiers]:
             for truth in causes:
                 rng = _rng(seed, sid, tier, truth)
                 changes = rng.sample(causes, len(causes))
