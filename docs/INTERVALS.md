@@ -147,22 +147,41 @@ Monte Carlo frequency intervals and widths are reported. The tests also
 enumerate exact coverage in small models, verify numerical limits, and
 exercise the CLI on incomplete, malformed and mismatched inputs.
 
-## Paired permutation tests
+## Paired tests
 
-A contrast family may also declare a `test` in its spec. The
-[paired permutation test](../permutation.py) asks whether two conditions draw
-labels from the same distribution on each fixed prompt. Each draw shuffles the
-pooled labels of every case between the two conditions, keeping group sizes,
-and recomputes the equal-case mean pass@k difference. Unlike the difference
-bounds above, it pairs conditions on the same cases and uses every answer, so
-it has far more power, but it only tests equality on these prompts.
+A contrast family may declare a `score_test` and a `distribution_test`. Both
+pair the two conditions on the same cases and use every answer, so they are
+far sharper than the difference bounds above, but they only describe these
+fixed prompts. Only within-round pairs are tested, because collection time
+would otherwise be confounded with condition. Reports always show raw and
+Holm-adjusted p-values together, plus how many condition-case cells show more
+than one outcome; a result carried by one or two such cells is fragile.
 
-Only within-round pairs are tested, because exchangeability fails when
-collection time differs. The family's pooled statistic is the mean of its pair
-statistics, permuted jointly. Pair p-values are Holm-adjusted within the
-family. With 20,000 draws, the Monte Carlo p-value
-`(1 + extreme draws) / (1 + draws)` has standard error about 0.0015 near
-0.05. Seeds derive from family IDs, so outputs are reproducible.
+The [score test](../coverage_test.py) targets the no-evidence pass@k
+difference itself. Each cell's estimate is the unbiased U-statistic. With 20
+runs and k = 10, every split into two 10-run batches gives a variance
+estimate; averaging exactly over all splits gives either an unbiased variance
+or a conservative bound on it. The pair and pooled statistics are equal-case
+means, with z statistics on the normal reference.
+[Simulation](../results/validation/CONFIRMATION_POWER.md) compared both and a
+smoothed model-based variance across equal-score nulls (including conditions
+that favor different causes, rare labels and a single varying scenario). The
+bound held the nominal rate; the unbiased variance rejected too often when few
+cells vary, and the smoothed variance was too conservative to detect plausible
+effects. The bound is the default.
+
+The [distribution test](../permutation.py) asks whether two conditions draw
+labels from the same distribution on each prompt. Each draw shuffles the
+pooled labels of every case between the two conditions, keeping group sizes.
+A rejection means the conditions behave differently. It does not show that
+their scores differ: two conditions that each favor a different single cause
+have equal scores but different distributions. With 20,000 draws, the Monte
+Carlo p-value `(1 + extreme draws) / (1 + draws)` has standard error about
+0.0015 near 0.05. Seeds derive from family IDs, so outputs are reproducible.
+
+For a preregistered round, a spec's `confirmatory` block pins the round, seed,
+case hash, conditions and repeat counts. If the round does not match exactly
+or is incomplete, every test is withheld rather than run on a smaller family.
 
 ```sh
 uv run --no-project python -m unittest discover -s tests -v

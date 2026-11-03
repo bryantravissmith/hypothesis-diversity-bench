@@ -41,12 +41,14 @@ across all four causes reach 0.9437 at k=10. The figure shows point estimates;
 in five of six plain-prompt comparisons; Astra rises from 0.250 to 0.292.
 All six adjusted difference intervals include zero. The six sampling-prefix
 comparisons also have intervals spanning zero. Those bounds treat each
-condition separately. A paired permutation test on the same fixed prompts
-finds a pooled effort effect (mean -0.030, two-sided p < 0.001): Opus and
-Terra drop, Astra rises, and the three Sol versions are inconclusive. These
-comparisons were chosen after seeing the data, so a
-[preregistered confirmation round](docs/CONFIRMATION.md) retests effort and the
-meta prompt on 24 new prompts.
+condition separately. Paired tests on the same fixed prompts are sharper. A
+score test of the pass@10 difference finds a pooled effort drop of -0.030
+(two-sided raw p 0.0011): Opus and Terra drop, Astra rises, GPT-6 Sol drops on
+a single prompt, and GPT-5.6 and 6.1 Sol are inconclusive. These comparisons
+were chosen after seeing the data and several rest on one or two prompts, so a
+[preregistered confirmation round](docs/CONFIRMATION.md) retests the effort
+effect on 48 new prompts. See [the test tables](results/figures/UNCERTAINTY.md)
+for raw and Holm-adjusted p-values side by side.
 
 **Cause preferences differ.** Opus primarily selects tracking, while the GPT
 conditions with medium/max effort primarily select releases.

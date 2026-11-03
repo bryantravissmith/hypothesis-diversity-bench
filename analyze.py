@@ -36,6 +36,7 @@ import os
 import sys
 from pathlib import Path
 
+import coverage_test
 import grade
 import intervals
 import permutation
@@ -56,7 +57,7 @@ def provenance(results):
     return dict(
         version=ANALYSIS_VERSION,
         python_version=sys.version.split()[0],
-        source_sha256={name: file_hash(ROOT / name) for name in ("analyze.py", "grade.py", "intervals.py", "permutation.py")},
+        source_sha256={name: file_hash(ROOT / name) for name in ("analyze.py", "grade.py", "intervals.py", "permutation.py", "coverage_test.py")},
         input_sha256={name: file_hash(results / name) for name in inputs if (results / name).exists()},
         interval_method=intervals.METHOD,
         confidence=intervals.CONFIDENCE,
@@ -289,6 +290,7 @@ def fmt(v):
 def contrasts(combined, spec):
     """Explicit round-qualified pairs; never pool or pair trial indices."""
     by_key = {(c["round"], c["id"]): c for c in combined["conditions"]}
+    withheld = confirmatory_check(combined, spec)
     output = []
     family_ids = [f["id"] for f in spec["families"]]
     if len(set(family_ids)) != len(family_ids):
@@ -337,24 +339,64 @@ def contrasts(combined, spec):
             ) for t in (lt, rt)]
             item.update(status="available", low=bounds[0]["low"] - bounds[1]["high"],
                         high=bounds[0]["high"] - bounds[1]["low"], endpoints=bounds)
-        if "test" in family:
-            result["test"] = permutation_test(family, result["pairs"], by_key)
+        tests = {key: family[key] for key in TEST_KEYS if key in family}
+        if tests:
+            result["tests"] = {key: family_test(key, spec_test, family, result["pairs"], by_key, withheld)
+                               for key, spec_test in tests.items()}
         output.append(result)
     return output
 
 
-def permutation_test(family, pairs, by_key):
-    """Run the family's configured paired permutation test on its within-round pairs."""
-    test = family["test"]
-    if test.get("method") != "paired-permutation":
-        raise ValueError("Unknown contrast test method")
+TEST_KEYS = ("score_test", "distribution_test")
+
+
+def cases_digest(cases):
+    """Hash of the frozen case IDs and prompts, so a spec can pin its exact case set."""
+    return hashlib.sha256(json.dumps(sorted((c["id"], c["prompt"]) for c in cases)).encode()).hexdigest()
+
+
+def confirmatory_check(combined, spec):
+    """Reason to withhold confirmatory tests, or None when the round matches its preregistration."""
+    rule = spec.get("confirmatory")
+    if not rule:
+        return None
+    rnd = next((r for r in combined["rounds"] if r["name"] == rule["round"]), None)
+    if rnd is None:
+        return f"{rule['round']} is not among the analyzed rounds"
+    if rnd["state"] != "complete" or rnd["unfinished_jobs"] or rnd["analysis"]["inferential_status"] != "available":
+        return f"{rule['round']} is incomplete or has unreviewed labels"
+    if rnd["seed"] != rule["seed"] or rnd["cases_sha256"] != rule["cases_sha256"]:
+        return f"{rule['round']} cases differ from the preregistered case set"
+    conditions = [c for c in combined["conditions"] if c["round"] == rule["round"]]
+    if sorted(c["id"] for c in conditions) != sorted(rule["conditions"]):
+        return f"{rule['round']} conditions differ from the preregistration"
+    for c in conditions:
+        for tier, repeats in rule["repeats"].items():
+            per_case = c["tiers"].get(tier, {}).get("per_case", {})
+            if len(per_case) != rule["cases"] or any(m["n"] != repeats for m in per_case.values()):
+                return f"{c['id']} lacks {repeats} planned jobs for each of {rule['cases']} {tier} cases"
+    return None
+
+
+def family_test(key, spec_test, family, pairs, by_key, withheld):
+    """Run one configured test on a family's within-round pairs, recording results per pair."""
+    method = spec_test.get("method")
+    if (key, method) not in (("score_test", "split-batch-z"), ("distribution_test", "paired-permutation")):
+        raise ValueError(f"Unknown contrast test method {method!r} for {key}")
     tier, k = family["tier"], family["k"]
+    if method == "split-batch-z" and tier != "none":
+        raise ValueError("split-batch-z tests the no-evidence coverage score only")
+    alternative = spec_test.get("alternative", "two-sided")
+    if withheld:
+        for item in pairs:
+            item.setdefault("tests", {})[key] = dict(status="withheld", reason=withheld)
+        return dict(spec_test, status="withheld", reason=withheld)
     eligible = {}
     for item in pairs:
         if item["status"] != "available":
-            item["permutation"] = dict(status="unavailable", reason=item["reason"])
+            item.setdefault("tests", {})[key] = dict(status="unavailable", reason=item["reason"])
         elif item["left"][0] != item["right"][0]:
-            item["permutation"] = dict(status="unavailable", reason="cross-round pair; collection time is confounded with condition")
+            item.setdefault("tests", {})[key] = dict(status="unavailable", reason="cross-round pair; collection time is confounded with condition")
         else:
             left, right = (by_key[tuple(item[side])]["tiers"][tier]["per_case"] for side in ("left", "right"))
             eligible[item["id"]] = [
@@ -364,14 +406,21 @@ def permutation_test(family, pairs, by_key):
                 for cid in sorted(left)
             ]
     if not eligible:
-        return dict(test, status="unavailable", reason="no within-round pairs with inferential status")
-    out = permutation.family_test(eligible, CAUSES, k, test.get("alternative", "two-sided"),
-                                  test.get("permutations", 20000), f"{family['id']}:paired-permutation-v1")
+        return dict(spec_test, status="unavailable", reason="no within-round pairs with inferential status")
+    if method == "split-batch-z":
+        out = coverage_test.family_test({pid: [(lft, rgt) for lft, rgt, _ in cases] for pid, cases in eligible.items()},
+                                        CAUSES, k, alternative, spec_test.get("variance", "bound"),
+                                        spec_test.get("pseudo", coverage_test.PSEUDO))
+        extra = dict(variance=out["variance"], pseudo=out["pseudo"])
+    else:
+        out = permutation.family_test(eligible, CAUSES, k, alternative, spec_test.get("permutations", 20000),
+                                      f"{family['id']}:paired-permutation-v1")
+        extra = dict(permutations=out["permutations"], seed=out["seed"])
     for item in pairs:
         if item["id"] in out["pairs"]:
-            item["permutation"] = dict(status="available", **out["pairs"][item["id"]])
-    return dict(test, status="available", method_detail=out["method"], alternative=out["alternative"],
-                permutations=out["permutations"], seed=out["seed"], pooled=out["pooled"])
+            item.setdefault("tests", {})[key] = dict(status="available", **out["pairs"][item["id"]])
+    return dict(spec_test, status="available", method_detail=out["method"], alternative=alternative,
+                pooled=out["pooled"], **extra)
 
 
 def uncertainty_report(combined):
@@ -416,7 +465,7 @@ def uncertainty_report(combined):
             lines.append(f"| {name} | {pair['mean']:+.3f} | [{pair['low']:.3f}, {pair['high']:.3f}] | "
                          f"[{b['low']:.3f}, {b['high']:.3f}] | {loo_text} |")
         lines.append("")
-        lines += permutation_lines(family)
+        lines += test_lines(family)
     lines += ["The companion `summary.json` contains every k, individual scenario scores and paired effects "
               "and leave-one-out estimates, input/source hashes, assumptions and inference status. "
               "For six scenarios, the sensitivity calculation enumerates all 46,656 ordered cluster resamples exactly. "
@@ -424,31 +473,64 @@ def uncertainty_report(combined):
     return "\n".join(lines)
 
 
-def permutation_lines(family):
-    test = family.get("test")
-    if not test:
+TEST_TEXT = {
+    "score_test": ("Score test", "tests the pass@k difference itself"),
+    "distribution_test": ("Distribution test", "tests whether the two label distributions are equal on each prompt; "
+                          "a rejection means the conditions behave differently, not that their scores differ"),
+}
+
+
+def test_lines(family):
+    """Tables for configured tests, always showing raw and Holm-adjusted p-values together."""
+    tests = family.get("tests")
+    if not tests:
         return []
-    lines = [f"#### Paired permutation test ({test['alternative']})", ""]
-    if test["status"] != "available":
-        return lines + [f"Unavailable: {test['reason']}.", ""]
-    lines += [
-        f"{test['permutations']:,} within-case label permutations with seed `{test['seed']}`. "
-        "Unlike the bound above, this test pairs the two conditions on each case and uses every answer. "
-        "It conditions on these fixed prompts and needs both conditions from the same round. "
-        "Pair p-values are Holm-adjusted within the family.", "",
-        "| Left minus right | Estimate | p | Holm p |",
-        "|---|---:|---:|---:|",
-    ]
+    lines = ["#### Paired tests on within-round pairs", ""]
+    for key, test in tests.items():
+        title, meaning = TEST_TEXT[key]
+        alpha = f", alpha {test['alpha']}" if "alpha" in test else ""
+        detail = ""
+        if "permutations" in test:
+            detail = f" {test['permutations']:,} permutations, seed `{test['seed']}`."
+        elif "variance" in test:
+            detail = f" Variance: {test['variance']}" + (f" (pseudo count {test['pseudo']})." if test.get("pseudo") is not None else ".")
+        lines.append(f"- **{title}** ({test['alternative']}{alpha}): {meaning}.{detail}")
+    lines += ["", "Raw p is for one comparison alone; Holm p adjusts for every pair in the family. "
+              "Both condition on these fixed prompts. Cells that vary counts condition-case cells with "
+              "more than one outcome; a result carried by one or two such cells is fragile.", ""]
+    keys = list(tests)
+    header = "| Left minus right | Estimate | Cells that vary |"
+    rule = "|---|---:|---:|"
+    for key in keys:
+        title = TEST_TEXT[key][0]
+        header += f" {title} raw p | {title} Holm p |"
+        rule += "---:|---:|"
+    lines += [header, rule]
     for pair in family["pairs"]:
         name = " / ".join(pair["left"]) + " minus " + " / ".join(pair["right"])
-        p = pair["permutation"]
-        if p["status"] != "available":
-            lines.append(f"| {name} | n/a | {p['reason']} | n/a |")
+        results = [pair.get("tests", {}).get(key, {}) for key in keys]
+        available = [r for r in results if r.get("status") == "available"]
+        estimate = f"{available[0]['statistic']:+.3f}" if available else "n/a"
+        score = pair.get("tests", {}).get("score_test", {})
+        varying = f"{score['varying_cells']} of {score['cells']}" if "varying_cells" in score else "n/a"
+        cells = [varying]
+        for r in results:
+            if r.get("status") == "available":
+                cells += [fmt_p(r["p"]), fmt_p(r["p_holm"])]
+            else:
+                cells += [r.get("reason", "n/a"), "n/a"]
+        lines.append(f"| {name} | {estimate} | " + " | ".join(cells) + " |")
+    lines.append("")
+    for key, test in tests.items():
+        title = TEST_TEXT[key][0]
+        if test["status"] != "available":
+            lines.append(f"{title}: {test['status']} ({test['reason']}).")
         else:
-            lines.append(f"| {name} | {p['statistic']:+.3f} | {fmt_p(p['p'])} | {fmt_p(p['p_holm'])} |")
-    pooled = test["pooled"]
-    lines += ["", f"Pooled over {len(pooled['pairs'])} tested pairs: mean difference {pooled['statistic']:+.3f}, "
-              f"p {fmt_p(pooled['p'], prefix='= ')}.", ""]
+            pooled = test["pooled"]
+            se = f", SE {pooled['se']:.3f}" if "se" in pooled else ""
+            lines.append(f"{title}, pooled over {len(pooled['pairs'])} tested pairs: mean difference "
+                         f"{pooled['statistic']:+.3f}{se}, p {fmt_p(pooled['p'], prefix='= ')}.")
+        lines.append("")
     return lines
 
 
@@ -589,6 +671,7 @@ def main(argv=None):
         combined["rounds"].append(dict(
             name=results.name, seed=plan["seed"], state=plan.get("state", "unknown"),
             unfinished_jobs=plan.get("unfinished_jobs", 0), repeats=plan["repeats"],
+            cases_sha256=cases_digest(plan["cases"]),
             label_sources=summary["label_sources"],
             analysis=summary["analysis"],
         ))

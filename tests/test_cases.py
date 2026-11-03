@@ -95,6 +95,15 @@ class CaseTest(unittest.TestCase):
         self.assertEqual(built, cases.build("test-seed", tiers=("none",), none_variants=len(CAUSES)))
         with self.assertRaises(ValueError):
             cases.build("test-seed", none_variants=2)
+        published = {c["scenario"]: [c["change_order"]] for c in cases.build("test-seed") if c["tier"] == "none"}
+        eight = cases.build("test-seed", tiers=("none",), none_variants=8, exclude_orders=published)
+        self.assertEqual(len(eight), len(SCENARIOS) * 8)
+        for s in SCENARIOS:
+            orders = [tuple(c["change_order"]) for c in eight if c["scenario"] == s["id"]]
+            self.assertEqual(len(set(orders)), 8)
+            self.assertNotIn(tuple(published[s["id"]][0]), orders)
+            for position in range(len(CAUSES)):
+                self.assertEqual(sorted(o[position] for o in orders), sorted(CAUSES * 2))
         with self.assertRaises(ValueError):
             cases.build("test-seed", tiers=("sometimes",))
 

@@ -145,21 +145,46 @@ class AnalysisTest(unittest.TestCase):
         combined = dict(conditions=[dict(c, round="round-a") for c in s["conditions"]])
         combined["conditions"] += [dict(c, round="round-b") for c in s["conditions"]]
         spec = dict(families=[dict(id="test", tier="none", k=10, alpha=.05,
-                                   test=dict(method="paired-permutation", alternative="less", permutations=99),
+                                   score_test=dict(method="split-batch-z", alternative="less", alpha=.025),
+                                   distribution_test=dict(method="paired-permutation", alternative="less", permutations=99),
                                    pairs=[dict(id="within", left=["round-a", "a"], right=["round-a", "b"]),
                                           dict(id="across", left=["round-b", "a"], right=["round-a", "b"])])])
         f = analyze.contrasts(combined, spec)[0]
         within, across = f["pairs"]
-        self.assertEqual(within["permutation"]["status"], "available")
-        self.assertAlmostEqual(within["permutation"]["statistic"], within["mean"])
-        self.assertEqual(within["permutation"]["p"], 1 / 100)
-        self.assertIn("cross-round", across["permutation"]["reason"])
-        self.assertEqual(f["test"]["pooled"]["pairs"], ["within"])
-        text = "\n".join(analyze.permutation_lines(f))
-        self.assertIn("Pooled over 1 tested pairs", text)
-        spec["families"][0]["test"]["method"] = "t-test"
+        perm, score = within["tests"]["distribution_test"], within["tests"]["score_test"]
+        self.assertEqual(perm["status"], "available")
+        self.assertAlmostEqual(perm["statistic"], within["mean"])
+        self.assertAlmostEqual(score["statistic"], within["mean"])
+        self.assertEqual(perm["p"], 1 / 100)
+        self.assertLess(score["p"], .001)
+        self.assertIn("cross-round", across["tests"]["score_test"]["reason"])
+        self.assertEqual(f["tests"]["distribution_test"]["pooled"]["pairs"], ["within"])
+        text = "\n".join(analyze.test_lines(f))
+        self.assertIn("Score test raw p | Score test Holm p | Distribution test raw p | Distribution test Holm p", text)
+        self.assertIn("Score test, pooled over 1 tested pairs", text)
+        spec["families"][0]["distribution_test"]["method"] = "t-test"
         with self.assertRaisesRegex(ValueError, "Unknown contrast test"):
             analyze.contrasts(combined, spec)
+
+    def test_confirmatory_tests_fail_closed(self):
+        _, s = analyze.summarize(self.input)
+        rnd = dict(name="round-a", seed="test", state="complete", unfinished_jobs=0,
+                   analysis=dict(inferential_status="available"),
+                   cases_sha256=analyze.cases_digest(self.plan["cases"]))
+        combined = dict(rounds=[rnd], conditions=[dict(c, round="round-a") for c in s["conditions"]])
+        rule = dict(round="round-a", seed="test", cases_sha256=rnd["cases_sha256"], conditions=["a", "b"],
+                    repeats=dict(none=20), cases=1)
+        spec = dict(confirmatory=rule, families=[dict(
+            id="c", tier="none", k=10, alpha=.025, score_test=dict(method="split-batch-z", alternative="less"),
+            pairs=[dict(id="p", left=["round-a", "a"], right=["round-a", "b"])])])
+        self.assertEqual(analyze.contrasts(combined, spec)[0]["tests"]["score_test"]["status"], "available")
+        for change in (dict(seed="other"), dict(conditions=["a"]), dict(cases=2), dict(repeats=dict(none=19))):
+            bad = dict(spec, confirmatory=dict(rule, **change))
+            family = analyze.contrasts(combined, bad)[0]
+            self.assertEqual(family["tests"]["score_test"]["status"], "withheld")
+            self.assertEqual(family["pairs"][0]["tests"]["score_test"]["status"], "withheld")
+        rnd["state"] = "stopped"
+        self.assertIn("incomplete", analyze.confirmatory_check(combined, spec))
 
     def test_label_permutation_preserves_none_score(self):
         case = dict(truth=None, candidates=analyze.CAUSES)

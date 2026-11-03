@@ -13244,10 +13244,11 @@
   "version": "fixed-prompt-ci-v3",
   "python_version": "3.12.13",
   "source_sha256": {
-   "analyze.py": "90722df698da22b690efe4d53b9c2ef045e2f78a86dba4d55a013d4963e2669e",
+   "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
    "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
    "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
-   "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396"
+   "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",
+   "coverage_test.py": "bee1f2471920cf459492ed34e6e7a72af5faed7315e5561546e33c54b1242b20"
   },
   "input_sha256": {
    "plan.json": "c9766a7c762fd168bf14019458569d44a153694417c6e9b1a9916fdb776a54b7",

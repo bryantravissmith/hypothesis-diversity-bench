@@ -157,14 +157,16 @@ def latin_orders(items, rng):
     return [[symbols[(rows[r] + cols[c]) % n] for c in range(n)] for r in range(n)]
 
 
-def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1):
+def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1, exclude_orders=None):
     """Build the case set. With none_variants > 1, each scenario gets that many
-    no-evidence cases whose change orders come from a Latin square, so every
-    change appears in every list position equally often."""
+    no-evidence cases whose change orders come from Latin squares, so every
+    change appears in every list position equally often. exclude_orders maps a
+    scenario ID to change orders already run; variants never repeat them or
+    each other, so every variant prompt is new."""
     data = load_scenarios(scenarios_path)
     causes = data["causes"]
-    if none_variants not in (1, len(causes)):
-        raise ValueError(f"none_variants must be 1 or {len(causes)}")
+    if none_variants != 1 and (none_variants < 1 or none_variants % len(causes)):
+        raise ValueError(f"none_variants must be 1 or a multiple of {len(causes)}")
     if not tiers or set(tiers) - set(TIERS):
         raise ValueError(f"tiers must be a non-empty subset of {TIERS}")
     cases = []
@@ -175,8 +177,18 @@ def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1):
         elif none_variants == 1:
             orders = [(f"{sid}--none", _rng(seed, sid, "none").sample(causes, len(causes)))]
         else:
-            square = latin_orders(causes, _rng(seed, sid, "none", "latin"))
-            orders = [(f"{sid}--none--v{i}", order) for i, order in enumerate(square, 1)]
+            used = {tuple(o) for o in (exclude_orders or {}).get(sid, [])}
+            variants, attempt = [], 0
+            while len(variants) < none_variants:
+                square = latin_orders(causes, _rng(seed, sid, "none", "latin", attempt))
+                attempt += 1
+                if attempt > 10_000:
+                    raise ValueError(f"Cannot find {none_variants} new change orders for {sid}")
+                if any(tuple(order) in used for order in square):
+                    continue
+                used.update(tuple(order) for order in square)
+                variants += square
+            orders = [(f"{sid}--none--v{i}", order) for i, order in enumerate(variants, 1)]
         for case_id, changes in orders:
             cases.append(
                 dict(

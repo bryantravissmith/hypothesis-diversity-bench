@@ -110,20 +110,25 @@ Family alpha 0.05; 12 unique endpoints; endpoint alpha 0.004167.
 | round-003 / gpt-6.1-terra-max minus round-003 / gpt-6.1-terra-medium | -0.062 | [-0.793, 0.730] | [-0.186, 0.000] | [-0.075, -0.001] |
 | round-004 / gpt-6-astra-max minus round-004 / gpt-6-astra-medium | +0.042 | [-0.714, 0.756] | [0.000, 0.125] | [0.000, 0.050] |
 
-#### Paired permutation test (two-sided)
+#### Paired tests on within-round pairs
 
-20,000 within-case label permutations with seed `plain-effort-max-minus-medium:paired-permutation-v1`. Unlike the bound above, this test pairs the two conditions on each case and uses every answer. It conditions on these fixed prompts and needs both conditions from the same round. Pair p-values are Holm-adjusted within the family.
+- **Score test** (two-sided): tests the pass@k difference itself. Variance: bound.
+- **Distribution test** (two-sided): tests whether the two label distributions are equal on each prompt; a rejection means the conditions behave differently, not that their scores differ. 20,000 permutations, seed `plain-effort-max-minus-medium:paired-permutation-v1`.
 
-| Left minus right | Estimate | p | Holm p |
-|---|---:|---:|---:|
-| round-001 / opus-5.5-max minus round-001 / opus-5.5-medium | -0.083 | < 0.0001 | 0.0003 |
-| round-002 / gpt-5.6-sol-max minus round-002 / gpt-5.6-sol-medium | -0.021 | 0.7585 | 0.9977 |
-| round-002 / gpt-6-sol-max minus round-002 / gpt-6-sol-medium | -0.037 | 0.2345 | 0.7035 |
-| round-002 / gpt-6.1-sol-max minus round-002 / gpt-6.1-sol-medium | -0.021 | 0.4988 | 0.9977 |
-| round-003 / gpt-6.1-terra-max minus round-003 / gpt-6.1-terra-medium | -0.062 | 0.0008 | 0.0032 |
-| round-004 / gpt-6-astra-max minus round-004 / gpt-6-astra-medium | +0.042 | 0.0002 | 0.0010 |
+Raw p is for one comparison alone; Holm p adjusts for every pair in the family. Both condition on these fixed prompts. Cells that vary counts condition-case cells with more than one outcome; a result carried by one or two such cells is fragile.
 
-Pooled over 6 tested pairs: mean difference -0.030, p = 0.0001.
+| Left minus right | Estimate | Cells that vary | Score test raw p | Score test Holm p | Distribution test raw p | Distribution test Holm p |
+|---|---:|---:|---:|---:|---:|---:|
+| round-001 / opus-5.5-max minus round-001 / opus-5.5-medium | -0.083 | 4 of 12 | < 0.0001 | < 0.0001 | < 0.0001 | 0.0003 |
+| round-002 / gpt-5.6-sol-max minus round-002 / gpt-5.6-sol-medium | -0.021 | 3 of 12 | 0.5637 | 1.0000 | 0.7585 | 0.9977 |
+| round-002 / gpt-6-sol-max minus round-002 / gpt-6-sol-medium | -0.037 | 1 of 12 | < 0.0001 | 0.0004 | 0.2345 | 0.7035 |
+| round-002 / gpt-6.1-sol-max minus round-002 / gpt-6.1-sol-medium | -0.021 | 4 of 12 | 0.5637 | 1.0000 | 0.4988 | 0.9977 |
+| round-003 / gpt-6.1-terra-max minus round-003 / gpt-6.1-terra-medium | -0.062 | 3 of 12 | 0.0033 | 0.0100 | 0.0008 | 0.0032 |
+| round-004 / gpt-6-astra-max minus round-004 / gpt-6-astra-medium | +0.042 | 1 of 12 | < 0.0001 | < 0.0001 | 0.0002 | 0.0010 |
+
+Score test, pooled over 6 tested pairs: mean difference -0.030, SE 0.009, p = 0.0011.
+
+Distribution test, pooled over 6 tested pairs: mean difference -0.030, p = 0.0001.
 
 ### meta-minus-plain: none pass@10
 
@@ -138,19 +143,24 @@ Family alpha 0.05; 12 unique endpoints; endpoint alpha 0.004167.
 | round-004 / gpt-6-astra-medium-meta minus round-004 / gpt-6-astra-medium | +0.000 | [-0.722, 0.722] | [0.000, 0.000] | [0.000, 0.000] |
 | round-004 / gpt-6-astra-max-meta minus round-004 / gpt-6-astra-max | -0.021 | [-0.752, 0.731] | [-0.062, 0.000] | [-0.025, 0.000] |
 
-#### Paired permutation test (two-sided)
+#### Paired tests on within-round pairs
 
-20,000 within-case label permutations with seed `meta-minus-plain:paired-permutation-v1`. Unlike the bound above, this test pairs the two conditions on each case and uses every answer. It conditions on these fixed prompts and needs both conditions from the same round. Pair p-values are Holm-adjusted within the family.
+- **Score test** (two-sided): tests the pass@k difference itself. Variance: bound.
+- **Distribution test** (two-sided): tests whether the two label distributions are equal on each prompt; a rejection means the conditions behave differently, not that their scores differ. 20,000 permutations, seed `meta-minus-plain:paired-permutation-v1`.
 
-| Left minus right | Estimate | p | Holm p |
-|---|---:|---:|---:|
-| round-004 / gpt-6.1-sol-medium-meta minus round-002 / gpt-6.1-sol-medium | n/a | cross-round pair; collection time is confounded with condition | n/a |
-| round-004 / gpt-6.1-sol-max-meta minus round-002 / gpt-6.1-sol-max | n/a | cross-round pair; collection time is confounded with condition | n/a |
-| round-004 / gpt-6.1-terra-medium-meta minus round-003 / gpt-6.1-terra-medium | n/a | cross-round pair; collection time is confounded with condition | n/a |
-| round-004 / gpt-6.1-terra-max-meta minus round-003 / gpt-6.1-terra-max | n/a | cross-round pair; collection time is confounded with condition | n/a |
-| round-004 / gpt-6-astra-medium-meta minus round-004 / gpt-6-astra-medium | +0.000 | 1.0000 | 1.0000 |
-| round-004 / gpt-6-astra-max-meta minus round-004 / gpt-6-astra-max | -0.021 | 0.0012 | 0.0024 |
+Raw p is for one comparison alone; Holm p adjusts for every pair in the family. Both condition on these fixed prompts. Cells that vary counts condition-case cells with more than one outcome; a result carried by one or two such cells is fragile.
 
-Pooled over 2 tested pairs: mean difference -0.010, p = 0.0012.
+| Left minus right | Estimate | Cells that vary | Score test raw p | Score test Holm p | Distribution test raw p | Distribution test Holm p |
+|---|---:|---:|---:|---:|---:|---:|
+| round-004 / gpt-6.1-sol-medium-meta minus round-002 / gpt-6.1-sol-medium | n/a | n/a | cross-round pair; collection time is confounded with condition | n/a | cross-round pair; collection time is confounded with condition | n/a |
+| round-004 / gpt-6.1-sol-max-meta minus round-002 / gpt-6.1-sol-max | n/a | n/a | cross-round pair; collection time is confounded with condition | n/a | cross-round pair; collection time is confounded with condition | n/a |
+| round-004 / gpt-6.1-terra-medium-meta minus round-003 / gpt-6.1-terra-medium | n/a | n/a | cross-round pair; collection time is confounded with condition | n/a | cross-round pair; collection time is confounded with condition | n/a |
+| round-004 / gpt-6.1-terra-max-meta minus round-003 / gpt-6.1-terra-max | n/a | n/a | cross-round pair; collection time is confounded with condition | n/a | cross-round pair; collection time is confounded with condition | n/a |
+| round-004 / gpt-6-astra-medium-meta minus round-004 / gpt-6-astra-medium | +0.000 | 0 of 12 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| round-004 / gpt-6-astra-max-meta minus round-004 / gpt-6-astra-max | -0.021 | 2 of 12 | 0.3174 | 0.6348 | 0.0012 | 0.0024 |
+
+Score test, pooled over 2 tested pairs: mean difference -0.010, SE 0.010, p = 0.3174.
+
+Distribution test, pooled over 2 tested pairs: mean difference -0.010, p = 0.0012.
 
 The companion `summary.json` contains every k, individual scenario scores and paired effects and leave-one-out estimates, input/source hashes, assumptions and inference status. For six scenarios, the sensitivity calculation enumerates all 46,656 ordered cluster resamples exactly. It retains all case variants in a selected scenario and preserves their case weights.

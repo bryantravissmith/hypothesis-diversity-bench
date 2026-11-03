@@ -1,13 +1,18 @@
 {
-  "version": 2,
-  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered. The two-sided paired permutation test was added in version 2, also after observing these data.",
+  "version": 3,
+  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered. Paired tests were added after observing these data: version 2 added the distribution test, version 3 the score test.",
   "families": [
     {
       "id": "plain-effort-max-minus-medium",
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
-      "test": {
+      "score_test": {
+        "method": "split-batch-z",
+        "alternative": "two-sided",
+        "variance": "bound"
+      },
+      "distribution_test": {
         "method": "paired-permutation",
         "alternative": "two-sided",
         "permutations": 20000
@@ -86,7 +91,12 @@
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
-      "test": {
+      "score_test": {
+        "method": "split-batch-z",
+        "alternative": "two-sided",
+        "variance": "bound"
+      },
+      "distribution_test": {
         "method": "paired-permutation",
         "alternative": "two-sided",
         "permutations": 20000

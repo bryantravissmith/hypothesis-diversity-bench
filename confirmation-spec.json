@@ -1,32 +1,38 @@
 {
-  "version": 1,
-  "selection": "Preregistered before any round-005 inference. Hypotheses come from the exploratory paired tests on rounds 001-004; round-005 uses new cases and fresh samples.",
-  "round": "round-005",
-  "plan": {
-    "seed": "2f6412b4e27271a5",
+  "version": 2,
+  "selection": "Preregistered before any round-005 inference. Version 2 replaces the unrun version 1 after an external review: the primary test now targets the pass@10 difference, effort is the only confirmatory claim, and every prompt is new.",
+  "confirmatory": {
+    "round": "round-005",
+    "seed": "0b919a6c8400878d",
     "tiers": ["none"],
-    "none_variants": 4,
+    "none_variants": 8,
+    "cases": 48,
+    "cases_sha256": "cb589344897c8afb852142fd8d0dd9e346695a284deaec13b8d9c437d1faab90",
     "repeats": {"none": 20},
+    "novel_against": ["results/round-001/plan.json", "results/round-002/plan.json", "results/round-003/plan.json", "results/round-004/plan.json"],
     "conditions": [
-      "opus-5.5-medium", "opus-5.5-max", "opus-5.5-medium-meta", "opus-5.5-max-meta",
+      "opus-5.5-medium", "opus-5.5-max",
       "gpt-6.1-terra-medium", "gpt-6.1-terra-max", "gpt-6.1-terra-medium-meta", "gpt-6.1-terra-max-meta",
       "gpt-6-astra-medium", "gpt-6-astra-max", "gpt-6-astra-medium-meta", "gpt-6-astra-max-meta"
     ]
   },
   "decision": [
-    "Primary 1 (effort): the pooled one-sided paired permutation p for plain max minus medium no-evidence pass@10, averaged over Opus 5.5, GPT-6.1 Terra and GPT-6 Astra, is at most 0.05.",
-    "Primary 2 (meta prompt): the pooled two-sided paired permutation p for meta minus plain no-evidence pass@10 over all six model-effort pairs is at most 0.05; the sign of the pooled estimate gives the direction.",
-    "Each primary family has its own 5% error rate. Per-model results are secondary and use Holm-adjusted p within their family.",
-    "Every planned job counts; invalid answers are misses. If the round stops early, the confirmatory tests are not reported.",
+    "Confirmatory claim (effort): the pooled one-sided score test of plain max minus medium no-evidence pass@10, averaged equally over Opus 5.5, GPT-6.1 Terra and GPT-6 Astra, has p <= 0.05.",
+    "Per-model effort results are secondary: each is claimed only if the pooled test passes and its Holm-adjusted one-sided score-test p is <= 0.05. Raw and Holm p are reported together.",
+    "The meta-prompt family is exploratory. Its estimates and both tests are reported with raw and Holm p, and no confirmatory claim is made from it.",
+    "The distribution test is reported for every pair as a secondary result. A rejection means the conditions behave differently, not that their scores differ.",
+    "Every planned job counts; invalid answers are misses. If the round does not complete with all 10 conditions, 48 cases and 20 runs per cell, every test is withheld. An aborted round is published as stopped; this specification is not reused for a rerun.",
     "Conservative fixed-prompt bounds and scenario sensitivity are reported alongside, as for earlier rounds."
   ],
   "families": [
     {
       "id": "confirm-effort-max-minus-medium",
+      "role": "confirmatory",
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
-      "test": {"method": "paired-permutation", "alternative": "less", "permutations": 20000},
+      "score_test": {"method": "split-batch-z", "alternative": "less", "variance": "bound", "alpha": 0.05},
+      "distribution_test": {"method": "paired-permutation", "alternative": "two-sided", "permutations": 20000},
       "pairs": [
         {"id": "opus-5.5", "left": ["round-005", "opus-5.5-max"], "right": ["round-005", "opus-5.5-medium"]},
         {"id": "gpt-6.1-terra", "left": ["round-005", "gpt-6.1-terra-max"], "right": ["round-005", "gpt-6.1-terra-medium"]},
@@ -34,14 +40,14 @@
       ]
     },
     {
-      "id": "confirm-meta-minus-plain",
+      "id": "explore-meta-minus-plain",
+      "role": "exploratory",
       "tier": "none",
       "k": 10,
       "alpha": 0.05,
-      "test": {"method": "paired-permutation", "alternative": "two-sided", "permutations": 20000},
+      "score_test": {"method": "split-batch-z", "alternative": "two-sided", "variance": "bound"},
+      "distribution_test": {"method": "paired-permutation", "alternative": "two-sided", "permutations": 20000},
       "pairs": [
-        {"id": "opus-5.5-medium", "left": ["round-005", "opus-5.5-medium-meta"], "right": ["round-005", "opus-5.5-medium"]},
-        {"id": "opus-5.5-max", "left": ["round-005", "opus-5.5-max-meta"], "right": ["round-005", "opus-5.5-max"]},
         {"id": "gpt-6.1-terra-medium", "left": ["round-005", "gpt-6.1-terra-medium-meta"], "right": ["round-005", "gpt-6.1-terra-medium"]},
         {"id": "gpt-6.1-terra-max", "left": ["round-005", "gpt-6.1-terra-max-meta"], "right": ["round-005", "gpt-6.1-terra-max"]},
         {"id": "gpt-6-astra-medium", "left": ["round-005", "gpt-6-astra-medium-meta"], "right": ["round-005", "gpt-6-astra-medium"]},
