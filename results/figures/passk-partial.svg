@@ -15,11 +15,11 @@
 <text x="174.5" y="428" text-anchor="middle" fill="#6e6e73">2</text>
 <text x="293.0" y="428" text-anchor="middle" fill="#6e6e73">3</text>
 <text x="530.0" y="428" text-anchor="middle" fill="#6e6e73">5</text>
-<text x="293.0" y="446" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>
-<text transform="translate(14 225.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>
+<text x="293.0" y="446" text-anchor="middle" fill="#1d1d1f">Runs (k)</text>
+<text transform="translate(14 225.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance assigned truth appears (pass@k)</text>
 <polyline points="56.0,225.0 174.5,225.0 293.0,225.0 411.5,225.0 530.0,225.0" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
 <line x1="546" y1="350" x2="570" y2="350" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
-<text x="576" y="354" fill="#6e6e73">Always the same of the 2 left</text>
+<text x="576" y="354" fill="#6e6e73">Random once, then repeat</text>
 <polyline points="56.0,225.0 174.5,132.5 293.0,86.2 411.5,63.1 530.0,51.6" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="8 3 2 3"/>
 <line x1="546" y1="370" x2="570" y2="370" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="8 3 2 3"/>
 <text x="576" y="374" fill="#6e6e73">Random pick of 2 on every run</text>

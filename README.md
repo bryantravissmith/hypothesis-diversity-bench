@@ -1,36 +1,27 @@
 # Hypothesis Diversity Bench
 
-When you run an analysis agent several times, do you get several analyses?
+This benchmark measures how much cause coverage repeated model calls provide
+when asked for the single most likely explanation of a business metric drop.
+It runs six synthetic business scenarios with no, partial or full diagnostic
+evidence and scores the cause category named in each answer.
 
-Teams scale agent analysis by running it again: parallel investigators, a
-second opinion, self-consistency, best-of-k with a check. All of these assume
-that independent runs explore different explanations. This benchmark measures
-whether they do, on root-cause questions where an analyst would normally
-consider several causes.
-
-It is a companion to [Random Number Bench](https://github.com/bryantravissmith/random-number-bench),
-which found that many current models answer "pick a random number from 1 to
-10" with the same number almost every time, while older models such as GPT-4o
-and DeepSeek V3.2 spread their answers. The spread is not simply old versus
-new: GPT-6 Sol and GPT-6.1 Terra answer close to uniformly, while GPT-5.6 Sol
-and GPT-6.1 Sol say 7 nearly every time. This benchmark asks whether that
-collapse carries over to analysis, what it costs, and whether random-number
-spread predicts hypothesis spread.
-
-**[Results](RESULTS.md)** · [Findings](#findings) · [Design](#design) · [Run it](#run-a-round)
+**[Results and interpretation](RESULTS_NOTES.md)** · [Full results](RESULTS.md) · [Confidence intervals](docs/INTERVALS.md) · [Run it](#run-a-round)
 
 ## Findings
 
-First rounds, 2026-11-01: 13 conditions, 54 cases, 3,744 answers, all valid.
-Brackets in [RESULTS.md](RESULTS.md) give 95% intervals over cases.
+Rounds 001-004 contain 21 model/effort/prompt conditions and 54 base cases.
+Collection on November 1-2, 2026 (America/Los_Angeles) produced 6,048 valid
+final answers from 6,060 physical attempts, including 12 operational failures.
 
-![pass@k with no evidence](results/figures/passk-none.svg)
+**High concentration with no evidence.** GPT-6 Sol at max effort selected the
+same category in all 20 answers for each of the six prompts. Its pass@10
+and pass@1 both equal 0.25. Across the tested GPT conditions with medium/max
+effort and Opus, pass@10 ranges from 0.25 to 0.37; GPT-4o and the two DeepSeek
+conditions score approximately 0.48-0.50.
 
-**1. Running a current model again mostly repeats its first answer.** With no
-evidence, a model that always gives one answer finds the true cause 25% of
-the time at any number of runs. After 10 runs:
+![No-evidence pass@k](results/figures/passk-none.svg)
 
-| Condition | Effective causes per case | pass@1 | pass@10 |
+| Selected plain condition | Effective causes per case | pass@1 | pass@10 |
 | --- | ---: | ---: | ---: |
 | DeepSeek R1-0528 | 1.77 | 0.25 | 0.50 |
 | GPT-4o | 1.84 | 0.25 | 0.49 |
@@ -38,192 +29,161 @@ the time at any number of runs. After 10 runs:
 | Claude Opus 5.5, medium | 1.47 | 0.25 | 0.37 |
 | GPT-6.1 Terra, medium | 1.35 | 0.25 | 0.35 |
 | GPT-6.1 Sol, medium | 1.11 | 0.25 | 0.31 |
-| Claude Opus 5.5, max | 1.16 | 0.25 | 0.29 |
-| GPT-5.6 Sol, medium | 1.07 | 0.25 | 0.29 |
 | GPT-6 Sol, max | 1.00 | 0.25 | 0.25 |
+| GPT-6 Astra, medium | 1.00 | 0.25 | 0.25 |
 
-Every condition ties at one run. The older models double their chance by ten
-runs; GPT-6 Sol at max effort gave the same cause in all 20 answers for every
-case, so ten runs are worth exactly one.
+The no-evidence score averages coverage over four equally weighted causes.
+Every single-category answer scores 0.25 at k=1. Independent uniform choices
+across all four causes reach 0.9437 at k=10. The figure shows point estimates;
+[the tables](RESULTS.md) include 95% confidence intervals.
 
-**2. More effort means less exploration.** For every model run at both
-settings, max effort lowered pass@10: Opus 0.37 to 0.29, GPT-6.1 Terra 0.35 to
-0.29, GPT-6.1 Sol 0.31 to 0.29, GPT-5.6 Sol 0.29 to 0.27, GPT-6 Sol 0.29 to 0.25.
+**Effort effects vary.** Max effort has a lower no-evidence pass@10 estimate
+in five of six plain-prompt comparisons; Astra rises from 0.250 to 0.292.
+All six adjusted difference intervals include zero. The six sampling-prefix
+comparisons also have intervals spanning zero.
 
-**3. Each vendor has a house story.** Across all six businesses, Opus blames
-the tracking change (89 of 120 answers at medium, 112 at max). Every current
-GPT model blames the release (79 to 100 of 120). GPT-4o and DeepSeek V3.2 are
-the only conditions that regularly name the pricing or policy change (51 and
-18 of 120), and the new traffic source is rare everywhere (at most 17 of 120,
-for Opus at medium).
+**Cause preferences differ.** Opus primarily selects tracking, while the GPT
+conditions with medium/max effort primarily select releases.
 
-**4. Random-number spread does not predict hypothesis spread.** GPT-6 Sol and
-GPT-6.1 Terra answer "random number from 1 to 10" almost uniformly in Random
-Number Bench (about 9.4 to 9.8 effective answers at medium effort and above),
-yet here they are among the most repetitive conditions. The older models that
-spread here also spread numbers, so the number test can flag a collapsed
-model but cannot certify a diverse one.
-
-**5. When evidence narrows the field, current models still lean on their
-default.** With two causes ruled out, current models almost never name an
-excluded cause (0 to 6%), but at one run they land near a coin flip (0.46 to
-0.58), and the GPT models score 0.83 when the release is the true cause versus
-0.17 to 0.47 for policy. DeepSeek R1 does best (0.58 at one run, 0.75 at five).
-GPT-4o and DeepSeek V3.2 name an excluded cause 19% and 38% of the time, so
-their spread is partly noise.
-
-**6. Every current model reads decisive evidence correctly.** When the
-breakdowns identify the cause, all current conditions are right in every
-answer; GPT-4o and DeepSeek V3.2 score 0.92 and 0.88.
-
-**What it means for analysis agents.** Current models are better analysts per
-answer and worse explorers across answers. On an underdetermined question,
-parallel runs, second opinions and self-consistency votes from the same model
-are not independent: they mostly restate the model's default story, and
-higher effort makes that stronger. If coverage matters, ask for the
-alternatives explicitly in one run, vary the model, or supply the
-discriminating evidence, rather than relying on resampling.
-
-## The question
-
-Each case describes a metric that dropped and four changes that landed around
-the same time, always one of each type:
-
-| Cause type | Example (online store) |
-| --- | --- |
-| Release | A new site release to 90% of visitors, with a random 10% holdout |
-| Traffic mix | A new paid social campaign |
-| Tracking | A new tag manager configuration |
-| Pricing or policy | Free shipping limited to orders of $50 or more |
-
-The model names the single most likely cause and one check that would confirm
-or rule it out. Every run is a fresh session with the same prompt.
+**Evidence compliance improves with decisive diagnostics.** Under partial
+evidence, GPT conditions with medium/max effort and Opus select excluded
+causes in approximately 0-6% of answers, compared with 19% for GPT-4o and 38%
+for DeepSeek V3.2. With full evidence, every GPT condition with medium/max
+effort, Opus and DeepSeek R1 scores 48/48; GPT-4o scores 44/48 and V3.2 scores
+42/48. A score of 48/48 has a pass@1 95% CI of [0.926, 1.000].
 
 ## Design
 
-Six scenarios (online store, SaaS, mobile app, food delivery, vacation rentals,
-news subscriptions) appear in three evidence tiers.
+Each prompt describes a metric drop and four changes: a release, traffic mix,
+tracking, and pricing/policy. The six settings are an online store, SaaS,
+mobile app, food delivery, vacation rentals and news subscriptions. The model
+returns one hypothesis and one diagnostic check. Scoring uses the hypothesis's
+cause category.
 
-- **None.** Only the headline drop and the change log. The true cause cannot be
-  identified, so a model that always gives the same answer finds the true
-  cause in 25% of cases however many times it runs. A model that spreads its
-  answers finds it more often as runs are added. This is the coverage test.
-- **Partial.** Diagnostic breakdowns rule out two causes and leave the true
-  cause plus one alternative. This tests whether models use evidence, and
-  whether repeated runs cover the two that remain.
-- **Full.** Breakdowns for all four causes, where only the true cause shows its
-  signature (for example, the order database holds steady while analytics
-  orders fall). This is the control: it checks that every model can read the
-  evidence.
+| Evidence tier | Cases | Trials per case and condition | Trials per condition |
+| --- | ---: | ---: | ---: |
+| None: headline drop and change log | 6 | 20 | 120 |
+| Partial: diagnostics exclude two causes | 24 | 5 | 120 |
+| Full: diagnostics identify one cause | 24 | 2 | 48 |
 
-True causes are balanced: every scenario appears with each of the four causes
-in the partial and full tiers, so a model with a favorite story cannot win on
-average. All numbers are generated from the true cause and are consistent with
-it. Change-log and breakdown order are shuffled per case.
+Partial and full tiers assign every scenario each of the four truths. The
+partial tier selects one alternative per truth. This produces imbalanced
+remaining pairs: a fixed preference for release, then mix, tracking and
+policy scores 16/24 on these cases. The [pair counts](RESULTS_NOTES.md#partial-evidence)
+describe the resulting distribution.
 
-The headline metric is **pass@k**: the chance that at least one of k
-independent runs names the true cause. With no evidence it averages over the
-four equally likely causes. A collapsed model scores the same at k=1 and k=10.
+Diagnostic numbers encode the assigned truth with small jitter. Change and
+diagnostic order are shuffled once per case and held fixed across repeats.
+Dates and wording vary by cause type.
 
-### Grading
-
-Each hypothesis is labeled with the change it names, using per-scenario
-patterns. Answers that match no change or several go to a blinded review list
-that shows only the scenario and the hypothesis text, never the model. Review
-decisions and reasons are published with the results. Every planned trial
-stays in the denominator: an invalid or missing answer is a miss.
+For a case with n trials and c correct answers, **pass@k** is
+`1 - C(n-c, k) / C(n, k)`, averaged equally over cases. With no evidence,
+scoring also averages over four hypothetical equally likely truths.
+**Effective causes** is the exponential of label entropy, averaged over cases.
 
 ### Conditions
 
-| Condition | Runner | Round | Notes |
-| --- | --- | --- | --- |
-| Claude Opus 5.5, medium and max effort | Claude Code CLI | `round-001` | Subscription login, tools off, one turn |
-| GPT-4o | Pi, OpenRouter | `round-001` | Provider default decoding, no reasoning |
-| DeepSeek V3.2, thinking off | Pi, OpenRouter | `round-001` | Provider default decoding |
-| DeepSeek R1-0528 | Pi, OpenRouter | `round-001` | Reasoning model |
-| GPT-5.6 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | OpenAI Responses through the `openai` provider |
-| GPT-6 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | Same |
-| GPT-6.1 Sol, medium and max effort | Pi, ChatGPT subscription | `round-002` | Same |
-| GPT-6.1 Terra, medium and max effort | Pi, ChatGPT subscription | `round-003` | Same |
+| Condition | Runner | Round |
+| --- | --- | --- |
+| Claude Opus 5.5, medium/max | Claude Code CLI, subscription | 001 |
+| GPT-4o | Pi, OpenRouter | 001 |
+| DeepSeek V3.2, thinking off | Pi, OpenRouter | 001 |
+| DeepSeek R1-0528 | Pi, OpenRouter | 001 |
+| GPT-5.6 Sol, GPT-6 Sol, GPT-6.1 Sol, medium/max | Pi, ChatGPT subscription | 002 |
+| GPT-6.1 Terra, medium/max | Pi, ChatGPT subscription | 003 |
+| GPT-6 Astra, medium/max | Pi, ChatGPT subscription | 004 |
+| GPT-6 Astra, GPT-6.1 Sol and Terra, medium/max, sampling prefix | Pi, ChatGPT subscription | 004 |
 
-All rounds use the same frozen seed, so their 54 case prompts are identical,
-and they ran over overlapping periods. They are still separate runs and are
-reported side by side, never pooled. The same system prompt (`You are a
-helpful assistant.`) and working directory (`/`) are used for every
-condition. Native CLIs add their own context, and OpenRouter routes to a
-provider of its choosing, so treat the runner as part of each condition.
-Model identity is checked against what each runner reports.
+All rounds use seed `84381f5ac1434825` and identical base cases. Sampling-prefix
+conditions prepend a sentence describing the answer as one observation in a
+random sample. Rounds 001-003 overlap in time; round 004 was collected later.
+Results retain each condition's round identity.
 
-## Limits
+Every call starts a fresh session, with system prompt `You are a helpful
+assistant.`, working directory `/`, and tools disabled. Native CLI context,
+provider routing and decoding settings are part of the tested configuration.
+The harness checks the model identity reported by the runner.
 
-- Six synthetic scenarios with a fixed structure. They are built so that the
-  answer is knowable, not to match the messiness of real incidents.
-- The none tier rewards spread by construction. Its point is to measure how
-  much spread each model has, not to claim spread is always good: when the
-  evidence identifies the cause, consistency is correct, which is what the
-  full tier checks.
-- Pattern labels can miss unusual phrasings. Every answer matching zero or
-  several changes (353 of 3,744) was reviewed blind, and a blinded random
-  sample of 60 pattern labels agreed in all 60
-  ([spot check](results/label-spot-check.json)). The reviewer was Claude Code,
-  the agent that built the benchmark; review decisions and reasons are
-  published in each round's `reviews.json`.
-- Opus and the current GPT models run through subscription logins whose
-  decoding settings are not exposed, and no API lets callers set temperature
-  for these reasoning models. GPT-4o and DeepSeek use OpenRouter defaults.
-  Random Number Bench measured the GPT models through Codex; this benchmark
-  calls them through Pi with the same subscription.
-- The rounds ran on overlapping periods with identical cases but separate
-  controllers, and are reported side by side, not pooled.
+### Grading and attempt accounting
+
+Per-scenario patterns identify the named cause. Answers matching zero or
+several changes receive a review from a blinded list containing the scenario
+and hypothesis. Decisions and reasons are saved in each round's `reviews.json`.
+There are 5,559 pattern labels and 489 review labels.
+
+Every planned trial stays in the denominator. Its last recorded attempt is
+scored; invalid or missing final answers count as misses. Operational failures
+may be retried within the frozen bound. Completed invalid responses are
+terminal, and all attempted calls are retained.
+
+The parser accepts an extractable JSON object with a nonempty `hypothesis`.
+All 6,048 final answers contain a nonempty check; 623 also have surrounding
+text or formatting. Check quality is outside the scoring rubric.
+
+### Scope and uncertainty
+
+The CIs target repeated calls to the fixed prompts, assuming independent jobs
+and stable response distributions within each case and condition. The
+[method](docs/INTERVALS.md) specifies these assumptions and the adjustment for
+condition comparisons. [Scenario sensitivity](results/figures/UNCERTAINTY.md)
+reports variation across the six templates.
+
+The benchmark-building agent reviewed ambiguous answers and a 60-answer
+pattern-label sample from rounds 001-003, with 60 agreements. The
+[saved spot check](results/label-spot-check.json) records that review. An
+independent label audit and more distinct, balanced scenarios are priorities
+for further validation.
+
+This is a companion to [Random Number Bench](https://github.com/bryantravissmith/random-number-bench),
+which measures diversity in number sampling.
 
 ## Run a round
 
-Requires Python 3.12+, [uv](https://docs.astral.sh/uv/), an authenticated
-[Claude Code](https://code.claude.com) CLI for the Claude conditions and
-[Pi](https://github.com/earendil-works/pi) logged in to OpenRouter and, for
-the current GPT models, to the `openai` provider with a ChatGPT subscription.
+Requires Python 3.12+, [uv](https://docs.astral.sh/uv/), and authenticated
+[Claude Code](https://code.claude.com) or [Pi](https://github.com/earendil-works/pi)
+CLIs for the selected conditions. Pi uses OpenRouter and the `openai` provider
+with a ChatGPT subscription.
 
 ```sh
-# Freeze seed, cases, prompts, conditions and schedule. No inference.
-# Reuse a seed (--seed) to run more conditions on identical cases.
-uv run bench.py plan runs/round-003 --conditions opus-5.5-medium gpt-6.1-sol-medium
+# Freeze the seed, cases, prompts, conditions and schedule.
+uv run bench.py plan runs/new-round --conditions opus-5.5-medium gpt-6.1-sol-medium
 
-# Run with bounded concurrency per service. Ctrl-C pauses.
-uv run bench.py run runs/round-003
-uv run bench.py status runs/round-003
+# Run, inspect or resume with the frozen source snapshot.
+uv run bench.py run runs/new-round
+uv run bench.py status runs/new-round
+uv run runs/new-round/source/bench.py run runs/new-round
 
-# Resume with the round's frozen source snapshot, which stays valid after
-# the working copy changes.
-uv run runs/round-003/source/bench.py run runs/round-003
+# Verify evidence hashes, export public fields and grade.
+uv run bench.py export runs/new-round results/new-round
+uv run grade.py review results/new-round
+uv run grade.py labels results/new-round
 
-# Verify raw evidence hashes and export explicit public fields.
-uv run bench.py export runs/round-003 results/round-003
-
-# Label, review the blinded list, then build the report from one or more
-# rounds with identical cases.
-uv run grade.py review results/round-003
-uv run grade.py labels results/round-003
-uv run analyze.py results/round-001 results/round-002 results/round-003 \
-  --figures results/figures --report RESULTS.md
+# Rebuild the published analysis of the four completed rounds.
+uv run analyze.py results/round-001 results/round-002 results/round-003 results/round-004 \
+  --figures results/figures --comparisons analysis-spec.json --report RESULTS.md
 ```
 
-Preview any case prompt without calling a model:
+`RESULTS.md`, summaries, labels and SVG figures are generated with the scripts.
+The [results index](results/README.md) lists the artifacts. Maintained prose
+lives in `RESULTS_NOTES.md`.
+
+Preview a case without calling a model:
 
 ```sh
 uv run cases.py --seed preview --case ecommerce-checkout--partial--mix
 ```
 
-## Test without calling a model
+## Offline tests and interval validation
 
 ```sh
-uv run tests/test_cases.py
-uv run tests/test_pipeline.py
+uv run --no-project python -m unittest discover -s tests -v
+uv run validate_intervals.py --output results/validation
 ```
 
-The tests check that cases are balanced and consistent with their true cause,
-that only the true cause's breakdown shows its signature, answer parsing,
-pass@k math, retries, resume, tamper detection and a full
-plan-run-export-grade-report cycle against fake CLIs.
+Tests cover case construction, parsing, scoring, retry/resume behavior,
+evidence hashes, confidence bounds and the full fake-CLI pipeline. The
+[coverage report](results/validation/VALIDATION.md) uses 10,000 simulated
+datasets per setting.
 
 ## License
 

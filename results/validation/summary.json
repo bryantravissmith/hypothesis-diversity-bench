@@ -1,0 +1,1193 @@
+{
+  "seed": 20261103,
+  "experiments": 10000,
+  "spec": {
+    "version": 1,
+    "seed": 20261103,
+    "experiments": 10000,
+    "settings": [
+      {
+        "id": "none10-fixed",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 10,
+        "probabilities": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "none10-rare",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 10,
+        "probabilities": [
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "none10-uniform",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 10,
+        "probabilities": [
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "none10-invalid",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 10,
+        "probabilities": [
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ]
+        ]
+      },
+      {
+        "id": "none1-fixed",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 1,
+        "probabilities": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "none10-heterogeneous",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 20,
+        "k": 10,
+        "probabilities": [
+          [
+            0.97,
+            0.01,
+            0.01,
+            0.01,
+            0
+          ],
+          [
+            0.01,
+            0.97,
+            0.01,
+            0.01,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.7,
+            0.1,
+            0.1,
+            0,
+            0.1
+          ],
+          [
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.8
+          ],
+          [
+            0.4,
+            0.3,
+            0.2,
+            0.1,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "none3-nondivisible",
+        "tier": "none",
+        "cases": 6,
+        "repeats": 7,
+        "k": 3,
+        "probabilities": [
+          [
+            0.97,
+            0.01,
+            0.01,
+            0.01,
+            0
+          ],
+          [
+            0.01,
+            0.97,
+            0.01,
+            0.01,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.7,
+            0.1,
+            0.1,
+            0,
+            0.1
+          ],
+          [
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.8
+          ],
+          [
+            0.4,
+            0.3,
+            0.2,
+            0.1,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "partial1-heterogeneous",
+        "tier": "partial",
+        "cases": 24,
+        "repeats": 5,
+        "k": 1,
+        "probabilities": [
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95
+        ]
+      },
+      {
+        "id": "partial5-heterogeneous",
+        "tier": "partial",
+        "cases": 24,
+        "repeats": 5,
+        "k": 5,
+        "probabilities": [
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95
+        ]
+      },
+      {
+        "id": "partial5-rare-hit",
+        "tier": "partial",
+        "cases": 24,
+        "repeats": 5,
+        "k": 5,
+        "probabilities": [
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ]
+      },
+      {
+        "id": "full1-near-perfect",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 1,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ]
+      },
+      {
+        "id": "full2-near-perfect",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 2,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ]
+      },
+      {
+        "id": "full1-heterogeneous",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 1,
+        "probabilities": [
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95,
+          0.05,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.95
+        ]
+      },
+      {
+        "id": "full2-perfect",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 2,
+        "probabilities": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "id": "full2-zero",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 2,
+        "probabilities": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "stress-common-outage",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 1,
+        "probabilities": [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "stress": "one Bernoulli outcome shared by every job"
+      },
+      {
+        "id": "stress-provider-drift",
+        "tier": "full",
+        "cases": 24,
+        "repeats": 2,
+        "k": 1,
+        "probabilities": [
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99,
+          0.99
+        ],
+        "stress": "collection probability .99, fresh-call target .60",
+        "target": 0.6
+      }
+    ],
+    "contrast_families": [
+      {
+        "id": "six-null-pairs",
+        "pairs": 6,
+        "probabilities": [
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "six-mixed-pairs",
+        "pairs": 6,
+        "probabilities": [
+          [
+            0.99,
+            0.01,
+            0,
+            0,
+            0
+          ],
+          [
+            0.97,
+            0.03,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            0.7,
+            0.1,
+            0.1,
+            0.1,
+            0
+          ],
+          [
+            0.6,
+            0.2,
+            0.1,
+            0.1,
+            0
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.9,
+            0,
+            0,
+            0,
+            0.1
+          ],
+          [
+            0.4,
+            0.3,
+            0.2,
+            0.1,
+            0
+          ],
+          [
+            0.25,
+            0.25,
+            0.25,
+            0.25,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "spec_sha256": "6acd8a710524c9ca92bdad62c5ce7e9417fb887c569f79c2b24983097ea12e91",
+  "source_sha256": {
+    "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
+    "validate_intervals.py": "ff9a863944546ddeb2fd561eb44437b4701a0464c0b9ce7d83753432f889a8d0"
+  },
+  "python_version": "3.12.13",
+  "numpy_version": "2.0.2",
+  "settings": [
+    {
+      "id": "none10-fixed",
+      "target": 0.25,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.600953335351143,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none10-rare",
+      "target": 0.27390448124779887,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.6151197108475259,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.00011688757743190045,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none10-uniform",
+      "target": 0.9436864852905273,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.3917293238436081,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0002731986932360705,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none10-invalid",
+      "target": 0.249999999975,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.600953335351143,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none1-fixed",
+      "target": 0.25,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.00756824314435503,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none10-heterogeneous",
+      "target": 0.5735748410023236,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.6696357811656507,
+        "experiments": 10000,
+        "width_monte_carlo_se": 7.290714961407768e-05,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "none3-nondivisible",
+      "target": 0.36567299999999997,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.5068660143644438,
+        "experiments": 10000,
+        "width_monte_carlo_se": 1.9286736517255196e-05,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "partial1-heterogeneous",
+      "target": 0.5,
+      "interval": {
+        "coverage": 0.9996,
+        "monte_carlo_95": [
+          0.9989718716646431,
+          0.9998444371633769
+        ],
+        "average_width": 0.243595288723961,
+        "experiments": 10000,
+        "width_monte_carlo_se": 8.497806504418152e-06,
+        "monte_carlo_se": 0.0001999599959991888
+      },
+      "stress": null
+    },
+    {
+      "id": "partial5-heterogeneous",
+      "target": 0.8017031250000001,
+      "interval": {
+        "coverage": 0.9997,
+        "monte_carlo_95": [
+          0.9991182642277636,
+          0.9998979678005822
+        ],
+        "average_width": 0.41307198690503544,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0004235335619478819,
+        "monte_carlo_se": 0.00017317909804591517
+      },
+      "stress": null
+    },
+    {
+      "id": "partial5-rare-hit",
+      "target": 0.04900995010000009,
+      "interval": {
+        "coverage": 0.9936,
+        "monte_carlo_95": [
+          0.9918363596094969,
+          0.9949845571989712
+        ],
+        "average_width": 0.2406470657950509,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0007562219308705988,
+        "monte_carlo_se": 0.0007974358908401328
+      },
+      "stress": null
+    },
+    {
+      "id": "full1-near-perfect",
+      "target": 0.9899999999999999,
+      "interval": {
+        "coverage": 0.9987,
+        "monte_carlo_95": [
+          0.9977769118976668,
+          0.9992400881274203
+        ],
+        "average_width": 0.09827310870303584,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.0003298352546742335,
+        "monte_carlo_se": 0.00036032069049666963
+      },
+      "stress": null
+    },
+    {
+      "id": "full2-near-perfect",
+      "target": 0.9998999999999999,
+      "interval": {
+        "coverage": 0.9976,
+        "monte_carlo_95": [
+          0.9964312236309004,
+          0.9983866211906022
+        ],
+        "average_width": 0.14271647704874674,
+        "experiments": 10000,
+        "width_monte_carlo_se": 4.952048216485027e-05,
+        "monte_carlo_se": 0.0004893097178679326
+      },
+      "stress": null
+    },
+    {
+      "id": "full1-heterogeneous",
+      "target": 0.5,
+      "interval": {
+        "coverage": 0.9993,
+        "monte_carlo_95": [
+          0.9985556655587302,
+          0.9996608736683119
+        ],
+        "average_width": 0.3751770493190321,
+        "experiments": 10000,
+        "width_monte_carlo_se": 3.3116822202528615e-05,
+        "monte_carlo_se": 0.00026448251359967713
+      },
+      "stress": null
+    },
+    {
+      "id": "full2-perfect",
+      "target": 1.0,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.1424735977225256,
+        "experiments": 10000,
+        "width_monte_carlo_se": 5.551392699700355e-19,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "full2-zero",
+      "target": 0.0,
+      "interval": {
+        "coverage": 1.0,
+        "monte_carlo_95": [
+          0.9996160016293234,
+          1
+        ],
+        "average_width": 0.1424735977225256,
+        "experiments": 10000,
+        "width_monte_carlo_se": 5.551392699700355e-19,
+        "monte_carlo_se": 0.0
+      },
+      "stress": null
+    },
+    {
+      "id": "stress-common-outage",
+      "target": 0.8000000000000002,
+      "interval": {
+        "coverage": 0.0,
+        "monte_carlo_95": [
+          0,
+          0.00038399837067659573
+        ],
+        "average_width": 0.07397278534728025,
+        "experiments": 10000,
+        "width_monte_carlo_se": 6.2453167871629e-20,
+        "monte_carlo_se": 0.0
+      },
+      "stress": "one Bernoulli outcome shared by every job"
+    },
+    {
+      "id": "stress-provider-drift",
+      "target": 0.6,
+      "interval": {
+        "coverage": 0.0,
+        "monte_carlo_95": [
+          0,
+          0.00038399837067659573
+        ],
+        "average_width": 0.09860967455589757,
+        "experiments": 10000,
+        "width_monte_carlo_se": 0.00033027406965025673,
+        "monte_carlo_se": 0.0
+      },
+      "stress": "collection probability .99, fresh-call target .60"
+    }
+  ],
+  "families": [
+    {
+      "id": "six-null-pairs",
+      "coverage": 1.0,
+      "monte_carlo_95": [
+        0.9996160016293234,
+        1
+      ],
+      "experiments": 10000,
+      "endpoint_alpha": 0.004166666666666667,
+      "monte_carlo_se": 0.0,
+      "width_monte_carlo_se": 6.844635761517355e-05,
+      "average_width": 1.4737041206145305
+    },
+    {
+      "id": "six-mixed-pairs",
+      "coverage": 1.0,
+      "monte_carlo_95": [
+        0.9996160016293234,
+        1
+      ],
+      "experiments": 10000,
+      "endpoint_alpha": 0.004166666666666667,
+      "monte_carlo_se": 0.0,
+      "width_monte_carlo_se": 0.00011607194672204635,
+      "average_width": 1.3606199984230074
+    }
+  ],
+  "diagnostic": "pass"
+}

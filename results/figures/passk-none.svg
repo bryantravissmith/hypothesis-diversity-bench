@@ -16,8 +16,8 @@
 <text x="161.3" y="428" text-anchor="middle" fill="#6e6e73">3</text>
 <text x="266.7" y="428" text-anchor="middle" fill="#6e6e73">5</text>
 <text x="530.0" y="428" text-anchor="middle" fill="#6e6e73">10</text>
-<text x="293.0" y="446" text-anchor="middle" fill="#1d1d1f">Independent runs (k)</text>
-<text transform="translate(14 225.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Chance the true cause appears (pass@k)</text>
+<text x="293.0" y="446" text-anchor="middle" fill="#1d1d1f">Runs (k)</text>
+<text transform="translate(14 225.0) rotate(-90)" text-anchor="middle" fill="#1d1d1f">Expected category coverage / 4 (pass@k)</text>
 <polyline points="56.0,317.5 108.7,317.5 161.3,317.5 214.0,317.5 266.7,317.5 319.3,317.5 372.0,317.5 424.7,317.5 477.3,317.5 530.0,317.5" fill="none" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
 <line x1="546" y1="350" x2="570" y2="350" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="2 3"/>
 <text x="576" y="354" fill="#6e6e73">Always the same answer</text>

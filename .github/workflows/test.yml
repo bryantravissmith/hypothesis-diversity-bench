@@ -14,5 +14,4 @@ jobs:
           python-version: "3.12"
       - run: pip install ruff==0.14.0
       - run: ruff check .
-      - run: python tests/test_cases.py
-      - run: python tests/test_pipeline.py
+      - run: python -m unittest discover -s tests -v

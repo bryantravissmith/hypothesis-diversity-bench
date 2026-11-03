@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered",
+  "families": [
+    {
+      "id": "plain-effort-max-minus-medium",
+      "tier": "none",
+      "k": 10,
+      "alpha": 0.05,
+      "pairs": [
+        {
+          "id": "opus-5.5",
+          "left": [
+            "round-001",
+            "opus-5.5-max"
+          ],
+          "right": [
+            "round-001",
+            "opus-5.5-medium"
+          ]
+        },
+        {
+          "id": "gpt-5.6-sol",
+          "left": [
+            "round-002",
+            "gpt-5.6-sol-max"
+          ],
+          "right": [
+            "round-002",
+            "gpt-5.6-sol-medium"
+          ]
+        },
+        {
+          "id": "gpt-6-sol",
+          "left": [
+            "round-002",
+            "gpt-6-sol-max"
+          ],
+          "right": [
+            "round-002",
+            "gpt-6-sol-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-sol",
+          "left": [
+            "round-002",
+            "gpt-6.1-sol-max"
+          ],
+          "right": [
+            "round-002",
+            "gpt-6.1-sol-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-terra",
+          "left": [
+            "round-003",
+            "gpt-6.1-terra-max"
+          ],
+          "right": [
+            "round-003",
+            "gpt-6.1-terra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6-astra",
+          "left": [
+            "round-004",
+            "gpt-6-astra-max"
+          ],
+          "right": [
+            "round-004",
+            "gpt-6-astra-medium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meta-minus-plain",
+      "tier": "none",
+      "k": 10,
+      "alpha": 0.05,
+      "pairs": [
+        {
+          "id": "gpt-6.1-sol-medium",
+          "left": [
+            "round-004",
+            "gpt-6.1-sol-medium-meta"
+          ],
+          "right": [
+            "round-002",
+            "gpt-6.1-sol-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-sol-max",
+          "left": [
+            "round-004",
+            "gpt-6.1-sol-max-meta"
+          ],
+          "right": [
+            "round-002",
+            "gpt-6.1-sol-max"
+          ]
+        },
+        {
+          "id": "gpt-6.1-terra-medium",
+          "left": [
+            "round-004",
+            "gpt-6.1-terra-medium-meta"
+          ],
+          "right": [
+            "round-003",
+            "gpt-6.1-terra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-terra-max",
+          "left": [
+            "round-004",
+            "gpt-6.1-terra-max-meta"
+          ],
+          "right": [
+            "round-003",
+            "gpt-6.1-terra-max"
+          ]
+        },
+        {
+          "id": "gpt-6-astra-medium",
+          "left": [
+            "round-004",
+            "gpt-6-astra-medium-meta"
+          ],
+          "right": [
+            "round-004",
+            "gpt-6-astra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6-astra-max",
+          "left": [
+            "round-004",
+            "gpt-6-astra-max-meta"
+          ],
+          "right": [
+            "round-004",
+            "gpt-6-astra-max"
+          ]
+        }
+      ]
+    }
+  ]
+}
