@@ -1,0 +1,382 @@
+{
+ "00027:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-000"
+ },
+ "00047:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-001"
+ },
+ "00062:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-002"
+ },
+ "00331:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-003"
+ },
+ "00347:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-004"
+ },
+ "00349:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-005"
+ },
+ "00537:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-006"
+ },
+ "00558:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-007"
+ },
+ "00675:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-008"
+ },
+ "00679:1": {
+  "label": "release",
+  "reason": "Names the release change as the cause; other changes appear only as hedged alternatives or contrasts.",
+  "blind_id": "R5-009"
+ },
+ "00935:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-010"
+ },
+ "01024:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "R5-011"
+ },
+ "01048:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-012"
+ },
+ "01213:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-013"
+ },
+ "01273:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-014"
+ },
+ "01328:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-015"
+ },
+ "01377:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-016"
+ },
+ "01398:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-017"
+ },
+ "01546:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-018"
+ },
+ "01551:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-019"
+ },
+ "01752:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-020"
+ },
+ "01932:1": {
+  "label": "release",
+  "reason": "Names the release change as the cause; other changes appear only as hedged alternatives or contrasts.",
+  "blind_id": "R5-021"
+ },
+ "01960:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-022"
+ },
+ "02167:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-023"
+ },
+ "02341:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-024"
+ },
+ "02403:1": {
+  "label": "release",
+  "reason": "Names the release change as the cause; other changes appear only as hedged alternatives or contrasts.",
+  "blind_id": "R5-025"
+ },
+ "02592:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-026"
+ },
+ "02610:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-027"
+ },
+ "02671:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-028"
+ },
+ "02728:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-029"
+ },
+ "02858:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-030"
+ },
+ "02916:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-031"
+ },
+ "02964:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "R5-032"
+ },
+ "03327:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-033"
+ },
+ "03382:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "R5-034"
+ },
+ "03420:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-035"
+ },
+ "03460:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-036"
+ },
+ "03526:1": {
+  "label": "release",
+  "reason": "Names the release change as the cause; other changes appear only as hedged alternatives or contrasts.",
+  "blind_id": "R5-037"
+ },
+ "03545:1": {
+  "label": "tracking",
+  "reason": "Names the tracking or measurement change as the cause; other changes appear only as ruled out, contrasts or hedged alternatives.",
+  "blind_id": "R5-038"
+ },
+ "03627:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-039"
+ },
+ "03752:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-040"
+ },
+ "03845:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-041"
+ },
+ "04028:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-042"
+ },
+ "04054:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-043"
+ },
+ "04076:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-044"
+ },
+ "04219:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-045"
+ },
+ "04351:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-046"
+ },
+ "04426:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-047"
+ },
+ "04829:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-048"
+ },
+ "04925:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-049"
+ },
+ "04949:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-050"
+ },
+ "04959:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-051"
+ },
+ "04973:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-052"
+ },
+ "05043:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-053"
+ },
+ "05171:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-054"
+ },
+ "05302:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-055"
+ },
+ "05408:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-056"
+ },
+ "05538:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-057"
+ },
+ "05547:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-058"
+ },
+ "05605:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-059"
+ },
+ "05612:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-060"
+ },
+ "05826:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-061"
+ },
+ "05851:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-062"
+ },
+ "05947:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-063"
+ },
+ "06091:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-064"
+ },
+ "06108:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-065"
+ },
+ "06642:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-066"
+ },
+ "06687:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-067"
+ },
+ "07029:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-068"
+ },
+ "07443:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-069"
+ },
+ "07474:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-070"
+ },
+ "07492:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-071"
+ },
+ "07631:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-072"
+ },
+ "07656:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-073"
+ },
+ "07735:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-074"
+ },
+ "07857:1": {
+  "label": "tracking",
+  "reason": "Names the October 13 analytics migration (the web analytics script move) as the cause.",
+  "blind_id": "R5-075"
+ }
+}

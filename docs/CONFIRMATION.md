@@ -2,6 +2,13 @@
 
 ## Version 3: round-005 Opus and round-006 GPT
 
+**Outcome: not completed.** Round-006 started at 06:01 PT on November 4 while
+the subscription limit was still in effect. It recorded 36 usage-limit
+attempts and no answers, and was cancelled at 06:52 PT for diminishing
+returns. The preregistered pooled test was never run, so the effort claim is
+unconfirmed. The only fresh-prompt effort result is the complete round-005
+Opus pair below, which shows no drop.
+
 Committed before any round-006 inference and before any round-005 result was
 exported or analyzed. The machine-readable version is
 [confirmation-v3-spec.json](../confirmation-v3-spec.json).
@@ -40,6 +47,28 @@ answers before the limit.
   exploratory. The pooled average now combines effects measured on two prompt
   sets from the same six scenarios. The power analysis below still applies,
   since every pair keeps 48 cases and 20 runs.
+
+**Round-005 as published.** [results/round-005](../results/round-005) is the
+stopped export: 10,835 attempts, every one kept. Both Opus conditions are
+complete and keep confidence bounds; the eight GPT conditions are stopped and
+descriptive only. Blinded review resolved 76 ambiguous answers (68 rental
+answers naming the analytics migration, which the pattern missed, were
+labeled tracking).
+
+Opus effort result, computed after this plan was committed. It was planned as
+one input to the pooled test, which was not run, so it stands as a secondary
+result without the gating that plan gave it:
+
+| Opus 5.5, no evidence | Medium | Max |
+|---|---:|---:|
+| pass@10 | 0.308 [0.192, 0.443] | 0.318 [0.200, 0.454] |
+| Effective causes | 1.18 | 1.19 |
+| Tracking answers | 750 / 960 | 827 / 960 |
+
+Max minus medium is +0.010. One-sided score test for a drop: raw p 0.905,
+Holm p 0.905 (23 of 96 cells vary). Two-sided distribution test: raw p 0.331,
+Holm p 0.331. The -0.083 Opus drop seen on the six round 001-004 prompts does
+not appear on 48 new prompts.
 
 **Limits added by this change.** The Opus effect is measured on fixed-date
 prompts and the GPT effects on date-balanced prompts, about a day apart. A

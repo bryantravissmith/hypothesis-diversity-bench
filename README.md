@@ -45,9 +45,11 @@ condition separately. Paired tests on the same fixed prompts are sharper. A
 score test of the pass@10 difference finds a pooled effort drop of -0.030
 (two-sided raw p 0.0011): Opus and Terra drop, Astra rises, GPT-6 Sol drops on
 a single prompt, and GPT-5.6 and 6.1 Sol are inconclusive. These comparisons
-were chosen after seeing the data and several rest on one or two prompts, so a
-[preregistered confirmation round](docs/CONFIRMATION.md) retests the effort
-effect on 48 new prompts. See [the test tables](results/figures/UNCERTAINTY.md)
+were chosen after seeing the data and several rest on one or two prompts. A
+[preregistered confirmation](docs/CONFIRMATION.md) was stopped by a
+subscription usage limit and then cancelled, so the effect is unconfirmed; its
+complete Opus pair shows no drop on 48 new prompts (+0.010, one-sided raw and
+Holm p 0.905). See [the test tables](results/figures/UNCERTAINTY.md)
 for raw and Holm-adjusted p-values side by side.
 
 **Cause preferences differ.** Opus primarily selects tracking, while the GPT
