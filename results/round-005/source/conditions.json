@@ -1,0 +1,29 @@
+{
+  "schema": "hypothesis-diversity-conditions-v1",
+  "system_prompt": "You are a helpful assistant.",
+  "meta_prompt_note": "Meta conditions prepend the Random Number Bench sampling meta-prompt sentence to the unchanged case prompt and name their plain counterpart in base.",
+  "conditions": [
+    {"id": "opus-5.5-medium", "label": "Claude Opus 5.5 (medium effort)", "runner": "claude", "model": "claude-opus-5-5", "thinking": "medium", "pool": "claude"},
+    {"id": "opus-5.5-max", "label": "Claude Opus 5.5 (max effort)", "runner": "claude", "model": "claude-opus-5-5", "thinking": "max", "pool": "claude"},
+    {"id": "gpt-4o", "label": "GPT-4o", "runner": "pi", "provider": "openrouter", "model": "openai/gpt-4o", "thinking": "off", "pool": "gpt-4o"},
+    {"id": "deepseek-v3.2", "label": "DeepSeek V3.2 (thinking off)", "runner": "pi", "provider": "openrouter", "model": "deepseek/deepseek-v3.2", "thinking": "off", "pool": "deepseek-v3.2"},
+    {"id": "deepseek-r1", "label": "DeepSeek R1-0528", "runner": "pi", "provider": "openrouter", "model": "deepseek/deepseek-r1-0528", "thinking": "high", "pool": "deepseek-r1"},
+    {"id": "gpt-5.6-sol-medium", "label": "GPT-5.6 Sol (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-5.6-sol", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-5.6-sol-max", "label": "GPT-5.6 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-5.6-sol", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6-sol-medium", "label": "GPT-6 Sol (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-sol", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-6-sol-max", "label": "GPT-6 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-sol", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6.1-sol-medium", "label": "GPT-6.1 Sol (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-6.1-sol-max", "label": "GPT-6.1 Sol (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6.1-terra-medium", "label": "GPT-6.1 Terra (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-6.1-terra-max", "label": "GPT-6.1 Terra (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6-astra-medium", "label": "GPT-6 Astra (medium effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-astra", "thinking": "medium", "pool": "openai"},
+    {"id": "gpt-6-astra-max", "label": "GPT-6 Astra (max effort)", "runner": "pi", "provider": "openai", "model": "gpt-6-astra", "thinking": "max", "pool": "openai"},
+    {"id": "gpt-6-astra-medium-meta", "label": "GPT-6 Astra (medium effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6-astra", "thinking": "medium", "pool": "openai", "base": "gpt-6-astra-medium", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."},
+    {"id": "gpt-6-astra-max-meta", "label": "GPT-6 Astra (max effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6-astra", "thinking": "max", "pool": "openai", "base": "gpt-6-astra-max", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."},
+    {"id": "gpt-6.1-sol-medium-meta", "label": "GPT-6.1 Sol (medium effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "medium", "pool": "openai", "base": "gpt-6.1-sol-medium", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."},
+    {"id": "gpt-6.1-sol-max-meta", "label": "GPT-6.1 Sol (max effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-sol", "thinking": "max", "pool": "openai", "base": "gpt-6.1-sol-max", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."},
+    {"id": "gpt-6.1-terra-medium-meta", "label": "GPT-6.1 Terra (medium effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "medium", "pool": "openai", "base": "gpt-6.1-terra-medium", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."},
+    {"id": "gpt-6.1-terra-max-meta", "label": "GPT-6.1 Terra (max effort, meta prompt)", "runner": "pi", "provider": "openai", "model": "gpt-6.1-terra", "thinking": "max", "pool": "openai", "base": "gpt-6.1-terra-max", "prompt_prefix": "Your response will be one observation in a random sample collected from many independent LLM sessions."}
+  ],
+  "pools": {"claude": 4, "gpt-4o": 6, "deepseek-v3.2": 6, "deepseek-r1": 12, "openai": 6}
+}

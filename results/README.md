@@ -10,5 +10,9 @@
 contains that round's analysis. The round directories also contain frozen plans,
 public attempts, source snapshots, review decisions and labels.
 
+`round-005` is a stopped preregistered round: its Opus conditions are complete;
+its GPT conditions stopped at a subscription usage limit and are descriptive
+only. See [the confirmation plan](../docs/CONFIRMATION.md).
+
 The [label spot check](label-spot-check.json) records the benchmark-building
 agent's review of 60 pattern labels from rounds 001-003.

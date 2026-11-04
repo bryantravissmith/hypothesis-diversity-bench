@@ -1,0 +1,282 @@
+{
+  "schema": "hypothesis-diversity-scenarios-v1",
+  "change_date": "October 13",
+  "causes": [
+    "release",
+    "mix",
+    "tracking",
+    "policy"
+  ],
+  "scenarios": [
+    {
+      "id": "ecommerce-checkout",
+      "business": "an online store",
+      "metric": "Checkout conversion rate (orders divided by sessions)",
+      "short": "Conversion rate",
+      "volume": "Weekly sessions",
+      "before": 3.1,
+      "after": 2.5,
+      "decimals": 1,
+      "causes": {
+        "release": {
+          "change": "A new site release went out on October 13 to 90% of visitors, with a random 10% holdout kept on the previous release.",
+          "rows": [
+            "Visitors on the new release (90%)",
+            "Holdout on the previous release (10%)"
+          ],
+          "pattern": "\\brelease\\b|roll(?:ed)?[- ]?out|deploy|site update|new version|\\bbug\\b|regression"
+        },
+        "mix": {
+          "change": "The marketing team launched a new paid social campaign on October 12.",
+          "rows": [
+            "All existing traffic sources",
+            "New paid social campaign"
+          ],
+          "pattern": "campaign|paid social|traffic (?:mix|quality|composition)|low[- ]intent|new traffic|acquisition"
+        },
+        "tracking": {
+          "change": "The analytics team migrated to a new tag manager configuration on October 13.",
+          "rows": [
+            "Using orders counted by analytics tags",
+            "Using orders in the order database"
+          ],
+          "pattern": "tag manager|\\btags?\\b|tracking|measurement|instrumentation|undercount|not firing|attribution"
+        },
+        "policy": {
+          "change": "On October 14 free shipping was limited to orders of $50 or more (it used to apply to every order).",
+          "rows": [
+            "Carts under $50",
+            "Carts of $50 or more"
+          ],
+          "share": 0.6,
+          "pattern": "shipping|\\$50"
+        }
+      }
+    },
+    {
+      "id": "saas-paid-start",
+      "business": "a software-as-a-service company",
+      "metric": "Paid start rate (pricing page visitors who start a paid plan)",
+      "short": "Paid start rate",
+      "volume": "Weekly pricing page visitors",
+      "before": 4.6,
+      "after": 3.7,
+      "decimals": 1,
+      "causes": {
+        "release": {
+          "change": "A redesigned billing checkout shipped on October 13 to 90% of visitors, with a random 10% holdout kept on the previous checkout.",
+          "rows": [
+            "Visitors on the redesigned billing checkout (90%)",
+            "Holdout on the previous billing checkout (10%)"
+          ],
+          "pattern": "billing checkout|redesign|\\brelease\\b|roll(?:ed)?[- ]?out|\\bbug\\b|regression|new checkout"
+        },
+        "mix": {
+          "change": "A new partner referral program started sending visitors on October 12.",
+          "rows": [
+            "All existing traffic sources",
+            "Partner referral program"
+          ],
+          "pattern": "referral|partner|traffic (?:mix|quality|composition)|visitor mix|low[- ]intent|new visitors"
+        },
+        "tracking": {
+          "change": "The product analytics SDK was upgraded on October 13.",
+          "rows": [
+            "Using paid starts counted by the analytics SDK",
+            "Using paid starts in the billing system"
+          ],
+          "pattern": "\\bsdk\\b|tracking|instrumentation|measurement|undercount|event"
+        },
+        "policy": {
+          "change": "The Starter plan price rose from $12 to $16 per month on October 14.",
+          "rows": [
+            "Visitors who viewed the Starter plan",
+            "Visitors who only viewed other plans"
+          ],
+          "share": 0.6,
+          "pattern": "price (?:increase|rise|change|hike)|starter|\\$16|\\$12|higher price|raised the price|pricing change"
+        }
+      }
+    },
+    {
+      "id": "mobile-retention",
+      "business": "a mobile fitness app",
+      "metric": "Day-1 retention (share of new users who open the app again the next day)",
+      "short": "Day-1 retention",
+      "volume": "Weekly new users",
+      "before": 38.0,
+      "after": 31.0,
+      "decimals": 1,
+      "causes": {
+        "release": {
+          "change": "App version 7.2 shipped on October 13 with a new onboarding flow. It went to 90% of new users, with a random 10% holdout kept on version 7.1.",
+          "rows": [
+            "New users who got version 7.2 (90%)",
+            "Holdout on version 7.1 (10%)"
+          ],
+          "pattern": "7\\.2|onboarding|\\brelease\\b|new version|app update|\\bbug\\b|regression"
+        },
+        "mix": {
+          "change": "A new app-install ad campaign started on October 12.",
+          "rows": [
+            "Installs from existing sources",
+            "Installs from the new ad campaign"
+          ],
+          "pattern": "campaign|install ads?|\\bads?\\b|user mix|traffic mix|low[- ]intent|acquisition"
+        },
+        "tracking": {
+          "change": "The analytics team changed the definition of the session-start event on October 13.",
+          "rows": [
+            "Retention from analytics session events",
+            "Retention from server login records"
+          ],
+          "pattern": "session[- ]start|event definition|tracking|instrumentation|measurement|definition change|undercount"
+        },
+        "policy": {
+          "change": "On October 14 the subscription paywall was moved to day 1 (from day 3) for iOS users.",
+          "rows": [
+            "New iOS users",
+            "New Android users"
+          ],
+          "share": 0.6,
+          "pattern": "paywall|subscription prompt"
+        }
+      }
+    },
+    {
+      "id": "delivery-order-rate",
+      "business": "a food delivery app",
+      "metric": "Order rate (orders per app open)",
+      "short": "Order rate",
+      "volume": "Weekly app opens",
+      "before": 21.0,
+      "after": 17.2,
+      "decimals": 1,
+      "causes": {
+        "release": {
+          "change": "A new menu and cart experience shipped on October 13 to 90% of users, with a random 10% holdout kept on the previous experience.",
+          "rows": [
+            "Users with the new menu and cart (90%)",
+            "Holdout on the previous menu and cart (10%)"
+          ],
+          "pattern": "menu|cart experience|\\brelease\\b|roll(?:ed)?[- ]?out|new experience|\\bbug\\b|regression"
+        },
+        "mix": {
+          "change": "A new student partnership started bringing in new users on October 12.",
+          "rows": [
+            "Existing user sources",
+            "Student partnership users"
+          ],
+          "pattern": "student|partnership|user mix|traffic mix|low[- ]intent|new users"
+        },
+        "tracking": {
+          "change": "The event pipeline was moved to a new streaming vendor on October 13.",
+          "rows": [
+            "Order rate from the event pipeline",
+            "Order rate from the orders database"
+          ],
+          "pattern": "pipeline|streaming|vendor|tracking|data loss|dropped events|measurement|undercount|instrumentation"
+        },
+        "policy": {
+          "change": "The delivery fee for baskets under $20 rose from $1.99 to $3.99 on October 14.",
+          "rows": [
+            "Baskets under $20",
+            "Baskets of $20 or more"
+          ],
+          "share": 0.6,
+          "pattern": "delivery fee|\\bfees?\\b|\\$3\\.99|\\$1\\.99|under \\$20|small baskets"
+        }
+      }
+    },
+    {
+      "id": "rental-booking",
+      "business": "a vacation rental marketplace",
+      "metric": "Booking conversion (bookings per listing-page visit)",
+      "short": "Booking conversion",
+      "volume": "Weekly listing-page visits",
+      "before": 2.4,
+      "after": 1.95,
+      "decimals": 2,
+      "causes": {
+        "release": {
+          "change": "A new search ranking model went live on October 13 for 90% of visitors, with a random 10% holdout kept on the previous model.",
+          "rows": [
+            "Visitors with the new ranking model (90%)",
+            "Holdout on the previous ranking model (10%)"
+          ],
+          "pattern": "ranking|search model|\\bmodel\\b|\\brelease\\b|roll(?:ed)?[- ]?out|algorithm"
+        },
+        "mix": {
+          "change": "An affiliate deal with a travel-deals website started sending visitors on October 12.",
+          "rows": [
+            "All existing traffic sources",
+            "Travel-deals affiliate"
+          ],
+          "pattern": "affiliate|deals (?:web)?site|traffic (?:mix|quality|composition)|low[- ]intent|bargain|new traffic"
+        },
+        "tracking": {
+          "change": "The web analytics script was moved to a new server-side container on October 13.",
+          "rows": [
+            "Using bookings recorded by web analytics",
+            "Using bookings in the reservations system"
+          ],
+          "pattern": "server[- ]side|container|analytics script|tracking|measurement|undercount|instrumentation"
+        },
+        "policy": {
+          "change": "On October 14 most listings switched to a stricter default cancellation policy.",
+          "rows": [
+            "Listings with the stricter cancellation policy",
+            "Listings with the previous cancellation policy"
+          ],
+          "share": 0.65,
+          "pattern": "cancellation|stricter|strict policy"
+        }
+      }
+    },
+    {
+      "id": "news-subscription",
+      "business": "a news publisher",
+      "metric": "Subscription conversion (new subscriptions per article reader)",
+      "short": "Subscription conversion",
+      "volume": "Weekly article readers",
+      "before": 0.9,
+      "after": 0.74,
+      "decimals": 2,
+      "causes": {
+        "release": {
+          "change": "A redesigned subscription page launched on October 13 for 90% of readers, with a random 10% holdout kept on the previous page.",
+          "rows": [
+            "Readers who see the redesigned subscription page (90%)",
+            "Holdout on the previous subscription page (10%)"
+          ],
+          "pattern": "redesign|subscription page|\\brelease\\b|roll(?:ed)?[- ]?out|\\bbug\\b|regression|new page"
+        },
+        "mix": {
+          "change": "The social team launched a short-video news channel that started driving readers on October 12.",
+          "rows": [
+            "All existing reader sources",
+            "Short-video news channel"
+          ],
+          "pattern": "short[- ]video|video|social|reader mix|traffic (?:mix|quality|composition)|low[- ]intent|new readers"
+        },
+        "tracking": {
+          "change": "Subscription event tracking was migrated to a new analytics tool on October 13.",
+          "rows": [
+            "Using subscriptions counted by the analytics tool",
+            "Using subscriptions in the billing system"
+          ],
+          "pattern": "analytics tool|tracking|migrat|measurement|undercount|instrumentation|event"
+        },
+        "policy": {
+          "change": "On October 14 the introductory offer for readers in Europe changed from $1 to $4 for the first month.",
+          "rows": [
+            "Readers in Europe",
+            "Readers elsewhere"
+          ],
+          "share": 0.6,
+          "pattern": "introductory|\\boffer\\b|\\$4|\\$1\\b|europe|trial price"
+        }
+      }
+    }
+  ]
+}

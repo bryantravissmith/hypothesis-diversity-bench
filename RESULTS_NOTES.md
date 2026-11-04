@@ -51,7 +51,11 @@ Pooled over the six pairs, the mean difference is -0.030 (score test raw p
 0.0011; distribution test raw p 0.0001). On these six prompts, max effort
 lowers coverage on average, but not for every model. The GPT-6 Sol and Astra
 results each rest on one prompt where one condition showed a second cause, so
-they are fragile. [Round-005](docs/CONFIRMATION.md) is the preregistered test.
+they are fragile. [Rounds 005-006](docs/CONFIRMATION.md) are the preregistered
+test. Round-005 stopped when the ChatGPT subscription limit was reached; its
+complete Opus pair shows no drop on 48 new prompts (max minus medium +0.010,
+one-sided score test raw p 0.905, Holm p 0.905). The confirmatory pooled test
+waits for round-006.
 
 GPT-6.1 Sol's effective-cause count rises from 1.11 at medium effort to 1.17
 at max. Its pass@2 increases and its pass@10 decreases. Effective causes is
