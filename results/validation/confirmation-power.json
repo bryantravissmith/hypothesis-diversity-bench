@@ -1,0 +1,3834 @@
+{
+ "reps": 2000,
+ "alpha": 0.05,
+ "k": 10,
+ "repeats": 20,
+ "history": {
+  "opus-5.5-medium": [
+   "round-001",
+   "opus-5.5-medium"
+  ],
+  "opus-5.5-max": [
+   "round-001",
+   "opus-5.5-max"
+  ],
+  "gpt-6.1-terra-medium": [
+   "round-003",
+   "gpt-6.1-terra-medium"
+  ],
+  "gpt-6.1-terra-max": [
+   "round-003",
+   "gpt-6.1-terra-max"
+  ],
+  "gpt-6.1-terra-medium-meta": [
+   "round-004",
+   "gpt-6.1-terra-medium-meta"
+  ],
+  "gpt-6.1-terra-max-meta": [
+   "round-004",
+   "gpt-6.1-terra-max-meta"
+  ],
+  "gpt-6-astra-medium": [
+   "round-004",
+   "gpt-6-astra-medium"
+  ],
+  "gpt-6-astra-max": [
+   "round-004",
+   "gpt-6-astra-max"
+  ],
+  "gpt-6-astra-medium-meta": [
+   "round-004",
+   "gpt-6-astra-medium-meta"
+  ],
+  "gpt-6-astra-max-meta": [
+   "round-004",
+   "gpt-6-astra-max-meta"
+  ]
+ },
+ "source_sha256": {
+  "validate_confirmation.py": "65b649b709b2bf708f0c71191cded2acde8f12c6c395218513fb7c5255651a7b",
+  "coverage_test.py": "bee1f2471920cf459492ed34e6e7a72af5faed7315e5561546e33c54b1242b20"
+ },
+ "rows": [
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0735,
+   "mean_pair_holm": 0.013166666666666653
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.062,
+   "mean_pair_holm": 0.011166666666666662
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0595,
+   "mean_pair_holm": 0.010666666666666663
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.037,
+   "mean_pair_holm": 0.007000000000000004
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.03,
+   "mean_pair_holm": 0.004833333333333333
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.032,
+   "mean_pair_holm": 0.004166666666666665
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0665,
+   "mean_pair_holm": 0.012499999999999989
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0525,
+   "mean_pair_holm": 0.009999999999999998
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0645,
+   "mean_pair_holm": 0.010499999999999997
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0335,
+   "mean_pair_holm": 0.00666666666666667
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0315,
+   "mean_pair_holm": 0.003833333333333332
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.033,
+   "mean_pair_holm": 0.002999999999999999
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.056,
+   "mean_pair_holm": 0.022666666666666693
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.063,
+   "mean_pair_holm": 0.022333333333333358
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.01916666666666667
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0515,
+   "mean_pair_holm": 0.019000000000000003
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.054,
+   "mean_pair_holm": 0.018833333333333334
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0495,
+   "mean_pair_holm": 0.016499999999999983
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.015833333333333314
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0445,
+   "mean_pair_holm": 0.01499999999999998
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.011166666666666662
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.054,
+   "mean_pair_holm": 0.0416666666666666
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.056,
+   "mean_pair_holm": 0.025666666666666706
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.052,
+   "mean_pair_holm": 0.026833333333333376
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.019,
+   "mean_pair_holm": 0.010499999999999997
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.021,
+   "mean_pair_holm": 0.00666666666666667
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.024,
+   "mean_pair_holm": 0.006333333333333336
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0165,
+   "pooled": 0.006,
+   "mean_pair_holm": 0.0008333333333333333
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0165,
+   "pooled": 0.066,
+   "mean_pair_holm": 0.05016666666666652
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0165,
+   "pooled": 0.3055,
+   "mean_pair_holm": 0.22433333333333014
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0165,
+   "pooled": 0.922,
+   "mean_pair_holm": 0.5839999999999975
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0165,
+   "pooled": 0.9965,
+   "mean_pair_holm": 0.6556666666666708
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0165,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6653333333333391
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0165,
+   "pooled": 0.8935,
+   "mean_pair_holm": 0.5541666666666635
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0165,
+   "pooled": 0.9945,
+   "mean_pair_holm": 0.6496666666666702
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0165,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6643333333333391
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0247,
+   "pooled": 0.09,
+   "mean_pair_holm": 0.07766666666666672
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0247,
+   "pooled": 0.7755,
+   "mean_pair_holm": 0.4660000000000016
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0247,
+   "pooled": 0.9885,
+   "mean_pair_holm": 0.620833333333333
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0247,
+   "pooled": 0.999,
+   "mean_pair_holm": 0.6581666666666713
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0247,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0247,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0247,
+   "pooled": 0.999,
+   "mean_pair_holm": 0.6561666666666712
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0247,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0247,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0329,
+   "pooled": 0.75,
+   "mean_pair_holm": 0.40300000000000585
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6646666666666723
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0329,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6666666666666725
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.083,
+   "mean_pair_holm": 0.014375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0605,
+   "mean_pair_holm": 0.01825
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0555,
+   "mean_pair_holm": 0.015875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.032,
+   "mean_pair_holm": 0.005875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0215,
+   "mean_pair_holm": 0.00375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.021,
+   "mean_pair_holm": 0.001625
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.08,
+   "mean_pair_holm": 0.014625
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.057,
+   "mean_pair_holm": 0.016625
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0605,
+   "mean_pair_holm": 0.016125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.03,
+   "mean_pair_holm": 0.007375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.025,
+   "mean_pair_holm": 0.003
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.026,
+   "mean_pair_holm": 0.00225
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.067,
+   "mean_pair_holm": 0.015875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.057,
+   "mean_pair_holm": 0.015875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.016875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.0125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0485,
+   "mean_pair_holm": 0.013
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.013875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0475,
+   "mean_pair_holm": 0.00875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0345,
+   "mean_pair_holm": 0.00825
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0395,
+   "mean_pair_holm": 0.009875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.056,
+   "mean_pair_holm": 0.063875
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0525,
+   "mean_pair_holm": 0.029375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0525,
+   "mean_pair_holm": 0.02225
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0215,
+   "mean_pair_holm": 0.011125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.018,
+   "mean_pair_holm": 0.00675
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.014,
+   "mean_pair_holm": 0.004
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0079,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0079,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0079,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.000125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0079,
+   "pooled": 0.604,
+   "mean_pair_holm": 0.14575
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0079,
+   "pooled": 0.889,
+   "mean_pair_holm": 0.27075
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0079,
+   "pooled": 0.976,
+   "mean_pair_holm": 0.41375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0079,
+   "pooled": 0.5215,
+   "mean_pair_holm": 0.12925
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0079,
+   "pooled": 0.84,
+   "mean_pair_holm": 0.22325
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0079,
+   "pooled": 0.955,
+   "mean_pair_holm": 0.33375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0118,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0118,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.000125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0118,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0005
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0118,
+   "pooled": 0.9295,
+   "mean_pair_holm": 0.2885
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0118,
+   "pooled": 0.9975,
+   "mean_pair_holm": 0.461125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0118,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.5035
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0118,
+   "pooled": 0.8895,
+   "mean_pair_holm": 0.27175
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0118,
+   "pooled": 0.996,
+   "mean_pair_holm": 0.42275
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0118,
+   "pooled": 0.9995,
+   "mean_pair_holm": 0.491125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0157,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0157,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.00025
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0157,
+   "pooled": 0.029,
+   "mean_pair_holm": 0.01975
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0157,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.444625
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0157,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.507
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0157,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.510375
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0157,
+   "pooled": 0.9985,
+   "mean_pair_holm": 0.436125
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0157,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.5015
+  },
+  {
+   "pseudo_count": 0.0,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0157,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.503125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.002,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.001,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.003,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0595,
+   "mean_pair_holm": 0.017666666666666653
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.053,
+   "mean_pair_holm": 0.016666666666666646
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.01549999999999998
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.055,
+   "mean_pair_holm": 0.015499999999999977
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0495,
+   "mean_pair_holm": 0.014333333333333316
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.04,
+   "mean_pair_holm": 0.013833333333333319
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.003,
+   "mean_pair_holm": 0.0005
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.001,
+   "mean_pair_holm": 0.00016666666666666666
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.002,
+   "mean_pair_holm": 0.00016666666666666666
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0535,
+   "mean_pair_holm": 0.01816666666666666
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.058,
+   "mean_pair_holm": 0.015666666666666645
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0495,
+   "mean_pair_holm": 0.015499999999999983
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.015666666666666645
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0535,
+   "mean_pair_holm": 0.01333333333333332
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0465,
+   "mean_pair_holm": 0.013833333333333317
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.062,
+   "mean_pair_holm": 0.020833333333333343
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0535,
+   "mean_pair_holm": 0.019499999999999997
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0515,
+   "mean_pair_holm": 0.02250000000000002
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.018166666666666657
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0475,
+   "mean_pair_holm": 0.015833333333333314
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0445,
+   "mean_pair_holm": 0.01833333333333333
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.045,
+   "mean_pair_holm": 0.014666666666666649
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0415,
+   "mean_pair_holm": 0.01249999999999999
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.038,
+   "mean_pair_holm": 0.013499999999999988
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.055,
+   "mean_pair_holm": 0.04716666666666656
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.049,
+   "mean_pair_holm": 0.026166666666666706
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.057,
+   "mean_pair_holm": 0.02700000000000005
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.019,
+   "mean_pair_holm": 0.01433333333333332
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.018,
+   "mean_pair_holm": 0.0073333333333333375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.02,
+   "mean_pair_holm": 0.008500000000000004
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0156,
+   "pooled": 0.0815,
+   "mean_pair_holm": 0.027500000000000052
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0156,
+   "pooled": 0.2015,
+   "mean_pair_holm": 0.10600000000000055
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0156,
+   "pooled": 0.3345,
+   "mean_pair_holm": 0.2144999999999987
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0156,
+   "pooled": 0.384,
+   "mean_pair_holm": 0.24566666666666387
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0156,
+   "pooled": 0.603,
+   "mean_pair_holm": 0.41783333333333383
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0156,
+   "pooled": 0.777,
+   "mean_pair_holm": 0.5278333333333296
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0156,
+   "pooled": 0.3685,
+   "mean_pair_holm": 0.2239999999999976
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0156,
+   "pooled": 0.5865,
+   "mean_pair_holm": 0.39866666666666767
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0156,
+   "pooled": 0.765,
+   "mean_pair_holm": 0.5131666666666636
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0234,
+   "pooled": 0.2425,
+   "mean_pair_holm": 0.13200000000000076
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0234,
+   "pooled": 0.5565,
+   "mean_pair_holm": 0.3760000000000017
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0234,
+   "pooled": 0.798,
+   "mean_pair_holm": 0.5298333333333294
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0234,
+   "pooled": 0.68,
+   "mean_pair_holm": 0.4534999999999999
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0234,
+   "pooled": 0.903,
+   "mean_pair_holm": 0.6046666666666654
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0234,
+   "pooled": 0.977,
+   "mean_pair_holm": 0.6478333333333369
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0234,
+   "pooled": 0.67,
+   "mean_pair_holm": 0.4408333333333337
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0234,
+   "pooled": 0.8965,
+   "mean_pair_holm": 0.5984999999999984
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0234,
+   "pooled": 0.9745,
+   "mean_pair_holm": 0.6453333333333365
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0312,
+   "pooled": 0.484,
+   "mean_pair_holm": 0.32333333333333375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0312,
+   "pooled": 0.869,
+   "mean_pair_holm": 0.5814999999999978
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0312,
+   "pooled": 0.9795,
+   "mean_pair_holm": 0.6490000000000038
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0312,
+   "pooled": 0.901,
+   "mean_pair_holm": 0.6073333333333328
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0312,
+   "pooled": 0.9925,
+   "mean_pair_holm": 0.6598333333333384
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0312,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6661666666666727
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0312,
+   "pooled": 0.895,
+   "mean_pair_holm": 0.6009999999999988
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0312,
+   "pooled": 0.9905,
+   "mean_pair_holm": 0.6590000000000049
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0312,
+   "pooled": 1.0,
+   "mean_pair_holm": 0.6658333333333393
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0005,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0005,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.051,
+   "mean_pair_holm": 0.009
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.053,
+   "mean_pair_holm": 0.01175
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0475,
+   "mean_pair_holm": 0.0115
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0465,
+   "mean_pair_holm": 0.00775
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.047,
+   "mean_pair_holm": 0.010125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0445,
+   "mean_pair_holm": 0.01025
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0005,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.012625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.044,
+   "mean_pair_holm": 0.011875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.044,
+   "mean_pair_holm": 0.0135
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.045,
+   "mean_pair_holm": 0.011125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0385,
+   "mean_pair_holm": 0.00975
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.04,
+   "mean_pair_holm": 0.01225
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.053,
+   "mean_pair_holm": 0.014625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0545,
+   "mean_pair_holm": 0.015875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.057,
+   "mean_pair_holm": 0.015125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.045,
+   "mean_pair_holm": 0.0125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.01225
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.051,
+   "mean_pair_holm": 0.013
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0345,
+   "mean_pair_holm": 0.009125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0365,
+   "mean_pair_holm": 0.0095
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.008125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.067,
+   "mean_pair_holm": 0.067625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0635,
+   "mean_pair_holm": 0.032375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0585,
+   "mean_pair_holm": 0.02575
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0215,
+   "mean_pair_holm": 0.011625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.017,
+   "mean_pair_holm": 0.007125
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.016,
+   "mean_pair_holm": 0.003875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0075,
+   "pooled": 0.005,
+   "mean_pair_holm": 0.000375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0075,
+   "pooled": 0.01,
+   "mean_pair_holm": 0.00075
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0075,
+   "pooled": 0.0245,
+   "mean_pair_holm": 0.0025
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0075,
+   "pooled": 0.124,
+   "mean_pair_holm": 0.032625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0075,
+   "pooled": 0.1935,
+   "mean_pair_holm": 0.049875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0075,
+   "pooled": 0.2925,
+   "mean_pair_holm": 0.079875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0075,
+   "pooled": 0.1135,
+   "mean_pair_holm": 0.028625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0075,
+   "pooled": 0.181,
+   "mean_pair_holm": 0.043875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0075,
+   "pooled": 0.2785,
+   "mean_pair_holm": 0.068625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0112,
+   "pooled": 0.0095,
+   "mean_pair_holm": 0.000625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0112,
+   "pooled": 0.042,
+   "mean_pair_holm": 0.005375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0112,
+   "pooled": 0.071,
+   "mean_pair_holm": 0.01325
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0112,
+   "pooled": 0.2325,
+   "mean_pair_holm": 0.06225
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0112,
+   "pooled": 0.374,
+   "mean_pair_holm": 0.118
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0112,
+   "pooled": 0.525,
+   "mean_pair_holm": 0.173625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0112,
+   "pooled": 0.2205,
+   "mean_pair_holm": 0.055875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0112,
+   "pooled": 0.3555,
+   "mean_pair_holm": 0.107375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0112,
+   "pooled": 0.5085,
+   "mean_pair_holm": 0.160875
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.015,
+   "pooled": 0.0345,
+   "mean_pair_holm": 0.004
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.015,
+   "pooled": 0.109,
+   "mean_pair_holm": 0.014375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.015,
+   "pooled": 0.214,
+   "mean_pair_holm": 0.049625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.015,
+   "pooled": 0.3445,
+   "mean_pair_holm": 0.113625
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.015,
+   "pooled": 0.589,
+   "mean_pair_holm": 0.21425
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.015,
+   "pooled": 0.7655,
+   "mean_pair_holm": 0.30175
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.015,
+   "pooled": 0.3355,
+   "mean_pair_holm": 0.106375
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.015,
+   "pooled": 0.5705,
+   "mean_pair_holm": 0.2035
+  },
+  {
+   "pseudo_count": 0.1,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.015,
+   "pooled": 0.7565,
+   "mean_pair_holm": 0.293375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0455,
+   "mean_pair_holm": 0.013166666666666655
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.037,
+   "mean_pair_holm": 0.011333333333333327
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.01199999999999999
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0495,
+   "mean_pair_holm": 0.017833333333333316
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0435,
+   "mean_pair_holm": 0.01433333333333332
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.047,
+   "mean_pair_holm": 0.01616666666666665
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.014833333333333316
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0385,
+   "mean_pair_holm": 0.010833333333333332
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0435,
+   "mean_pair_holm": 0.011499999999999991
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.011833333333333324
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.015666666666666648
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.048,
+   "mean_pair_holm": 0.014666666666666649
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0485,
+   "mean_pair_holm": 0.015999999999999983
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.054,
+   "mean_pair_holm": 0.018833333333333323
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.053,
+   "mean_pair_holm": 0.018166666666666657
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0425,
+   "mean_pair_holm": 0.012999999999999987
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.049,
+   "mean_pair_holm": 0.01633333333333331
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0455,
+   "mean_pair_holm": 0.015333333333333313
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.061,
+   "mean_pair_holm": 0.02
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.068,
+   "mean_pair_holm": 0.017166666666666653
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0605,
+   "mean_pair_holm": 0.020833333333333346
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.052,
+   "mean_pair_holm": 0.016999999999999984
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0545,
+   "mean_pair_holm": 0.015666666666666648
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0565,
+   "mean_pair_holm": 0.016833333333333315
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.042,
+   "mean_pair_holm": 0.012833333333333323
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.051,
+   "mean_pair_holm": 0.011499999999999995
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0485,
+   "mean_pair_holm": 0.013833333333333316
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0525,
+   "mean_pair_holm": 0.04883333333333321
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.03200000000000006
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0505,
+   "mean_pair_holm": 0.022666666666666686
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0245,
+   "mean_pair_holm": 0.014166666666666652
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0225,
+   "mean_pair_holm": 0.00816666666666667
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.014,
+   "mean_pair_holm": 0.006000000000000002
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0129,
+   "pooled": 0.1505,
+   "mean_pair_holm": 0.0666666666666664
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0129,
+   "pooled": 0.222,
+   "mean_pair_holm": 0.10983333333333403
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0129,
+   "pooled": 0.293,
+   "mean_pair_holm": 0.17366666666666625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0129,
+   "pooled": 0.162,
+   "mean_pair_holm": 0.07399999999999991
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0129,
+   "pooled": 0.2385,
+   "mean_pair_holm": 0.12066666666666749
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0129,
+   "pooled": 0.3115,
+   "mean_pair_holm": 0.18516666666666592
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0129,
+   "pooled": 0.146,
+   "mean_pair_holm": 0.0639999999999997
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0129,
+   "pooled": 0.21,
+   "mean_pair_holm": 0.10516666666666731
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0129,
+   "pooled": 0.284,
+   "mean_pair_holm": 0.16349999999999978
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0193,
+   "pooled": 0.269,
+   "mean_pair_holm": 0.1415000000000004
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0193,
+   "pooled": 0.379,
+   "mean_pair_holm": 0.24399999999999758
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0193,
+   "pooled": 0.516,
+   "mean_pair_holm": 0.35616666666666796
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0193,
+   "pooled": 0.285,
+   "mean_pair_holm": 0.1538333333333333
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0193,
+   "pooled": 0.391,
+   "mean_pair_holm": 0.25483333333333114
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0193,
+   "pooled": 0.5355,
+   "mean_pair_holm": 0.3681666666666682
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0193,
+   "pooled": 0.265,
+   "mean_pair_holm": 0.1351666666666673
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0193,
+   "pooled": 0.3685,
+   "mean_pair_holm": 0.2346666666666645
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0193,
+   "pooled": 0.5125,
+   "mean_pair_holm": 0.3486666666666677
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0258,
+   "pooled": 0.3585,
+   "mean_pair_holm": 0.2259999999999987
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0258,
+   "pooled": 0.575,
+   "mean_pair_holm": 0.40316666666666723
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0258,
+   "pooled": 0.7455,
+   "mean_pair_holm": 0.5239999999999964
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0258,
+   "pooled": 0.377,
+   "mean_pair_holm": 0.24716666666666498
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0258,
+   "pooled": 0.5985,
+   "mean_pair_holm": 0.4226666666666675
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0258,
+   "pooled": 0.761,
+   "mean_pair_holm": 0.5338333333333298
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0258,
+   "pooled": 0.36,
+   "mean_pair_holm": 0.2219999999999986
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0258,
+   "pooled": 0.5785,
+   "mean_pair_holm": 0.40300000000000086
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "effort",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0258,
+   "pooled": 0.743,
+   "mean_pair_holm": 0.5199999999999965
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0405,
+   "mean_pair_holm": 0.00975
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.051,
+   "mean_pair_holm": 0.007625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0415,
+   "mean_pair_holm": 0.00975
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0465,
+   "mean_pair_holm": 0.01225
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.057,
+   "mean_pair_holm": 0.0105
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0465,
+   "mean_pair_holm": 0.012
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0395,
+   "mean_pair_holm": 0.01
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.008125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: identical",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0395,
+   "mean_pair_holm": 0.009125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.039,
+   "mean_pair_holm": 0.01075
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.056,
+   "mean_pair_holm": 0.01175
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0435,
+   "mean_pair_holm": 0.011125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.044,
+   "mean_pair_holm": 0.014375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0635,
+   "mean_pair_holm": 0.014875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0505,
+   "mean_pair_holm": 0.014125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.038,
+   "mean_pair_holm": 0.010625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0545,
+   "mean_pair_holm": 0.01225
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: equal score, other favorite cause",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.043,
+   "mean_pair_holm": 0.011375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0535,
+   "mean_pair_holm": 0.016125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.059,
+   "mean_pair_holm": 0.017125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.017
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0415,
+   "mean_pair_holm": 0.014125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.05,
+   "mean_pair_holm": 0.01325
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.051,
+   "mean_pair_holm": 0.013375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0335,
+   "mean_pair_holm": 0.01
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0415,
+   "mean_pair_holm": 0.00875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: rare labels, relabeled",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0385,
+   "mean_pair_holm": 0.00875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0,
+   "mean_pair_holm": 0.0
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.0575,
+   "mean_pair_holm": 0.066625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.0485,
+   "mean_pair_holm": 0.028625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0545,
+   "mean_pair_holm": 0.027
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": 0.0,
+   "pooled": 0.017,
+   "mean_pair_holm": 0.011375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": 0.0,
+   "pooled": 0.014,
+   "mean_pair_holm": 0.004125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "null: one varying scenario",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": 0.0,
+   "pooled": 0.0155,
+   "mean_pair_holm": 0.005125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0063,
+   "pooled": 0.062,
+   "mean_pair_holm": 0.012
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0063,
+   "pooled": 0.077,
+   "mean_pair_holm": 0.019875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0063,
+   "pooled": 0.0985,
+   "mean_pair_holm": 0.02175
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0063,
+   "pooled": 0.072,
+   "mean_pair_holm": 0.014875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0063,
+   "pooled": 0.0905,
+   "mean_pair_holm": 0.0245
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0063,
+   "pooled": 0.1035,
+   "mean_pair_holm": 0.025875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0063,
+   "pooled": 0.0625,
+   "mean_pair_holm": 0.01175
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0063,
+   "pooled": 0.075,
+   "mean_pair_holm": 0.019125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 50% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0063,
+   "pooled": 0.0965,
+   "mean_pair_holm": 0.021
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0094,
+   "pooled": 0.075,
+   "mean_pair_holm": 0.019
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0094,
+   "pooled": 0.124,
+   "mean_pair_holm": 0.03125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0094,
+   "pooled": 0.137,
+   "mean_pair_holm": 0.037375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0094,
+   "pooled": 0.0835,
+   "mean_pair_holm": 0.024
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0094,
+   "pooled": 0.135,
+   "mean_pair_holm": 0.036125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0094,
+   "pooled": 0.1515,
+   "mean_pair_holm": 0.04325
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0094,
+   "pooled": 0.0735,
+   "mean_pair_holm": 0.01925
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0094,
+   "pooled": 0.1215,
+   "mean_pair_holm": 0.029
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 75% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0094,
+   "pooled": 0.138,
+   "mean_pair_holm": 0.035375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 24,
+   "true_effect": -0.0125,
+   "pooled": 0.106,
+   "mean_pair_holm": 0.024875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 48,
+   "true_effect": -0.0125,
+   "pooled": 0.167,
+   "mean_pair_holm": 0.044125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "smoothed",
+   "cases": 72,
+   "true_effect": -0.0125,
+   "pooled": 0.2475,
+   "mean_pair_holm": 0.069875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 24,
+   "true_effect": -0.0125,
+   "pooled": 0.1145,
+   "mean_pair_holm": 0.03125
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 48,
+   "true_effect": -0.0125,
+   "pooled": 0.1825,
+   "mean_pair_holm": 0.049625
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "unbiased",
+   "cases": 72,
+   "true_effect": -0.0125,
+   "pooled": 0.2675,
+   "mean_pair_holm": 0.080375
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 24,
+   "true_effect": -0.0125,
+   "pooled": 0.1045,
+   "mean_pair_holm": 0.025875
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 48,
+   "true_effect": -0.0125,
+   "pooled": 0.1655,
+   "mean_pair_holm": 0.0425
+  },
+  {
+   "pseudo_count": 0.5,
+   "family": "meta",
+   "design": "effect: 100% of history",
+   "variance": "bound",
+   "cases": 72,
+   "true_effect": -0.0125,
+   "pooled": 0.2475,
+   "mean_pair_holm": 0.068
+  }
+ ]
+}

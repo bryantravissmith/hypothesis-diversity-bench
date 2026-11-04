@@ -52,13 +52,24 @@ prompts. Round-005 tests the effort claim on fresh prompts and samples.
 
 The [simulation report](../results/validation/CONFIRMATION_POWER.md) uses
 the observed distributions from rounds 001-004 and shrinks the historical
-effect, since effects chosen after seeing data are biased upward. Power
-depends mostly on how often a model gives a cause it was never seen giving in
-20 runs. If such causes are truly absent, 48 cases detect even half the
-historical effect. If every cause keeps a few percent probability, power at
-the full historical effect falls to about half. The meta-prompt effect, about
--0.01, is too small to confirm in any affordable round, which is why it is
-exploratory.
+effect, since effects chosen after seeing data are biased upward. With the
+conservative variance at alpha 0.05, the worst simulated null rejected 5.5% of
+the time (2,000 rounds per row, Monte Carlo SE about 0.5 points).
+
+Power depends mostly on "truth smoothing": how much probability a model keeps
+for causes it was never seen giving in 20 runs. Pooled effort power with 48
+cases:
+
+| Truth smoothing | 50% of historical effect | 75% | 100% |
+|---|---:|---:|---:|
+| 0 (unseen causes absent) | 0.99 | 1.00 | 1.00 |
+| 0.1 | 0.59 | 0.90 | 0.99 |
+| 0.5 (every cause about 2% or more) | 0.21 | 0.37 | 0.58 |
+
+The meta-prompt effect, about -0.01 to -0.016, is too small to confirm
+reliably unless unseen causes are truly absent, which is why it is
+exploratory. This section was completed after inference started; the
+decision rules above were committed before it.
 
 ## Limits
 
