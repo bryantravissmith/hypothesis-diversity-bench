@@ -107,6 +107,34 @@ class CaseTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             cases.build("test-seed", tiers=("sometimes",))
 
+    def test_randomized_dates_balance_cause_and_date(self):
+        import collections
+
+        built = cases.build("test-seed", tiers=("none",), none_variants=8, randomize_dates=True)
+        self.assertEqual(built, cases.build("test-seed", tiers=("none",), none_variants=8, randomize_dates=True))
+        plain = cases.build("test-seed", tiers=("none",), none_variants=8)
+        self.assertEqual([c["change_order"] for c in built], [c["change_order"] for c in plain])
+        for s in SCENARIOS:
+            variants = [c for c in built if c["scenario"] == s["id"]]
+            slots = collections.Counter(cases.DATE.search(s["causes"][c]["change"]).group() for c in CAUSES)
+            for cause in CAUSES:
+                # Every cause carries each date in proportion to the scenario's
+                # own date slots: October 13 twice as often as 12 or 14.
+                got = collections.Counter(v["change_dates"][cause] for v in variants)
+                self.assertEqual(got, collections.Counter({d: n * 2 for d, n in slots.items()}))
+            for v in variants:
+                self.assertEqual(collections.Counter(v["change_dates"].values()), slots)
+                for cause in CAUSES:
+                    line = cases.change_text(s, cause, v["change_dates"][cause])
+                    self.assertIn(f"  - {line}", v["prompt"])
+                    self.assertEqual(cases.DATE.findall(line), [v["change_dates"][cause]])
+                self.assertIn("in the week of October 13", v["prompt"])
+        self.assertTrue(all("change_dates" not in c for c in plain))
+        with self.assertRaises(ValueError):
+            cases.build("test-seed", randomize_dates=True)
+        with self.assertRaises(ValueError):
+            cases.build("test-seed", tiers=("none",), randomize_dates=True)
+
     def test_patterns_name_their_own_change(self):
         import grade
 

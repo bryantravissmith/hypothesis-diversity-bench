@@ -14,11 +14,17 @@ Numbers are generated from the true cause so that every table is consistent
 with it. Effect sizes are balanced: whichever change is true, it needs a
 moderate effect (roughly 20-30%) on the people it touches to explain the drop,
 so no cause wins on arithmetic alone. Change-log and diagnostic order are shuffled per case.
+
+By default each cause type keeps its scenario date (mix October 12, release
+and tracking October 13, policy October 14). With randomized dates, the
+no-evidence variants reassign that set of dates across causes from Latin
+squares, so every cause takes every date slot equally often.
 """
 
 import hashlib
 import json
 import random
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -34,6 +40,7 @@ MIX_SOURCE_RATE = 0.3  # New-source rate relative to baseline when mix is true.
 MIX_DECOY_SHARE = 0.05  # New-source volume share when mix is not the cause.
 BASE_VOLUME = 100_000
 NOISE = 0.025
+DATE = re.compile(r"October \d+")
 
 
 def load_scenarios(path=SCENARIOS):
@@ -45,6 +52,8 @@ def load_scenarios(path=SCENARIOS):
             raise ValueError(f"{s['id']} must define every cause type")
         if not 0 < s["after"] < s["before"]:
             raise ValueError(f"{s['id']} must show a drop")
+        if any(len(DATE.findall(spec["change"])) != 1 for spec in s["causes"].values()):
+            raise ValueError(f"{s['id']} must give each change exactly one date")
     return data
 
 
@@ -131,7 +140,12 @@ def diagnostic(scenario, cause, truth, rng):
     return title, table, values
 
 
-def prompt_for(scenario, changes, diagnostics):
+def change_text(scenario, cause, date=None):
+    text = scenario["causes"][cause]["change"]
+    return DATE.sub(date, text) if date else text
+
+
+def prompt_for(scenario, changes, diagnostics, dates=None):
     dec = scenario["decimals"]
     lines = [
         f"You are helping the analytics team at {scenario['business']}. Here is what we know:",
@@ -141,7 +155,7 @@ def prompt_for(scenario, changes, diagnostics):
         "- No outages were reported.",
         "- Changes around that time:",
     ]
-    lines += [f"  - {scenario['causes'][c]['change']}" for c in changes]
+    lines += [f"  - {change_text(scenario, c, (dates or {}).get(c))}" for c in changes]
     if diagnostics:
         lines += ["", "The team has already pulled these breakdowns:"]
         for title, table in diagnostics:
@@ -157,16 +171,29 @@ def latin_orders(items, rng):
     return [[symbols[(rows[r] + cols[c]) % n] for c in range(n)] for r in range(n)]
 
 
-def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1, exclude_orders=None):
+def date_assignments(scenario, causes, count, rng):
+    """count cause-to-date maps over the scenario's own dates, from Latin
+    squares: every cause takes every date slot equally often."""
+    slots = sorted(DATE.search(scenario["causes"][c]["change"]).group() for c in causes)
+    maps = []
+    while len(maps) < count:
+        maps += [dict(zip(row, slots)) for row in latin_orders(causes, rng)]
+    return maps
+
+
+def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1, exclude_orders=None, randomize_dates=False):
     """Build the case set. With none_variants > 1, each scenario gets that many
     no-evidence cases whose change orders come from Latin squares, so every
     change appears in every list position equally often. exclude_orders maps a
     scenario ID to change orders already run; variants never repeat them or
-    each other, so every variant prompt is new."""
+    each other, so every variant prompt is new. randomize_dates also balances
+    which date each change carries."""
     data = load_scenarios(scenarios_path)
     causes = data["causes"]
     if none_variants != 1 and (none_variants < 1 or none_variants % len(causes)):
         raise ValueError(f"none_variants must be 1 or a multiple of {len(causes)}")
+    if randomize_dates and (none_variants == 1 or tuple(tiers) != ("none",)):
+        raise ValueError("randomize_dates needs the no-evidence tier alone with Latin-square variants")
     if not tiers or set(tiers) - set(TIERS):
         raise ValueError(f"tiers must be a non-empty subset of {TIERS}")
     cases = []
@@ -189,19 +216,22 @@ def build(seed, scenarios_path=SCENARIOS, tiers=TIERS, none_variants=1, exclude_
                 used.update(tuple(order) for order in square)
                 variants += square
             orders = [(f"{sid}--none--v{i}", order) for i, order in enumerate(variants, 1)]
-        for case_id, changes in orders:
-            cases.append(
-                dict(
-                    id=case_id,
-                    scenario=sid,
-                    tier="none",
-                    truth=None,
-                    candidates=list(causes),
-                    diagnostics=[],
-                    change_order=changes,
-                    prompt=prompt_for(scenario, changes, []),
-                )
+        dates = (date_assignments(scenario, causes, len(orders), _rng(seed, sid, "none", "dates"))
+                 if randomize_dates else [None] * len(orders))
+        for (case_id, changes), change_dates in zip(orders, dates):
+            case = dict(
+                id=case_id,
+                scenario=sid,
+                tier="none",
+                truth=None,
+                candidates=list(causes),
+                diagnostics=[],
+                change_order=changes,
+                prompt=prompt_for(scenario, changes, [], change_dates),
             )
+            if change_dates:
+                case["change_dates"] = {c: change_dates[c] for c in causes}
+            cases.append(case)
         for tier in [t for t in ("partial", "full") if t in tiers]:
             for truth in causes:
                 rng = _rng(seed, sid, tier, truth)

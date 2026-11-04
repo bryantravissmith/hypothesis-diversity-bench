@@ -9,8 +9,10 @@
 
 Writes summary.json into each round, the pass@k figures (and a combined
 summary when several rounds are given) into --figures and, with --report, a
-generated Markdown report. Rounds must have identical cases and are reported
-side by side, never pooled. Never edit those outputs by hand.
+generated Markdown report. Rounds are reported side by side, never pooled;
+figures and summaries of several rounds require identical cases, while
+--output analyses may combine rounds with different cases when every compared
+pair stays within one round. Never edit those outputs by hand.
 
 Use --output to write to a separate analysis directory.
 --comparisons selects explicit contrasts.
@@ -43,7 +45,9 @@ import permutation
 
 CAUSES = ("release", "mix", "tracking", "policy")
 KS = {"none": (1, 2, 3, 5, 10), "partial": (1, 2, 3, 5), "full": (1, 2)}
-ANALYSIS_VERSION = "fixed-prompt-ci-v3"
+ANALYSIS_VERSION = "fixed-prompt-ci-v4"
+TERMINAL = ("valid", "invalid_response", "protocol_error")
+QUOTA = "quota"
 ROOT = Path(__file__).resolve().parent
 
 
@@ -138,6 +142,14 @@ def summarize(results):
                 and all(row.get("outcome") != "missing" for row in rows))
     pending = any(row["source"] == "pattern" and row["label"] in ("other", "multiple") for row in rows)
     inferential = complete and not pending
+    # A stopped round can still hold conditions whose every planned job
+    # finished. Those keep inference; the rest of the round does not.
+    unfinished = collections.Counter()
+    for job, attempts in grade.final_rows(results)[1]:
+        tries = sum(1 for a in attempts if a["outcome"] != QUOTA)
+        if not any(a["outcome"] in TERMINAL for a in attempts) and tries < plan.get("max_attempts", math.inf):
+            unfinished[job["condition"]] += 1
+    pending_by = {r["condition"] for r in rows if r["source"] == "pattern" and r["label"] in ("other", "multiple")}
     cases = {c["id"]: c for c in plan["cases"]}
     grouped = collections.defaultdict(list)
     for r in rows:
@@ -149,9 +161,18 @@ def summarize(results):
     )
     out["label_sources"] = dict(collections.Counter(r.get("source") for r in rows))
     for cond in plan["conditions"]:
+        if inferential:
+            status = ("available", None)
+        elif unfinished[cond["id"]]:
+            status = ("unavailable", "incomplete condition or missing final attempts")
+        elif cond["id"] in pending_by:
+            status = ("unavailable", "unreviewed ambiguous labels")
+        else:
+            status = ("available", None)
         entry = dict(
             id=cond["id"], label=cond["label"], model=cond["model"], thinking=cond["thinking"],
             variant="meta" if cond.get("prompt_prefix") else "plain", base=cond.get("base"), tiers={},
+            unfinished_jobs=unfinished[cond["id"]],
         )
         for tier in ("none", "partial", "full"):
             tier_cases = [c for c in plan["cases"] if c["tier"] == tier]
@@ -166,8 +187,7 @@ def summarize(results):
             repeats = next(iter(trial_counts))
             t["repeats_per_case"] = repeats
             t["scenario_count"] = len({cases[cid]["scenario"] for cid in per_case})
-            t["inferential_status"] = out["analysis"]["inferential_status"]
-            t["unavailable_reason"] = out["analysis"]["unavailable_reason"]
+            t["inferential_status"], t["unavailable_reason"] = status
             t["per_case"] = {
                 cid: dict(m, scenario=cases[cid]["scenario"], truth=cases[cid]["truth"])
                 for cid, m in per_case.items()
@@ -178,7 +198,8 @@ def summarize(results):
             for k in ks:
                 values = [m["passk"][k] for m in per_case.values()]
                 mean = sum(values) / len(values)
-                ci = intervals.fixed_prompt_interval(mean, len(values), repeats, k, tier) if inferential else dict(low=None, high=None)
+                ci = (intervals.fixed_prompt_interval(mean, len(values), repeats, k, tier)
+                      if status[0] == "available" else dict(low=None, high=None))
                 t["passk"][str(k)] = dict(mean=mean, **ci)
                 groups = collections.defaultdict(list)
                 for cid, m in per_case.items():
@@ -291,6 +312,7 @@ def contrasts(combined, spec):
     """Explicit round-qualified pairs; never pool or pair trial indices."""
     by_key = {(c["round"], c["id"]): c for c in combined["conditions"]}
     withheld = confirmatory_check(combined, spec)
+    digests = {r["name"]: r.get("case_records_sha256") for r in combined.get("rounds", [])}
     output = []
     family_ids = [f["id"] for f in spec["families"]]
     if len(set(family_ids)) != len(family_ids):
@@ -321,6 +343,8 @@ def contrasts(combined, spec):
                 item["reason"] = "configured tier/k unavailable"
                 continue
             lm, rm = (t["passk"][str(k)]["mean"] for t in (lt, rt))
+            if digests.get(pair["left"][0]) != digests.get(pair["right"][0]):
+                raise ValueError(f"{pair['id']} compares rounds with different case sets")
             item["mean"] = lm - rm
             if lt["per_case"].keys() != rt["per_case"].keys():
                 raise ValueError("Contrasts require identical cases")
@@ -356,25 +380,49 @@ def cases_digest(cases):
 
 
 def confirmatory_check(combined, spec):
-    """Reason to withhold confirmatory tests, or None when the round matches its preregistration."""
-    rule = spec.get("confirmatory")
-    if not rule:
+    """Reason to withhold confirmatory tests, or None when every round matches its preregistration.
+
+    A confirmatory block is one round rule, or {"rounds": [...]} with one rule
+    per round. A rule with scope "round" (the default) requires the whole round
+    complete with exactly the listed conditions. Scope "conditions" requires
+    only the listed conditions to be present and complete, for a stopped round
+    whose preregistered pairs finished."""
+    block = spec.get("confirmatory")
+    if not block:
         return None
+    for rule in block.get("rounds", [block]):
+        reason = _round_check(combined, rule)
+        if reason:
+            return reason
+    return None
+
+
+def _round_check(combined, rule):
+    scope = rule.get("scope", "round")
+    if scope not in ("round", "conditions"):
+        raise ValueError(f"Unknown confirmatory scope {scope!r}")
     rnd = next((r for r in combined["rounds"] if r["name"] == rule["round"]), None)
     if rnd is None:
         return f"{rule['round']} is not among the analyzed rounds"
-    if rnd["state"] != "complete" or rnd["unfinished_jobs"] or rnd["analysis"]["inferential_status"] != "available":
+    if scope == "round" and (rnd["state"] != "complete" or rnd["unfinished_jobs"]
+                             or rnd["analysis"]["inferential_status"] != "available"):
         return f"{rule['round']} is incomplete or has unreviewed labels"
     if rnd["seed"] != rule["seed"] or rnd["cases_sha256"] != rule["cases_sha256"]:
         return f"{rule['round']} cases differ from the preregistered case set"
-    conditions = [c for c in combined["conditions"] if c["round"] == rule["round"]]
-    if sorted(c["id"] for c in conditions) != sorted(rule["conditions"]):
+    present = {c["id"]: c for c in combined["conditions"] if c["round"] == rule["round"]}
+    if scope == "round" and sorted(present) != sorted(rule["conditions"]):
         return f"{rule['round']} conditions differ from the preregistration"
-    for c in conditions:
+    for cid in rule["conditions"]:
+        c = present.get(cid)
+        if c is None:
+            return f"{rule['round']} lacks preregistered condition {cid}"
         for tier, repeats in rule["repeats"].items():
-            per_case = c["tiers"].get(tier, {}).get("per_case", {})
+            t = c["tiers"].get(tier, {})
+            per_case = t.get("per_case", {})
             if len(per_case) != rule["cases"] or any(m["n"] != repeats for m in per_case.values()):
-                return f"{c['id']} lacks {repeats} planned jobs for each of {rule['cases']} {tier} cases"
+                return f"{cid} lacks {repeats} planned jobs for each of {rule['cases']} {tier} cases"
+            if t.get("inferential_status") != "available" or c.get("unfinished_jobs"):
+                return f"{rule['round']}/{cid} is incomplete or has unreviewed labels"
     return None
 
 
@@ -544,7 +592,9 @@ def report(combined, figures):
         "",
         "<!-- Generated by analyze.py. Do not edit by hand. -->",
         "",
-        "Rounds have identical base case records; they ran separately and are never pooled. "
+        ("Rounds have identical base case records; they ran separately and are never pooled. "
+         if combined.get("identical_cases", True) else
+         "Rounds have different case sets; they ran separately, are never pooled, and are compared only within a round. ") +
         "The charts show plain-prompt conditions; meta-prompt conditions are compared in their own section. "
         "Every planned trial is in the denominator; trials without a valid answer count as misses. "
         "Brackets are conservative, pointwise 95% fixed-prompt confidence bounds, assuming independent jobs "
@@ -661,21 +711,25 @@ def main(argv=None):
     combined = {"rounds": [], "conditions": [], "analysis_version": ANALYSIS_VERSION}
     summaries = []
     reference = None
+    identical = True
     for results in dirs:
         plan, summary = summarize(results)
         cases = sorted(plan["cases"], key=lambda c: c["id"])
-        if reference is not None and cases != reference:
-            raise SystemExit(f"{results.name} has different cases; rounds can only be reported together with identical cases")
+        if reference is not None and cases != reference and not args.output:
+            raise SystemExit(f"{results.name} has different cases; only --output analyses combine rounds with different cases")
+        identical = identical and (reference is None or cases == reference)
         reference = cases
         summaries.append((results, summary))
         combined["rounds"].append(dict(
             name=results.name, seed=plan["seed"], state=plan.get("state", "unknown"),
             unfinished_jobs=plan.get("unfinished_jobs", 0), repeats=plan["repeats"],
             cases_sha256=cases_digest(plan["cases"]),
+            case_records_sha256=hashlib.sha256(json.dumps(cases, sort_keys=True).encode()).hexdigest(),
             label_sources=summary["label_sources"],
             analysis=summary["analysis"],
         ))
         combined["conditions"] += [dict(c, round=results.name) for c in summary["conditions"]]
+    combined["identical_cases"] = identical
     if args.comparisons:
         spec = json.loads(Path(args.comparisons).read_text())
         combined["comparison_spec"] = dict(spec, sha256=file_hash(args.comparisons))

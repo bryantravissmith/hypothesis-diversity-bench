@@ -1660,7 +1660,8 @@
       "tracking": 1.0
      }
     }
-   }
+   },
+   "unfinished_jobs": 0
   },
   {
    "id": "opus-5.5-max",
@@ -3318,7 +3319,8 @@
       "tracking": 1.0
      }
     }
-   }
+   },
+   "unfinished_jobs": 0
   },
   {
    "id": "gpt-4o",
@@ -4988,7 +4990,8 @@
       "tracking": 0.9166666666666666
      }
     }
-   }
+   },
+   "unfinished_jobs": 0
   },
   {
    "id": "deepseek-v3.2",
@@ -6662,7 +6665,8 @@
       "tracking": 1.0
      }
     }
-   }
+   },
+   "unfinished_jobs": 0
   },
   {
    "id": "deepseek-r1",
@@ -8332,7 +8336,8 @@
       "tracking": 1.0
      }
     }
-   }
+   },
+   "unfinished_jobs": 0
   }
  ],
  "label_sources": {
@@ -8340,10 +8345,10 @@
   "review": 271
  },
  "analysis": {
-  "version": "fixed-prompt-ci-v3",
+  "version": "fixed-prompt-ci-v4",
   "python_version": "3.12.13",
   "source_sha256": {
-   "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
+   "analyze.py": "9b77e8c8bbbede25a63fc9b7d28a5d4e28a5fe99be31db729c22507c160417d3",
    "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
    "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
    "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",

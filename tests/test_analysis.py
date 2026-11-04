@@ -112,9 +112,18 @@ class AnalysisTest(unittest.TestCase):
         second_plan["cases"][1]["truth"] = "tracking"
         (second / "plan.json").write_text(json.dumps(second_plan))
         with self.assertRaisesRegex(SystemExit, "different cases"):
-            self.run_cli(second, "--output", self.root / "bad")
+            self.run_cli(second, "--figures", self.root / "bad")
         self.assertFalse((self.root / "bad").exists())
         self.assertFalse((self.input / "summary.json").exists())
+        # Versioned analyses may hold both rounds, but never compare across them.
+        spec = self.root / "spec.json"
+        spec.write_text(json.dumps(dict(families=[dict(id="x", tier="none", k=10, alpha=.05, pairs=[
+            dict(id="across", left=["round-a", "a"], right=["round-b", "b"])])])))
+        with self.assertRaisesRegex(ValueError, "different case sets"):
+            self.run_cli(second, "--output", self.root / "bad", "--comparisons", spec)
+        self.assertFalse((self.root / "bad").exists())
+        self.run_cli(second, "--output", self.root / "ok")
+        self.assertIn("different case sets", (self.root / "ok/RESULTS.md").read_text())
 
     def test_round_qualified_pairs_and_family_adjustment(self):
         _, s = analyze.summarize(self.input)
@@ -185,6 +194,33 @@ class AnalysisTest(unittest.TestCase):
             self.assertEqual(family["pairs"][0]["tests"]["score_test"]["status"], "withheld")
         rnd["state"] = "stopped"
         self.assertIn("incomplete", analyze.confirmatory_check(combined, spec))
+
+    def test_condition_scoped_preregistration_in_a_stopped_round(self):
+        # Condition b stops early; condition a finished every planned job.
+        rows = [json.loads(x) for x in (self.input / "attempts.jsonl").read_text().splitlines()]
+        last_b = max(i for i, r in enumerate(rows) if r["condition"] == "b")
+        rows[last_b] = dict(rows[last_b], outcome="quota", hypothesis=None)
+        (self.input / "attempts.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+        self.plan.update(state="stopped", unfinished_jobs=1, max_attempts=1)
+        (self.input / "plan.json").write_text(json.dumps(self.plan))
+        _, s = analyze.summarize(self.input)
+        a, b = s["conditions"]
+        self.assertEqual((a["unfinished_jobs"], b["unfinished_jobs"]), (0, 1))
+        self.assertEqual(a["tiers"]["none"]["inferential_status"], "available")
+        self.assertIsNotNone(a["tiers"]["none"]["passk"]["10"]["low"])
+        self.assertEqual(b["tiers"]["none"]["inferential_status"], "unavailable")
+        self.assertEqual(s["analysis"]["inferential_status"], "unavailable")
+        rnd = dict(name="round-a", seed="test", state="stopped", unfinished_jobs=1,
+                   analysis=s["analysis"], cases_sha256=analyze.cases_digest(self.plan["cases"]))
+        combined = dict(rounds=[rnd], conditions=[dict(c, round="round-a") for c in s["conditions"]])
+        rule = dict(round="round-a", seed="test", cases_sha256=rnd["cases_sha256"], conditions=["a"],
+                    repeats=dict(none=20), cases=1, scope="conditions")
+        spec = dict(confirmatory=dict(rounds=[rule]))
+        self.assertIsNone(analyze.confirmatory_check(combined, spec))
+        self.assertIn("incomplete", analyze.confirmatory_check(combined, dict(confirmatory=dict(rounds=[dict(rule, conditions=["a", "b"])]))))
+        self.assertIn("incomplete", analyze.confirmatory_check(combined, dict(confirmatory=dict(rounds=[dict(rule, scope="round")]))))
+        self.assertIn("lacks", analyze.confirmatory_check(combined, dict(confirmatory=dict(rounds=[dict(rule, conditions=["c"])]))))
+        self.assertIn("not among", analyze.confirmatory_check(combined, dict(confirmatory=dict(rounds=[rule, dict(rule, round="round-z")]))))
 
     def test_label_permutation_preserves_none_score(self):
         case = dict(truth=None, candidates=analyze.CAUSES)

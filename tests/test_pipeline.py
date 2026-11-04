@@ -118,6 +118,9 @@ class UnitTest(unittest.TestCase):
         cond = {"model": "openai/gpt-4o"}
         err = [{"type": "message_end", "message": {"role": "assistant", "stopReason": "error", "errorMessage": "429 Too Many Requests", "model": "openai/gpt-4o"}}]
         self.assertEqual(bench.parse_pi(err, cond)["problem"][0], "rate_limit")
+        limit = "The ChatGPT user has reached their Subscription Sharing usage limit. Ask the user to try again after their usage limit resets or use an API key instead."
+        quota = [{"type": "message_end", "message": {"role": "assistant", "stopReason": "error", "errorMessage": limit, "model": "openai/gpt-4o"}}]
+        self.assertEqual(bench.parse_pi(quota, cond)["problem"][0], "quota")
         other = [{"type": "message_end", "message": {"role": "assistant", "stopReason": "stop", "model": "openai/gpt-4o-mini", "content": []}}]
         self.assertEqual(bench.parse_pi(other, cond)["problem"][0], "protocol_error")
 
@@ -125,7 +128,7 @@ class UnitTest(unittest.TestCase):
         cond = {"model": "claude-opus-5-5"}
         init = {"type": "system", "subtype": "init", "model": "claude-opus-5-5", "tools": []}
         limited = [init, {"type": "rate_limit_event", "rate_limit_info": {"status": "rejected"}}]
-        self.assertEqual(bench.parse_claude(limited, cond)["problem"][0], "rate_limit")
+        self.assertEqual(bench.parse_claude(limited, cond)["problem"][0], "quota")
         failed = [init, {"type": "result", "subtype": "error_during_execution", "is_error": True}]
         self.assertEqual(bench.parse_claude(failed, cond)["problem"][0], "error")
         tools = [dict(init, tools=["Bash"])]
@@ -151,6 +154,35 @@ class SchedulingTest(unittest.TestCase):
                 bench.Round(raw).run()
         self.assertEqual(len(seen), 18)
         self.assertTrue(all(thread.startswith(pool + "_") for pool, thread in seen), seen)
+
+    def test_usage_limit_pauses_the_service_without_using_retries(self):
+        calls = []
+
+        def fake_attempt(self, job, number):
+            calls.append((job["job"], number))
+            # The first three calls hit the usage limit; then the limit resets.
+            outcome = "quota" if len(calls) <= 3 else "valid"
+            return dict(job=job["job"], attempt=number, outcome=outcome, condition=job["condition"],
+                        detail="usage limit" if outcome == "quota" else None)
+
+        with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()), \
+                contextlib.redirect_stderr(io.StringIO()), \
+                unittest.mock.patch.dict(os.environ, {"HDB_QUOTA_SECONDS": "0.05"}):
+            raw = Path(tmp) / "raw"
+            with unittest.mock.patch.object(bench, "_version", return_value="test"):
+                bench.main(["plan", str(raw), "--seed", "s1", "--conditions", "gpt-6.1-sol-max",
+                            "--cases", "ecommerce-checkout--none", "--repeats", "none=2", "--max-attempts", "1"])
+            with unittest.mock.patch.object(bench.Round, "attempt", fake_attempt):
+                bench.Round(raw).run()
+            r = bench.Round(raw)
+            history = r.history()
+            # With one allowed try, both jobs still finish valid: usage-limit
+            # attempts are recorded but never count toward the bound.
+            self.assertEqual(len(history), 2)
+            self.assertTrue(all(rows[-1]["outcome"] == "valid" and r.done(rows) for rows in history.values()))
+            self.assertEqual(sum(row["outcome"] == "quota" for rows in history.values() for row in rows), 3)
+            self.assertTrue(all([row["attempt"] for row in rows] == list(range(1, len(rows) + 1)) for rows in history.values()))
+            self.assertFalse(r.done([dict(outcome="quota")] * 5))
 
     def test_changed_source_blocks_inference_only(self):
         with tempfile.TemporaryDirectory() as tmp, contextlib.redirect_stdout(io.StringIO()):

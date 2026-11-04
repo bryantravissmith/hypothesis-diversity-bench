@@ -11,15 +11,16 @@
     "full": 2
    },
    "cases_sha256": "1cce486c51300df053f10b7c21aed915ededbabc41a5a7286a5f53bf21bf0c41",
+   "case_records_sha256": "712766f3e522e09a0d68e70c4296b4720953b81279cb340feb50cd80cde02a51",
    "label_sources": {
     "pattern": 1169,
     "review": 271
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v3",
+    "version": "fixed-prompt-ci-v4",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
+     "analyze.py": "9b77e8c8bbbede25a63fc9b7d28a5d4e28a5fe99be31db729c22507c160417d3",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
      "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
      "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",
@@ -65,15 +66,16 @@
     "full": 2
    },
    "cases_sha256": "1cce486c51300df053f10b7c21aed915ededbabc41a5a7286a5f53bf21bf0c41",
+   "case_records_sha256": "712766f3e522e09a0d68e70c4296b4720953b81279cb340feb50cd80cde02a51",
    "label_sources": {
     "pattern": 1667,
     "review": 61
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v3",
+    "version": "fixed-prompt-ci-v4",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
+     "analyze.py": "9b77e8c8bbbede25a63fc9b7d28a5d4e28a5fe99be31db729c22507c160417d3",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
      "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
      "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",
@@ -119,15 +121,16 @@
     "full": 2
    },
    "cases_sha256": "1cce486c51300df053f10b7c21aed915ededbabc41a5a7286a5f53bf21bf0c41",
+   "case_records_sha256": "712766f3e522e09a0d68e70c4296b4720953b81279cb340feb50cd80cde02a51",
    "label_sources": {
     "pattern": 555,
     "review": 21
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v3",
+    "version": "fixed-prompt-ci-v4",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
+     "analyze.py": "9b77e8c8bbbede25a63fc9b7d28a5d4e28a5fe99be31db729c22507c160417d3",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
      "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
      "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",
@@ -173,15 +176,16 @@
     "full": 2
    },
    "cases_sha256": "1cce486c51300df053f10b7c21aed915ededbabc41a5a7286a5f53bf21bf0c41",
+   "case_records_sha256": "712766f3e522e09a0d68e70c4296b4720953b81279cb340feb50cd80cde02a51",
    "label_sources": {
     "pattern": 2168,
     "review": 136
    },
    "analysis": {
-    "version": "fixed-prompt-ci-v3",
+    "version": "fixed-prompt-ci-v4",
     "python_version": "3.12.13",
     "source_sha256": {
-     "analyze.py": "c02c77126309b20da1e2c368e76a7b80c8fad15f1e01d7e22a7b88a541e184e1",
+     "analyze.py": "9b77e8c8bbbede25a63fc9b7d28a5d4e28a5fe99be31db729c22507c160417d3",
      "grade.py": "5b759151973b17e7587f4f807035a06ff610d651eeb3aa012e25dea0540d0002",
      "intervals.py": "fac16cf935430dbb24f383b30c767edcc5be55b84ece18c05ee5e64dc08abdad",
      "permutation.py": "b5ae778c13670a86126d2007fdb12489a69fa5cd21b418b479c321d7120ba396",
@@ -1873,6 +1877,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-001"
   },
   {
@@ -3532,6 +3537,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-001"
   },
   {
@@ -5203,6 +5209,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-001"
   },
   {
@@ -6878,6 +6885,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-001"
   },
   {
@@ -8549,6 +8557,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-001"
   },
   {
@@ -10207,6 +10216,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -11865,6 +11875,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -13521,6 +13532,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -15177,6 +15189,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -16833,6 +16846,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -18490,6 +18504,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-002"
   },
   {
@@ -20147,6 +20162,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-003"
   },
   {
@@ -21803,6 +21819,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-003"
   },
   {
@@ -23457,6 +23474,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -25112,6 +25130,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -26765,6 +26784,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -28418,6 +28438,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -30071,6 +30092,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -31726,6 +31748,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -33383,6 +33406,7 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   },
   {
@@ -35040,10 +35064,12 @@
      }
     }
    },
+   "unfinished_jobs": 0,
    "round": "round-004"
   }
  ],
- "analysis_version": "fixed-prompt-ci-v3",
+ "analysis_version": "fixed-prompt-ci-v4",
+ "identical_cases": true,
  "comparison_spec": {
   "version": 3,
   "selection": "Exploratory comparisons specified after observing rounds 001-004; not preregistered. Paired tests were added after observing these data: version 2 added the distribution test, version 3 the score test.",

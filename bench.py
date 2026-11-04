@@ -13,7 +13,8 @@ Planning freezes the seed, every case prompt, the conditions, repeat counts,
 CLI versions, source hashes and a shuffled schedule before any inference.
 Every physical attempt is recorded. Operational failures are retried with a
 fresh session up to the frozen bound; completed invalid responses are terminal
-and never replaced.
+and never replaced. A subscription usage limit pauses that service until the
+limit resets: those attempts are recorded but do not use up the retry bound.
 """
 
 import argparse
@@ -40,6 +41,8 @@ SCHEMA = "hypothesis-diversity-plan-v1"
 DEFAULT_REPEATS = {"none": 20, "partial": 5, "full": 2}
 TERMINAL = {"valid", "invalid_response", "protocol_error"}
 RETRYABLE = {"error", "timeout", "rate_limit"}
+QUOTA = "quota"
+QUOTA_MARKERS = ("usage limit",)
 FATAL_MARKERS = ("authentication", "unauthorized", "invalid api key", "insufficient credits", "401", "402")
 # Variables that would route a CLI away from the user's own stored login or
 # override the frozen model and effort settings.
@@ -159,7 +162,7 @@ def parse_claude(events, condition):
         if e.get("type") == "rate_limit_event":
             status = (e.get("rate_limit_info") or {}).get("status")
             if status not in ("allowed", "allowed_warning"):
-                r["problem"] = ("rate_limit", f"subscription limit {status}")
+                r["problem"] = (QUOTA, f"subscription usage limit {status}")
                 return r
         if e.get("type") == "system" and e.get("subtype") == "api_retry":
             r["problem"] = ("error", f"CLI internal retry {e.get('error_status')}")
@@ -200,7 +203,12 @@ def parse_pi(events, condition):
     stop = final.get("stopReason")
     if stop == "error" or final.get("errorMessage"):
         message = str(final.get("errorMessage", ""))[:200]
-        kind = "rate_limit" if "429" in message or "rate" in message.lower() else "error"
+        if any(m in message.lower() for m in QUOTA_MARKERS):
+            kind = QUOTA
+        elif "429" in message or "rate" in message.lower():
+            kind = "rate_limit"
+        else:
+            kind = "error"
         r["problem"] = (kind, f"provider error: {message}")
         return r
     if r["observed_model"] != condition["model"]:
@@ -255,7 +263,8 @@ def plan(args):
         for case in old["cases"]:
             if case["tier"] == "none":
                 exclude.setdefault(case["scenario"], []).append(case["change_order"])
-    built = case_builder.build(seed, tiers=args.tiers, none_variants=args.none_variants, exclude_orders=exclude)
+    built = case_builder.build(seed, tiers=args.tiers, none_variants=args.none_variants, exclude_orders=exclude,
+                               randomize_dates=args.randomize_dates)
     seen = {case["prompt"] for old in previous for case in old["cases"]}
     if any(case["prompt"] in seen for case in built):
         raise SystemExit("A planned prompt was already run in a --novel-against plan")
@@ -283,7 +292,7 @@ def plan(args):
             created_at=now(),
             seed=seed,
             repeats=repeats,
-            case_options=dict(tiers=list(args.tiers), none_variants=args.none_variants,
+            case_options=dict(tiers=list(args.tiers), none_variants=args.none_variants, randomize_dates=args.randomize_dates,
                               novel_against={path: sha256_file(Path(path)) for path in args.novel_against or []}),
             system_prompt=spec["system_prompt"],
             conditions=conditions,
@@ -321,6 +330,7 @@ class Round:
         self.conditions = {c["id"]: c for c in self.plan["conditions"]}
         self.lock = threading.Lock()
         self.stop = threading.Event()
+        self.paused_until = {}
         self.attempts_path = self.out / "attempts.jsonl"
 
     def history(self):
@@ -329,8 +339,13 @@ class Round:
             by_job.setdefault(row["job"], []).append(row)
         return by_job
 
+    @staticmethod
+    def tries(rows):
+        """Attempts that count toward the retry bound; usage-limit pauses do not."""
+        return sum(1 for r in rows if r["outcome"] != QUOTA)
+
     def done(self, rows):
-        return any(r["outcome"] in TERMINAL for r in rows) or len(rows) >= self.plan["max_attempts"]
+        return any(r["outcome"] in TERMINAL for r in rows) or self.tries(rows) >= self.plan["max_attempts"]
 
     def record(self, row):
         with self.lock:
@@ -386,12 +401,22 @@ class Round:
             raw_events_sha256=sha256_text(stdout), prompt_sha256=sha256_text(prompt),
         )
 
-    def work(self, job, prior):
-        number = len(prior)
-        while not self.stop.is_set() and number < self.plan["max_attempts"]:
+    def wait_for_pool(self, pool):
+        """Sleep while the service is paused by a usage limit. False once the round must stop."""
+        while not self.stop.is_set():
+            remaining = min(self.paused_until.get(pool, 0), self.deadline) - time.time()
             if time.time() > self.deadline:
                 self.stop.set()
-                return
+                return False
+            if remaining <= 0:
+                return True
+            self.stop.wait(min(remaining, 30))
+        return False
+
+    def work(self, job, prior):
+        pool = self.conditions[job["condition"]]["pool"]
+        number, tries = len(prior), self.tries(prior)
+        while tries < self.plan["max_attempts"] and self.wait_for_pool(pool):
             number += 1
             row = self.attempt(job, number)
             self.record(row)
@@ -402,8 +427,16 @@ class Round:
                 return
             if row["outcome"] in TERMINAL:
                 return
+            if row["outcome"] == QUOTA:
+                wait = float(os.environ.get("HDB_QUOTA_SECONDS", 600))
+                with self.lock:
+                    if self.paused_until.get(pool, 0) <= time.time():
+                        print(f"{pool} usage limit reached; pausing {wait:.0f}s: {row['detail']}", file=sys.stderr, flush=True)
+                    self.paused_until[pool] = max(self.paused_until.get(pool, 0), time.time() + wait)
+                continue
+            tries += 1
             base = float(os.environ.get("HDB_BACKOFF_SECONDS", 15))
-            time.sleep(min(240, base * 2 ** (number - 1)) * random.uniform(0.8, 1.2))
+            time.sleep(min(240, base * 2 ** (tries - 1)) * random.uniform(0.8, 1.2))
 
     def run(self):
         meta_path = self.out / "run-state.json"
@@ -512,6 +545,7 @@ def main(argv=None):
     p.add_argument("--cases", nargs="*", help="Restrict to these case IDs (smoke checks)")
     p.add_argument("--tiers", nargs="+", default=list(case_builder.TIERS), choices=case_builder.TIERS)
     p.add_argument("--none-variants", type=int, default=1, help="No-evidence cases per scenario: 1, or a multiple of 4 Latin-square change orders")
+    p.add_argument("--randomize-dates", action="store_true", help="Balance which date each change carries across no-evidence variants")
     p.add_argument("--novel-against", nargs="*", help="Earlier plan.json files whose prompts must not repeat")
     p.add_argument("--max-attempts", type=int, default=3)
     p.add_argument("--timeout", type=int, default=900)

@@ -180,8 +180,13 @@ Carlo p-value `(1 + extreme draws) / (1 + draws)` has standard error about
 0.0015 near 0.05. Seeds derive from family IDs, so outputs are reproducible.
 
 For a preregistered round, a spec's `confirmatory` block pins the round, seed,
-case hash, conditions and repeat counts. If the round does not match exactly
-or is incomplete, every test is withheld rather than run on a smaller family.
+case hash, conditions and repeat counts; a block may list several rounds. If a
+round does not match exactly or is incomplete, every test is withheld rather
+than run on a smaller family. A rule with scope `conditions` covers a stopped
+round whose listed conditions finished every planned job: only those
+conditions must be present and complete, and only they keep confidence
+bounds. Pairs are always within one round, and a comparison across rounds
+with different case sets is refused.
 
 ```sh
 uv run --no-project python -m unittest discover -s tests -v

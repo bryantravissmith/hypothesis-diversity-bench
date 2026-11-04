@@ -1,0 +1,177 @@
+{
+  "version": 3,
+  "selection": "Preregistered before any round-006 inference and before any round-005 result was exported or analyzed. Round-005 (version 2) stopped when the ChatGPT subscription usage limit turned 856 GPT jobs into retry-exhausted misses. Its Opus pair finished every planned job with valid answers before the limit and is kept. The GPT conditions rerun as round-006 on new prompts whose change order and change dates are both balanced across causes. Decision rules are unchanged from version 2.",
+  "confirmatory": {
+    "rounds": [
+      {
+        "round": "round-005",
+        "scope": "conditions",
+        "seed": "0b919a6c8400878d",
+        "cases": 48,
+        "cases_sha256": "cb589344897c8afb852142fd8d0dd9e346695a284deaec13b8d9c437d1faab90",
+        "repeats": {
+          "none": 20
+        },
+        "conditions": [
+          "opus-5.5-medium",
+          "opus-5.5-max"
+        ]
+      },
+      {
+        "round": "round-006",
+        "scope": "round",
+        "seed": "4e53d8dbf4871807",
+        "cases": 48,
+        "cases_sha256": "71324b0c266f746f4317a0d22ca62fddfec34b00daa0c64e923fc2ee1b20b03e",
+        "repeats": {
+          "none": 20
+        },
+        "randomize_dates": true,
+        "novel_against": [
+          "results/round-001/plan.json",
+          "results/round-002/plan.json",
+          "results/round-003/plan.json",
+          "results/round-004/plan.json",
+          "runs/round-005/plan.json (exported as results/round-005/plan.json)"
+        ],
+        "conditions": [
+          "gpt-6.1-terra-medium",
+          "gpt-6.1-terra-max",
+          "gpt-6.1-terra-medium-meta",
+          "gpt-6.1-terra-max-meta",
+          "gpt-6-astra-medium",
+          "gpt-6-astra-max",
+          "gpt-6-astra-medium-meta",
+          "gpt-6-astra-max-meta"
+        ]
+      }
+    ]
+  },
+  "decision": [
+    "Confirmatory claim (effort): the pooled one-sided score test of plain max minus medium no-evidence pass@10, averaged equally over Opus 5.5 (round-005), GPT-6.1 Terra and GPT-6 Astra (round-006), has p <= 0.05. Each pair is compared within its own round on its own 48 prompts.",
+    "Per-model effort results are secondary: each is claimed only if the pooled test passes and its Holm-adjusted one-sided score-test p is <= 0.05. Raw and Holm p are reported together.",
+    "The meta-prompt family is exploratory. Its estimates and both tests are reported with raw and Holm p, and no confirmatory claim is made from it.",
+    "The distribution test is reported for every pair as a secondary result. A rejection means the conditions behave differently, not that their scores differ.",
+    "Every planned job counts; invalid answers are misses. Subscription usage-limit attempts pause the service and are recorded, but do not use up the retry bound. If round-006 does not complete with all 8 conditions, 48 cases and 20 runs per cell, or the round-005 Opus pair is not complete, every test is withheld. An aborted round is published as stopped; this specification is not reused for a rerun.",
+    "Round-005 GPT conditions are stopped and reported descriptively only; they enter no test.",
+    "Conservative fixed-prompt bounds and scenario sensitivity are reported alongside, as for earlier rounds."
+  ],
+  "families": [
+    {
+      "id": "confirm-effort-max-minus-medium",
+      "role": "confirmatory",
+      "tier": "none",
+      "k": 10,
+      "alpha": 0.05,
+      "score_test": {
+        "method": "split-batch-z",
+        "alternative": "less",
+        "variance": "bound",
+        "alpha": 0.05
+      },
+      "distribution_test": {
+        "method": "paired-permutation",
+        "alternative": "two-sided",
+        "permutations": 20000
+      },
+      "pairs": [
+        {
+          "id": "opus-5.5",
+          "left": [
+            "round-005",
+            "opus-5.5-max"
+          ],
+          "right": [
+            "round-005",
+            "opus-5.5-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-terra",
+          "left": [
+            "round-006",
+            "gpt-6.1-terra-max"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6.1-terra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6-astra",
+          "left": [
+            "round-006",
+            "gpt-6-astra-max"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6-astra-medium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "explore-meta-minus-plain",
+      "role": "exploratory",
+      "tier": "none",
+      "k": 10,
+      "alpha": 0.05,
+      "score_test": {
+        "method": "split-batch-z",
+        "alternative": "two-sided",
+        "variance": "bound"
+      },
+      "distribution_test": {
+        "method": "paired-permutation",
+        "alternative": "two-sided",
+        "permutations": 20000
+      },
+      "pairs": [
+        {
+          "id": "gpt-6.1-terra-medium",
+          "left": [
+            "round-006",
+            "gpt-6.1-terra-medium-meta"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6.1-terra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6.1-terra-max",
+          "left": [
+            "round-006",
+            "gpt-6.1-terra-max-meta"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6.1-terra-max"
+          ]
+        },
+        {
+          "id": "gpt-6-astra-medium",
+          "left": [
+            "round-006",
+            "gpt-6-astra-medium-meta"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6-astra-medium"
+          ]
+        },
+        {
+          "id": "gpt-6-astra-max",
+          "left": [
+            "round-006",
+            "gpt-6-astra-max-meta"
+          ],
+          "right": [
+            "round-006",
+            "gpt-6-astra-max"
+          ]
+        }
+      ]
+    }
+  ]
+}
