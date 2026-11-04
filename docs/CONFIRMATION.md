@@ -2,6 +2,13 @@
 
 ## Version 3: round-005 Opus and round-006 GPT
 
+**Outcome: not completed.** Round-006 started at 06:01 PT on November 4 while
+the subscription limit was still in effect. It recorded 36 usage-limit
+attempts and no answers, and was cancelled at 06:52 PT for diminishing
+returns. The preregistered pooled test was never run, so the effort claim is
+unconfirmed. The only fresh-prompt effort result is the complete round-005
+Opus pair below, which shows no drop.
+
 Committed before any round-006 inference and before any round-005 result was
 exported or analyzed. The machine-readable version is
 [confirmation-v3-spec.json](../confirmation-v3-spec.json).
@@ -48,8 +55,9 @@ descriptive only. Blinded review resolved 76 ambiguous answers (68 rental
 answers naming the analytics migration, which the pattern missed, were
 labeled tracking).
 
-Interim Opus effort result, computed after this plan was committed. It is not
-the confirmatory decision, which is the pooled test after round-006:
+Opus effort result, computed after this plan was committed. It was planned as
+one input to the pooled test, which was not run, so it stands as a secondary
+result without the gating that plan gave it:
 
 | Opus 5.5, no evidence | Medium | Max |
 |---|---:|---:|

@@ -54,8 +54,9 @@ results each rest on one prompt where one condition showed a second cause, so
 they are fragile. [Rounds 005-006](docs/CONFIRMATION.md) are the preregistered
 test. Round-005 stopped when the ChatGPT subscription limit was reached; its
 complete Opus pair shows no drop on 48 new prompts (max minus medium +0.010,
-one-sided score test raw p 0.905, Holm p 0.905). The confirmatory pooled test
-waits for round-006.
+one-sided score test raw p 0.905, Holm p 0.905). Round-006 was cancelled
+before any answer, so the preregistered pooled test was not run and the
+effort claim remains unconfirmed.
 
 GPT-6.1 Sol's effective-cause count rises from 1.11 at medium effort to 1.17
 at max. Its pass@2 increases and its pass@10 decreases. Effective causes is
